@@ -6,6 +6,7 @@ import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
 import { LiveChatWidget } from '@/components/common/LiveChatWidget';
+import { CookieConsent } from '@/components/common/CookieConsent';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 
 const inter = Inter({
