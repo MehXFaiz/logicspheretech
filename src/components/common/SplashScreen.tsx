@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Globe, Sparkles, CheckCircle2, ArrowRight, Cpu, Zap, ShieldCheck, Layers } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, CheckCircle2, Cpu, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
-  const [stepText, setStepText] = useState('Initializing LogicSphere...');
+  const [stepText, setStepText] = useState('Booting LogicSphere Core...');
   const [isCompleted, setIsCompleted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -17,34 +17,34 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
           clearInterval(interval);
           return 100;
         }
-        const increment = Math.floor(Math.random() * 12) + 6;
+
+        const increment = Math.floor(Math.random() * 12) + 5;
         const next = Math.min(prev + increment, 100);
 
         if (next < 30) {
-          setStepText('Initializing LogicSphere Systems...');
+          setStepText('Booting LogicSphere Core...');
         } else if (next < 60) {
-          setStepText('Loading Global Network Modules...');
+          setStepText('Syncing global design systems...');
         } else if (next < 85) {
-          setStepText('Calibrating Premium Design System...');
+          setStepText('Securing enterprise-grade infrastructure...');
         } else {
-          setStepText('Welcome to LogicSphere Tech!');
+          setStepText('Ready to launch your digital transformation.');
         }
 
         return next;
       });
-    }, 100);
+    }, 110);
 
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     if (progress === 100 && !isCompleted) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsCompleted(true);
       const timer = setTimeout(() => {
         setIsVisible(false);
         if (onFinish) onFinish();
-      }, 800);
+      }, 700);
       return () => clearTimeout(timer);
     }
   }, [progress, isCompleted, onFinish]);
@@ -62,137 +62,87 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="fixed inset-0 z-[100] bg-[#050816] flex flex-col items-center justify-between p-6 sm:p-12 overflow-hidden"
+        exit={{ opacity: 0, scale: 1.02 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="fixed inset-0 z-[100] overflow-hidden bg-[#02030f] text-white"
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-[#06b6d4]/20 via-[#8b5cf6]/20 to-transparent rounded-full blur-[180px] pointer-events-none animate-pulse-glow" />
-        {/* Floating Orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -80, 0],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-20 left-20 w-32 h-32 bg-[#06b6d4]/20 rounded-full blur-3xl pointer-events-none"
-        />
-        <motion.div
-          animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-32 right-20 w-40 h-40 bg-[#8b5cf6]/20 rounded-full blur-3xl pointer-events-none"
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),transparent_30%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_35%)]" />
+        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/5 to-transparent" />
 
-        {/* Top Bar */}
-        <div className="w-full max-w-5xl flex items-center justify-between relative z-10 text-xs font-mono">
-          <div className="flex items-center gap-2.5 text-slate-400">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#06b6d4] animate-ping" />
-            <span className="text-[#06b6d4] font-bold tracking-wider">LOGICSPHERE.TECH</span>
-            <span className="hidden sm:inline opacity-50">| GLOBAL EDITION 2026</span>
-          </div>
+        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-between px-6 py-8 sm:px-10">
+          <div className="flex items-center justify-between text-xs text-slate-300">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-3 w-3 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="font-semibold tracking-[0.26em] uppercase text-slate-100">LOGICSPHERE</span>
+              <span className="hidden sm:inline text-slate-500">Global studio launch</span>
+            </div>
 
-          <button
-            onClick={handleSkip}
-            className="px-4 py-2 rounded-xl bg-white/5 hover:bg-[#06b6d4]/20 border border-white/10 hover:border-[#06b6d4]/40 text-slate-300 hover:text-white transition-all flex items-center gap-2 font-mono font-bold text-xs group shadow-lg"
-          >
-            <span>Skip</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#06b6d4]" />
-          </button>
-        </div>
-
-        {/* Center Content */}
-        <div className="flex flex-col items-center text-center max-w-xl relative z-10 my-auto">
-          {/* Animated Logo */}
-          <div className="relative mb-10 flex items-center justify-center">
-            <div className="absolute w-40 h-40 rounded-full border border-[#06b6d4]/30 animate-spin-slow pointer-events-none border-dashed" />
-            <div className="absolute w-52 h-52 rounded-full border border-[#8b5cf6]/25 animate-reverse-spin pointer-events-none" />
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#06b6d4] to-[#8b5cf6] blur-3xl opacity-30 animate-pulse" />
-            
-            <motion.div
-              animate={{ 
-                rotate: [0, 5, -5, 0],
-                scale: [1, 1.05, 1]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="relative w-28 h-28 rounded-3xl bg-[#0f172a] border-2 border-[#06b6d4]/60 flex items-center justify-center shadow-2xl shadow-[#06b6d4]/25"
+            <button
+              type="button"
+              onClick={handleSkip}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
             >
-              <Globe className="w-14 h-14 text-[#06b6d4] stroke-[2]" />
-              <Sparkles className="w-6 h-6 text-[#f59e0b] absolute top-4 right-4 animate-float" />
-            </motion.div>
+              <span>Skip</span>
+              <ArrowRight className="h-4 w-4 text-cyan-300" />
+            </button>
           </div>
 
-          {/* Brand Title */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-[#06b6d4]">
-              GLOBAL TECH SOLUTIONS
-            </span>
-            <span className="px-2 py-0.5 rounded bg-[#06b6d4]/15 text-[#06b6d4] text-[10px] font-mono font-bold border border-[#06b6d4]/30">
-              PREMIUM
-            </span>
+          <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center text-center gap-8">
+            <div className="space-y-3 rounded-[2rem] border border-white/10 bg-white/5 px-8 py-10 shadow-[0_35px_90px_rgba(15,23,42,0.5)] backdrop-blur-2xl">
+              <div className="inline-flex items-center gap-2 rounded-full bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200 shadow-inner">
+                <Sparkles className="h-4 w-4 text-cyan-300" />
+                Studio Ready
+              </div>
+              <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">
+                Welcome to the new LogicSphere experience.
+              </h2>
+              <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+                A premium launch screen built with Tailwind CSS and a refreshed UI to match your modern digital enterprise.
+              </p>
+            </div>
+
+            <div className="grid w-full gap-4 sm:grid-cols-3">
+              {[
+                { title: 'Fast Launch', description: 'Instant load and active visual feedback.' },
+                { title: 'Premium Design', description: 'Glassmorphism, gradients, and refined motion.' },
+                { title: 'Secure Stack', description: 'Enterprise-grade infrastructure messaging.' },
+              ].map((item) => (
+                <div key={item.title} className="rounded-3xl border border-white/10 bg-[#0d1222]/90 p-5 text-left shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
+                  <div className="text-lg font-extrabold text-white">{item.title}</div>
+                  <p className="mt-2 text-sm text-slate-400">{item.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-5 shadow-inner">
+              <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-slate-400">
+                <span>{isCompleted ? 'System ready' : 'Boot sequence'}</span>
+                <span className="font-semibold text-white">{progress}%</span>
+              </div>
+              <div className="mt-4 h-3 rounded-full bg-white/10 overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-500 to-amber-400 shadow-lg shadow-cyan-400/20"
+                />
+              </div>
+              <p className="mt-4 text-sm text-slate-300">{stepText}</p>
+            </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-none mb-6">
-            LOGICSPHERE <span className="text-gradient-primary">TECH</span>
-          </h1>
-
-          {/* Status Box */}
-          <div className="w-full bg-[#0f172a]/90 border border-white/10 rounded-2xl p-4 sm:p-5 mb-8 shadow-2xl backdrop-blur-xl text-left">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-[11px] font-mono text-slate-400">
-              <span className="flex items-center gap-1.5 text-[#06b6d4] font-bold">
-                <Cpu className="w-3.5 h-3.5 animate-spin" /> SYSTEM STATUS
+          <div className="flex flex-col gap-3 text-slate-400 text-xs sm:flex-row sm:items-center sm:justify-between">
+            <span>© 2026 LogicSphere Tech. All Rights Reserved.</span>
+            <div className="flex flex-wrap items-center gap-4 text-slate-400">
+              <span className="inline-flex items-center gap-2 text-cyan-300">
+                <Cpu className="h-4 w-4" /> Optimized
               </span>
-              <span className="text-white font-bold">{progress}% LOADED</span>
+              <span className="inline-flex items-center gap-2 text-emerald-300">
+                <ShieldCheck className="h-4 w-4" /> Secured
+              </span>
             </div>
-            <div className="font-mono text-xs sm:text-sm text-slate-200 min-h-[24px] flex items-center justify-between">
-              <span className="truncate pr-4">{stepText}</span>
-              {progress === 100 && (
-                <CheckCircle2 className="w-4 h-4 text-[#06b6d4] shrink-0 animate-scale-in" />
-              )}
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="w-full bg-white/[0.06] rounded-full h-2.5 overflow-hidden p-0.5 border border-white/10 shadow-inner">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              className="h-full rounded-full bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] shadow-lg shadow-[#06b6d4]/40 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-white/30 animate-[pulse_1.5s_infinite]" />
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-between relative z-10 text-[11px] font-mono text-slate-500 pt-4 border-t border-white/10 gap-2">
-          <span>© 2026 LogicSphere Tech. All Rights Reserved.</span>
-          <div className="flex items-center gap-4 text-slate-400">
-            <span className="flex items-center gap-1 text-[#06b6d4]">
-              <Zap className="w-3.5 h-3.5" /> FAST & RELIABLE
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1 text-emerald-400">
-              <ShieldCheck className="w-3.5 h-3.5" /> SECURED
-            </span>
           </div>
         </div>
       </motion.div>

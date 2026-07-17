@@ -33,63 +33,30 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#050816]">
-      {/* Luxury Tailwind CSS Splash Screen */}
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#02030f] text-slate-100 selection:bg-cyan-400/25 selection:text-white">
       <SplashScreen />
-
-      {/* Floating Executive Navbar */}
       <Navbar onOpenQuote={() => handleOpenQuote('Website Development')} />
-
-      {/* 1. Hero Section */}
       <HeroSection onOpenQuote={() => handleOpenQuote('Website Development')} />
-
-      {/* Stats Counters */}
       <StatsCounters />
-
-      {/* 2. About Us */}
       <AboutSection />
-
-      {/* 3. Our Services */}
       <ServicesSection
         onSelectService={(service) => setSelectedService(service)}
         onOpenQuote={handleOpenQuote}
       />
-
-      {/* 4. Why Choose Us */}
       <WhyChooseUsSection />
-
-      {/* 5. Technologies We Use */}
       <TechnologiesSection />
-
-      {/* 6. Portfolio */}
       <PortfolioSection />
-
-      {/* 7. Development Process */}
       <ProcessSection />
-
-      {/* 8. Client Testimonials */}
       <TestimonialsSection />
-
-      {/* 9. Pricing Plans */}
       <PricingSection onOpenQuote={(serviceName) => handleOpenQuote(serviceName)} />
-
-      {/* 10. FAQ Section */}
       <FaqSection />
-
-      {/* 11. Contact Section */}
       <ContactSection />
-
-      {/* 12. Footer */}
       <Footer />
-
-      {/* Interactive Service Detail Modal */}
       <ServiceModal
         service={selectedService}
         onClose={() => setSelectedService(null)}
         onOpenQuote={(serviceTitle) => handleOpenQuote(serviceTitle)}
       />
-
-      {/* Interactive Get Free Quote Estimator & Booking Modal */}
       <QuoteModal
         isOpen={quoteModalOpen}
         initialService={initialQuoteService}

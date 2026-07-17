@@ -9,10 +9,7 @@ import {
   Activity,
   CheckCircle2,
   Globe,
-  Database,
   Terminal,
-  Calculator,
-  TrendingUp,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -22,14 +19,12 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
   const [activeTab, setActiveTab] = useState<'metrics' | 'code' | 'ai' | 'roi'>('metrics');
-  const [queryInput, setQueryInput] = useState('Architect custom RAG engine for 1M enterprise documents');
   const [simulatedScore, setSimulatedScore] = useState(99.9);
-  const [visitorVolume, setVisitorVolume] = useState<number>(250000);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-36 sm:pt-44 pb-28 flex items-center justify-center overflow-hidden bg-[#050816] bg-grid-pattern"
+      className="relative min-h-screen pt-36 sm:pt-44 pb-28 flex items-center justify-center overflow-hidden bg-[#02030f] bg-grid-pattern"
     >
       {/* Subtle Radial Luxury Ambient Lighting */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#06b6d4]/10 rounded-full blur-[160px] pointer-events-none animate-pulse-glow" />
@@ -45,31 +40,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             className="lg:col-span-6 space-y-8 text-left"
           >
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-[#06b6d4]/10 border border-[#06b6d4]/40 text-[#06b6d4] text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-xl shadow-[#06b6d4]/15">
-              <Sparkles className="w-4 h-4 text-[#f59e0b] animate-bounce" />
-              <span>PRIVATE ARCHITECTURAL ATELIER</span>
+            <div className="inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full bg-cyan-400/10 border border-cyan-400/30 text-cyan-200 text-xs font-bold tracking-widest uppercase backdrop-blur-md shadow-xl shadow-cyan-500/15">
+              <Sparkles className="w-4 h-4 text-amber-400 animate-bounce" />
+              <span>NEXT-GEN DIGITAL STUDIO</span>
             </div>
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.06]">
-              Engineering Digital Dominance With{' '}
-              <span className="text-gradient-primary">
-                Uncompromising Rigor.
-              </span>
+              Transform your digital footprint with
+              <span className="text-gradient-primary"> precision engineering</span>.
             </h1>
 
             {/* Description */}
             <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-xl font-normal">
-              We engineer ultra-low latency Next.js 16 platforms, custom RAG AI engines, and Silicon Valley-grade cloud architectures for executives demanding absolute architectural perfection.
+              We design premium web platforms, bespoke AI systems, and enterprise cloud experiences with a polished UI, fast performance, and modern Tailwind-led styling.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <button
                 onClick={onOpenQuote}
-                className="px-8 py-4.5 rounded-2xl bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] hover:opacity-95 text-slate-950 font-black text-sm sm:text-base uppercase tracking-wider shadow-2xl shadow-[#06b6d4]/35 transition-all duration-300 flex items-center justify-center gap-2.5 group transform hover:scale-105"
+                className="px-8 py-4.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-violet-500 to-amber-400 hover:opacity-95 text-slate-950 font-black text-sm sm:text-base uppercase tracking-wider shadow-2xl shadow-cyan-500/35 transition-all duration-300 flex items-center justify-center gap-2.5 group transform hover:scale-105"
               >
-                <span>Request Priority Retainer</span>
+                <span>Request a Quote</span>
                 <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1.5 transition-transform text-slate-950" />
               </button>
 
