@@ -10,6 +10,9 @@ import {
   CheckCircle2,
   Globe,
   Terminal,
+  Database,
+  Calculator,
+  TrendingUp,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -19,7 +22,9 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
   const [activeTab, setActiveTab] = useState<'metrics' | 'code' | 'ai' | 'roi'>('metrics');
+  const [queryInput, setQueryInput] = useState('Architect custom RAG engine for 1M enterprise documents');
   const [simulatedScore, setSimulatedScore] = useState(99.9);
+  const [visitorVolume, setVisitorVolume] = useState<number>(250000);
 
   return (
     <section
