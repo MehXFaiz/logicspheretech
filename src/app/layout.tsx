@@ -6,16 +6,16 @@ import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
 import { LiveChatWidget } from '@/components/common/LiveChatWidget';
-import { CookieConsent } from '@/components/common/CookieConsent';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 
-const poppins = Poppins({
+const inter = Inter({
   variable: '--font-sans',
   weight: ['300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const firaCode = Fira_Code({
+const jetBrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
@@ -106,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${firaCode.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${jetBrainsMono.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"

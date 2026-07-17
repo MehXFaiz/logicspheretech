@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Layers, Sparkles, CheckCircle2, ArrowRight, Cpu, Zap, ShieldCheck } from 'lucide-react';
+import { Globe, Sparkles, CheckCircle2, ArrowRight, Cpu, Zap, ShieldCheck, Layers } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
@@ -69,6 +69,33 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
         {/* Background Elements */}
         <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-[#06b6d4]/20 via-[#8b5cf6]/20 to-transparent rounded-full blur-[180px] pointer-events-none animate-pulse-glow" />
+        {/* Floating Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -80, 0],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 left-20 w-32 h-32 bg-[#06b6d4]/20 rounded-full blur-3xl pointer-events-none"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-32 right-20 w-40 h-40 bg-[#8b5cf6]/20 rounded-full blur-3xl pointer-events-none"
+        />
 
         {/* Top Bar */}
         <div className="w-full max-w-5xl flex items-center justify-between relative z-10 text-xs font-mono">
@@ -107,7 +134,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               }}
               className="relative w-28 h-28 rounded-3xl bg-[#0f172a] border-2 border-[#06b6d4]/60 flex items-center justify-center shadow-2xl shadow-[#06b6d4]/25"
             >
-              <Layers className="w-14 h-14 text-[#06b6d4] stroke-[2]" />
+              <Globe className="w-14 h-14 text-[#06b6d4] stroke-[2]" />
               <Sparkles className="w-6 h-6 text-[#f59e0b] absolute top-4 right-4 animate-float" />
             </motion.div>
           </div>
