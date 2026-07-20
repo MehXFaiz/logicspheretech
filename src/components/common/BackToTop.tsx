@@ -23,7 +23,7 @@ export const BackToTop: React.FC = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 left-6 z-40 p-3.5 rounded-2xl bg-[#0B0E14]/90 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#D4AF37] hover:text-white shadow-xl hover:shadow-[#D4AF37]/30 transition-all transform hover:-translate-y-1"
+      className="fixed bottom-6 left-6 z-40 p-3.5 rounded-2xl bg-[#343e39]/90 hover:bg-[#116466]/20 border border-[#116466]/40 text-[#116466] hover:text-[#D1E8E2] shadow-xl hover:shadow-[#116466]/30 transition-all transform hover:-translate-y-1"
       aria-label="Back to Top"
     >
       <ArrowUp className="w-5 h-5" />

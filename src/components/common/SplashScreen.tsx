@@ -1,59 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Cpu, ShieldCheck, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
-  const [progress, setProgress] = useState(0);
-  const [stepText, setStepText] = useState('Booting LogicSphere Core...');
-  const [isCompleted, setIsCompleted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [phase, setPhase] = useState<'booting' | 'arrived'>('booting');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-
-        const increment = Math.floor(Math.random() * 12) + 5;
-        const next = Math.min(prev + increment, 100);
-
-        if (next < 30) {
-          setStepText('Booting LogicSphere Core...');
-        } else if (next < 60) {
-          setStepText('Syncing global design systems...');
-        } else if (next < 85) {
-          setStepText('Securing enterprise-grade infrastructure...');
-        } else {
-          setStepText('Ready to launch your digital transformation.');
-        }
-
-        return next;
-      });
-    }, 110);
-
-    return () => clearInterval(interval);
+    const timer = setTimeout(() => {
+      setPhase('arrived');
+    }, 2500);
+    return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (progress === 100 && !isCompleted) {
-      setIsCompleted(true);
-      const timer = setTimeout(() => {
-        setIsVisible(false);
-        if (onFinish) onFinish();
-      }, 700);
-      return () => clearTimeout(timer);
-    }
-  }, [progress, isCompleted, onFinish]);
-
-  const handleSkip = () => {
-    setProgress(100);
-    setIsCompleted(true);
+  const handleDiscover = () => {
     setIsVisible(false);
-    if (onFinish) onFinish();
+    if (onFinish) setTimeout(onFinish, 800);
   };
 
   if (!isVisible) return null;
@@ -61,88 +24,122 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 1.02 }}
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0, scale: 1.05 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="fixed inset-0 z-[100] overflow-hidden bg-[#02030f] text-white"
+        className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-[#2C3531] text-[#D1E8E2] font-mono selection:bg-[#116466] selection:text-[#D1E8E2]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),transparent_30%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_35%)]" />
-        <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/5 to-transparent" />
+        {/* Background ambient lighting */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(17,100,102,0.15),transparent_70%)]" />
+        </div>
 
-        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-between px-6 py-8 sm:px-10">
-          <div className="flex items-center justify-between text-xs text-slate-300">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-3 w-3 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="font-semibold tracking-[0.26em] uppercase text-slate-100">LOGICSPHERE</span>
-              <span className="hidden sm:inline text-slate-500">Global studio launch</span>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleSkip}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200 transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
-            >
-              <span>Skip</span>
-              <ArrowRight className="h-4 w-4 text-cyan-300" />
-            </button>
-          </div>
-
-          <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center text-center gap-8">
-            <div className="space-y-3 rounded-[2rem] border border-white/10 bg-white/5 px-8 py-10 shadow-[0_35px_90px_rgba(15,23,42,0.5)] backdrop-blur-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-cyan-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-cyan-200 shadow-inner">
-                <Sparkles className="h-4 w-4 text-cyan-300" />
-                Studio Ready
-              </div>
-              <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">
-                Welcome to the new LogicSphere experience.
-              </h2>
-              <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                A premium launch screen built with Tailwind CSS and a refreshed UI to match your modern digital enterprise.
-              </p>
-            </div>
-
-            <div className="grid w-full gap-4 sm:grid-cols-3">
-              {[
-                { title: 'Fast Launch', description: 'Instant load and active visual feedback.' },
-                { title: 'Premium Design', description: 'Glassmorphism, gradients, and refined motion.' },
-                { title: 'Secure Stack', description: 'Enterprise-grade infrastructure messaging.' },
-              ].map((item) => (
-                <div key={item.title} className="rounded-3xl border border-white/10 bg-[#0d1222]/90 p-5 text-left shadow-xl shadow-cyan-500/10 backdrop-blur-xl">
-                  <div className="text-lg font-extrabold text-white">{item.title}</div>
-                  <p className="mt-2 text-sm text-slate-400">{item.description}</p>
-                </div>
+        {/* Top Navbar Simulation */}
+        <div className="absolute top-0 inset-x-0 p-8 flex items-center justify-between text-xs tracking-widest text-[#D1E8E2]/60 z-20">
+          <div className="flex items-center gap-3">
+            <span className="w-5 h-5 flex flex-wrap gap-[1px]">
+              {[...Array(9)].map((_, i) => (
+                <span key={i} className="w-[5px] h-[5px] bg-[#116466] rounded-sm" />
               ))}
-            </div>
-
-            <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-5 shadow-inner">
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-slate-400">
-                <span>{isCompleted ? 'System ready' : 'Boot sequence'}</span>
-                <span className="font-semibold text-white">{progress}%</span>
-              </div>
-              <div className="mt-4 h-3 rounded-full bg-white/10 overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-500 to-amber-400 shadow-lg shadow-cyan-400/20"
-                />
-              </div>
-              <p className="mt-4 text-sm text-slate-300">{stepText}</p>
+            </span>
+            <span>LOGICSPHERE</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="hover:text-[#D1E8E2] cursor-pointer transition-colors">SHOP NOW</span>
+            <div className="w-6 h-4 flex flex-col justify-between cursor-pointer group">
+              <span className="w-full h-[1px] bg-[#D1E8E2]/60 group-hover:bg-[#D1E8E2]" />
+              <span className="w-full h-[1px] bg-[#D1E8E2]/60 group-hover:bg-[#D1E8E2]" />
+              <span className="w-full h-[1px] bg-[#D1E8E2]/60 group-hover:bg-[#D1E8E2]" />
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col gap-3 text-slate-400 text-xs sm:flex-row sm:items-center sm:justify-between">
-            <span>© 2026 LogicSphere Tech. All Rights Reserved.</span>
-            <div className="flex flex-wrap items-center gap-4 text-slate-400">
-              <span className="inline-flex items-center gap-2 text-cyan-300">
-                <Cpu className="h-4 w-4" /> Optimized
-              </span>
-              <span className="inline-flex items-center gap-2 text-emerald-300">
-                <ShieldCheck className="h-4 w-4" /> Secured
-              </span>
+        {/* Central Geometric Sphere Composition */}
+        <div className="relative w-[600px] h-[600px] flex items-center justify-center z-10">
+          {/* Outer glowing halo/atmosphere */}
+          <div className="absolute inset-0 rounded-full border border-[#116466]/30 shadow-[0_0_100px_rgba(17,100,102,0.2)] animate-[spin_30s_linear_infinite]" />
+          <div className="absolute inset-4 rounded-full border border-[#116466]/20 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(44,53,49,0.8)_100%)]" />
+          
+          {/* Inner dark sphere body */}
+          <div className="absolute w-[400px] h-[400px] rounded-full bg-[#242b28] shadow-[inset_0_-40px_100px_rgba(0,0,0,0.8)] overflow-hidden">
+            {/* Geometric wireframe lines */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-80">
+              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#116466] to-transparent rotate-45 shadow-[0_0_15px_rgba(17,100,102,1)]" />
+              <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-[#FFCB9A] to-transparent -rotate-45 shadow-[0_0_15px_rgba(255,203,154,1)]" />
+              <div className="absolute w-[1px] h-full bg-gradient-to-b from-transparent via-[#D9B08C] to-transparent shadow-[0_0_15px_rgba(217,176,140,1)]" />
+              <div className="absolute w-[1px] h-full bg-gradient-to-b from-transparent via-[#D1E8E2] to-transparent rotate-90 shadow-[0_0_15px_rgba(209,232,226,1)]" />
             </div>
+            {/* Hexagonal grid overlay to simulate the facets */}
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTIwIDBMNDAgMTBMMzAgMzBMMTAgMzBMMCAxMEwyMCAweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDE3LCAxMDAsIDEwMiwgMC4xKSIvPjwvc3ZnPg==')] opacity-40 mix-blend-screen" />
+          </div>
+
+          {/* Central Bright Core Glow */}
+          <div className="absolute w-12 h-12 bg-white rounded-full blur-[20px] mix-blend-overlay opacity-80" />
+          
+          {/* Light Rays extending outwards */}
+          <div className="absolute inset-[-200px] flex items-center justify-center pointer-events-none opacity-60">
+            <div className="w-[120%] h-[2px] bg-gradient-to-r from-transparent via-[#116466] to-transparent rotate-12 blur-[1px]" />
+            <div className="absolute w-[120%] h-[2px] bg-gradient-to-r from-transparent via-[#116466] to-transparent -rotate-12 blur-[1px]" />
+          </div>
+
+          {/* Foreground UI Overlay specific to the design */}
+          <div className="absolute inset-[-100px] flex items-center justify-between pointer-events-none z-20">
+            {/* Left Side Typography */}
+            <div className="w-1/3 flex flex-col items-start pt-20">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#D9B08C] mb-6 flex items-center gap-2">
+                <span className="w-4 h-[1px] bg-[#D9B08C]" /> Welcome
+              </span>
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: phase === 'arrived' ? 1 : 0.5, y: 0 }}
+                className="flex flex-col gap-3"
+              >
+                <h1 className="text-4xl md:text-5xl font-light tracking-[0.3em] text-[#116466]">
+                  LOGICSPHERE
+                </h1>
+                <h2 className="text-3xl md:text-4xl font-light tracking-[0.4em] text-[#D1E8E2]">
+                  HAS
+                </h2>
+                <h2 className="text-3xl md:text-4xl font-light tracking-[0.4em] text-[#D1E8E2]">
+                  ARRIVED
+                </h2>
+              </motion.div>
+              {/* Corner brackets */}
+              <div className="absolute top-[20%] left-0 w-8 h-8 border-t border-l border-[#116466]/40 opacity-50" />
+              <div className="absolute bottom-[20%] left-0 w-8 h-8 border-b border-l border-[#116466]/40 opacity-50" />
+            </div>
+
+            {/* Right Side Discover Button */}
+            <div className="w-1/3 flex justify-end">
+              <button 
+                onClick={handleDiscover}
+                className="pointer-events-auto relative group flex items-center justify-center px-12 py-4 border border-[#116466] bg-transparent overflow-hidden transition-all duration-500 hover:border-[#D1E8E2] hover:bg-[#116466]/10"
+              >
+                {/* Corner targets for button */}
+                <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#D1E8E2]" />
+                <span className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-[#D1E8E2]" />
+                <span className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-[#D1E8E2]" />
+                <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#D1E8E2]" />
+                
+                <span className="text-[11px] font-medium tracking-[0.4em] text-[#D1E8E2] group-hover:text-white transition-colors">
+                  DISCOVER
+                </span>
+                
+                {/* Scanning line effect */}
+                <span className="absolute top-0 bottom-0 left-[-10%] w-[120%] bg-gradient-to-r from-transparent via-[#116466]/30 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar Simulation */}
+        <div className="absolute bottom-0 right-0 p-8 flex items-center gap-6 text-[10px] tracking-widest text-[#116466] z-20">
+          <span className="cursor-pointer hover:text-[#D1E8E2] transition-colors">MORE</span>
+          <span className="cursor-pointer hover:text-[#D1E8E2] transition-colors">CONTACT</span>
+          <div className="flex items-center gap-3 opacity-60">
+            <span className="w-3 h-3 border border-[#116466] rounded-sm" />
+            <span className="w-3 h-3 border border-[#116466] rounded-sm" />
+            <span className="w-3 h-3 border border-[#116466] rounded-sm" />
           </div>
         </div>
       </motion.div>

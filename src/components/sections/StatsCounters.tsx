@@ -35,11 +35,11 @@ export const StatsCounters: React.FC = () => {
                   {getIcon(idx)}
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-black text-white tracking-tight flex items-baseline gap-0.5">
+                  <div className="text-3xl sm:text-4xl font-black text-[#D1E8E2] tracking-tight flex items-baseline gap-0.5">
                     <span className="text-gradient-primary">{item.value}</span>
                     <span className="text-[#06b6d4] text-2xl font-bold">{item.suffix}</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1 group-hover:text-white transition-colors">
+                  <p className="text-xs sm:text-sm text-slate-300 font-medium mt-1 group-hover:text-[#D1E8E2] transition-colors">
                     {item.label}
                   </p>
                 </div>

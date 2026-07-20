@@ -6,21 +6,21 @@
     --bg-secondary: #081124;
     --bg-card: rgba(14, 21, 44, 0.92);
     --border-subtle: #2a3a57;
-    --text-primary: #e2e8f0;
+    --text-primary: #D1E8E2;
     --text-secondary: #94a3b8;
-    --accent-primary: #38bdf8;
+    --accent-primary: #116466;
     --accent-secondary: #8b5cf6;
     --accent-tertiary: #f59e0b;
   }
 
   .light {
-    --bg-primary: #f8fafc;
+    --bg-primary: #D1E8E2;
     --bg-secondary: #eef2ff;
     --bg-card: rgba(255, 255, 255, 0.85);
     --border-subtle: #cbd5e1;
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --accent-primary: #0ea5e9;
+    --accent-primary: #116466;
     --accent-secondary: #7c3aed;
     --accent-tertiary: #d97706;
   }
@@ -76,14 +76,14 @@ body {
 }
 
 .text-gradient-primary {
-  background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 45%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #67e8f9 0%, #116466 45%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-secondary {
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 45%, #6366f1 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 45%, #D9B08C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -97,7 +97,7 @@ body {
 }
 
 .text-gradient-sapphire, .text-gradient-platinum, .text-gradient-titanium, .text-gradient-executive {
-  background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #67e8f9 0%, #116466 50%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

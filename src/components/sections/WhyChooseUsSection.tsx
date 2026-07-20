@@ -49,7 +49,7 @@ export const WhyChooseUsSection: React.FC = () => {
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#06b6d4]/10 text-[#06b6d4] border border-[#06b6d4]/35 mb-3">
             <Award className="w-3.5 h-3.5" /> WHY LOGICSPHERE ATELIER
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
             Built For Executives Who Demand{' '}
             <span className="text-gradient-primary">
               Architectural Perfection
@@ -68,9 +68,9 @@ export const WhyChooseUsSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-20 rounded-3xl bg-[#0f172a]/95 border border-[#06b6d4]/40 shadow-2xl overflow-hidden backdrop-blur-2xl shadow-[#06b6d4]/15"
         >
-          <div className="px-6 sm:px-10 py-4 border-b border-white/10 bg-[#050816]/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="px-6 sm:px-10 py-4 border-b border-[#D1E8E2]/10 bg-[#050816]/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
-              <h3 className="text-lg sm:text-2xl font-black text-white">
+              <h3 className="text-lg sm:text-2xl font-black text-[#D1E8E2]">
                 LOGICSPHERE TECH vs. Traditional Outsourcing
               </h3>
               <p className="text-xs sm:text-sm text-slate-400">
@@ -90,9 +90,9 @@ export const WhyChooseUsSection: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 sm:px-10 sm:py-7 hover:bg-white/[0.03] transition-colors"
+                className="grid grid-cols-1 md:grid-cols-12 gap-4 p-6 sm:px-10 sm:py-7 hover:bg-[#D1E8E2]/[0.03] transition-colors"
               >
-                <div className="md:col-span-3 font-bold text-sm sm:text-base text-white">
+                <div className="md:col-span-3 font-bold text-sm sm:text-base text-[#D1E8E2]">
                   {row.feature}
                 </div>
 
@@ -130,12 +130,12 @@ export const WhyChooseUsSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group rounded-3xl bg-[#0f172a]/90 border border-white/10 hover:border-[#06b6d4]/50 p-7 transition-all duration-500 hover:shadow-2xl hover:shadow-[#06b6d4]/15"
+              className="group rounded-3xl bg-[#0f172a]/90 border border-[#D1E8E2]/10 hover:border-[#06b6d4]/50 p-7 transition-all duration-500 hover:shadow-2xl hover:shadow-[#06b6d4]/15"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#06b6d4]/15 via-[#8b5cf6]/10 to-transparent border border-[#06b6d4]/35 flex items-center justify-center text-[#06b6d4] mb-5 group-hover:scale-110 transition-transform">
                 <DynamicIcon name={item.iconName} className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-white group-hover:text-[#06b6d4] transition-colors mb-2">
+              <h4 className="text-lg font-bold text-[#D1E8E2] group-hover:text-[#06b6d4] transition-colors mb-2">
                 {item.title}
               </h4>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">

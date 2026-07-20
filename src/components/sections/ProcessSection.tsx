@@ -11,14 +11,14 @@ export const ProcessSection: React.FC = () => {
   const currentStepData = PROCESS_STEPS.find((s) => s.step === selectedStep) || PROCESS_STEPS[0];
 
   return (
-    <section id="process" className="py-28 bg-[#050608] relative overflow-hidden">
+    <section id="process" className="py-28 bg-[#2C3531] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/35 mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
             <Sparkles className="w-3.5 h-3.5" /> AGILE ATELIER LIFECYCLE
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
             Our 7-Step Architectural{' '}
             <span className="text-gradient-gold">
               Development Methodology
@@ -39,14 +39,14 @@ export const ProcessSection: React.FC = () => {
                 onClick={() => setSelectedStep(stepItem.step)}
                 className={`p-4 rounded-2xl text-left transition-all flex flex-col justify-between border ${
                   isSelected
-                    ? 'bg-gradient-to-br from-[#9E822F] via-[#D4AF37] to-[#E5C158] text-slate-950 border-[#D4AF37] shadow-xl shadow-[#D4AF37]/30 scale-[1.04]'
-                    : 'bg-[#0B0E14]/90 text-slate-300 border-white/10 hover:border-[#D4AF37]/40 hover:bg-white/5'
+                    ? 'bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 border-[#116466] shadow-xl shadow-[#116466]/30 scale-[1.04]'
+                    : 'bg-[#343e39]/90 text-slate-300 border-[#D1E8E2]/10 hover:border-[#116466]/40 hover:bg-[#D1E8E2]/5'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <span
                     className={`text-xs font-mono font-black px-2 py-0.5 rounded ${
-                      isSelected ? 'bg-slate-950/20 text-slate-950' : 'bg-white/5 text-[#D4AF37]'
+                      isSelected ? 'bg-slate-950/20 text-slate-950' : 'bg-[#D1E8E2]/5 text-[#116466]'
                     }`}
                   >
                     0{stepItem.step}
@@ -60,11 +60,11 @@ export const ProcessSection: React.FC = () => {
         </div>
 
         {/* Selected Step Deep Specification Showcase */}
-        <div className="rounded-3xl bg-[#0B0E14]/95 border border-[#D4AF37]/40 shadow-2xl p-8 sm:p-12 shadow-[#D4AF37]/15">
+        <div className="rounded-3xl bg-[#343e39]/95 border border-[#116466]/40 shadow-2xl p-8 sm:p-12 shadow-[#116466]/15">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/40">
+                <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#116466]/15 text-[#116466] border border-[#116466]/40">
                   PHASE 0{currentStepData.step} • {currentStepData.duration}
                 </span>
                 <span className="text-xs font-semibold text-slate-400">
@@ -72,7 +72,7 @@ export const ProcessSection: React.FC = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-4xl font-black text-white">
+              <h3 className="text-2xl sm:text-4xl font-black text-[#D1E8E2]">
                 {currentStepData.title}
               </h3>
 
@@ -81,16 +81,16 @@ export const ProcessSection: React.FC = () => {
               </p>
 
               <div>
-                <h4 className="text-xs font-mono font-bold text-[#D4AF37] uppercase tracking-wider mb-3">
+                <h4 className="text-xs font-mono font-bold text-[#116466] uppercase tracking-wider mb-3">
                   Key Sprint Deliverables
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {currentStepData.deliverables.map((deliv, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-2.5 text-xs text-slate-200"
+                      className="p-3.5 rounded-xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 flex items-center gap-2.5 text-xs text-slate-200"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0" />
                       <span className="font-medium">{deliv}</span>
                     </div>
                   ))}
@@ -99,11 +99,11 @@ export const ProcessSection: React.FC = () => {
             </div>
 
             {/* Right step visual indicator card */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-[#050608] border border-white/10 text-center space-y-4">
-              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#9E822F] via-[#D4AF37] to-[#E5C158] flex items-center justify-center shadow-2xl shadow-[#D4AF37]/30">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-[#2C3531] border border-[#D1E8E2]/10 text-center space-y-4">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] flex items-center justify-center shadow-2xl shadow-[#116466]/30">
                 <DynamicIcon name={currentStepData.icon} className="w-10 h-10 text-slate-950 stroke-[2.5]" />
               </div>
-              <h4 className="text-lg font-bold text-white">
+              <h4 className="text-lg font-bold text-[#D1E8E2]">
                 Phase 0{currentStepData.step}: {currentStepData.title}
               </h4>
               <p className="text-xs text-slate-400 max-w-xs">

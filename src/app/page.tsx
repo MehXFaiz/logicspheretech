@@ -33,7 +33,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#02030f] text-slate-100 selection:bg-cyan-400/25 selection:text-white">
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#02030f] text-slate-100 selection:bg-cyan-400/25 selection:text-[#D1E8E2]">
       <SplashScreen />
       <Navbar onOpenQuote={() => handleOpenQuote('Website Development')} />
       <HeroSection onOpenQuote={() => handleOpenQuote('Website Development')} />

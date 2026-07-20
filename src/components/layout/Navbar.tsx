@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#02030f]/95 backdrop-blur-3xl border-b border-white/10 shadow-2xl py-3'
+          ? 'bg-[#02030f]/95 backdrop-blur-3xl border-b border-[#D1E8E2]/10 shadow-2xl py-3'
           : 'bg-[#02030f]/70 backdrop-blur-xl py-5'
       }`}
     >
@@ -53,17 +53,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
               <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-cyan-400 animate-ping" />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-base font-black tracking-tight text-white">LOGICSPHERE</span>
+              <span className="text-base font-black tracking-tight text-[#D1E8E2]">LOGICSPHERE</span>
               <span className="text-[11px] uppercase tracking-[0.35em] text-slate-400">TECH STUDIO</span>
             </div>
           </a>
 
-          <nav className="hidden lg:flex flex-wrap items-center gap-2 rounded-full bg-white/5 px-3 py-2 text-slate-300 shadow-inner border border-white/10">
+          <nav className="hidden lg:flex flex-wrap items-center gap-2 rounded-full bg-[#D1E8E2]/5 px-3 py-2 text-slate-300 shadow-inner border border-[#D1E8E2]/10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition hover:bg-white/10 hover:text-white"
+                className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition hover:bg-[#D1E8E2]/10 hover:text-[#D1E8E2]"
               >
                 {link.name}
               </a>
@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-300 transition hover:bg-cyan-400/10"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#D1E8E2]/10 bg-[#D1E8E2]/5 text-cyan-300 transition hover:bg-cyan-400/10"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
               onClick={onOpenQuote}
               className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-cyan-400 via-violet-500 to-amber-400 px-5 py-3 text-[12px] font-black uppercase tracking-[0.22em] text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:scale-[1.02]"
             >
-              <Sparkles className="h-4 w-4 text-white" />
+              <Sparkles className="h-4 w-4 text-[#D1E8E2]" />
               Start Project
             </button>
           </div>
@@ -90,14 +90,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-cyan-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#D1E8E2]/10 bg-[#D1E8E2]/5 text-cyan-300"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/20 bg-white/5 text-cyan-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/20 bg-[#D1E8E2]/5 text-cyan-300"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -106,14 +106,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
         </div>
 
         {mobileMenuOpen && (
-          <div className="mt-4 rounded-3xl border border-white/10 bg-[#02030f]/95 p-5 shadow-2xl shadow-cyan-500/10 backdrop-blur-3xl">
+          <div className="mt-4 rounded-3xl border border-[#D1E8E2]/10 bg-[#02030f]/95 p-5 shadow-2xl shadow-cyan-500/10 backdrop-blur-3xl">
             <div className="grid gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-cyan-400/10 hover:text-white"
+                  className="rounded-2xl border border-[#D1E8E2]/10 bg-[#D1E8E2]/5 px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-cyan-400/10 hover:text-[#D1E8E2]"
                 >
                   {link.name}
                 </a>

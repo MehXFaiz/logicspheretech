@@ -67,7 +67,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#06b6d4]/10 text-[#06b6d4] border border-[#06b6d4]/35 mb-3">
             <Sparkles className="w-3.5 h-3.5" /> CORE ARCHITECTURAL CAPABILITIES
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
             End-To-End Architecture For{' '}
             <span className="text-gradient-primary">
               High-Velocity Enterprises
@@ -93,7 +93,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
                 activeTab === tabName
                   ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow-lg shadow-[#06b6d4]/30 scale-105'
-                  : 'bg-[#0f172a] hover:bg-white/[0.06] text-slate-300 hover:text-white border border-white/10'
+                  : 'bg-[#0f172a] hover:bg-[#D1E8E2]/[0.06] text-slate-300 hover:text-[#D1E8E2] border border-[#D1E8E2]/10'
               }`}
             >
               {tabName}
@@ -111,7 +111,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative rounded-3xl bg-[#0f172a]/90 border border-white/10 hover:border-[#06b6d4]/50 p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-[#06b6d4]/15"
+              className="group relative rounded-3xl bg-[#0f172a]/90 border border-[#D1E8E2]/10 hover:border-[#06b6d4]/50 p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-[#06b6d4]/15"
             >
               {service.popular && (
                 <span className="absolute top-6 right-6 px-3.5 py-1 rounded-full text-[10px] font-mono font-black uppercase tracking-wider bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow-md">
@@ -124,7 +124,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   <DynamicIcon name={service.iconName} className="w-7 h-7" />
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#06b6d4] transition-colors mb-3">
+                <h3 className="text-xl sm:text-2xl font-black text-[#D1E8E2] group-hover:text-[#06b6d4] transition-colors mb-3">
                   {service.title}
                 </h3>
 
@@ -143,7 +143,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+              <div className="pt-6 border-t border-[#D1E8E2]/10 flex items-center justify-between gap-4">
                 <button
                   onClick={() => onSelectService(service)}
                   className="text-xs font-bold text-slate-300 hover:text-[#06b6d4] flex items-center gap-1.5 transition-colors group/btn uppercase tracking-wider font-mono"
@@ -154,7 +154,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
                 <button
                   onClick={() => onOpenQuote(service.title)}
-                  className="px-4.5 py-2.5 rounded-xl bg-white/5 hover:bg-gradient-to-r hover:from-[#06b6d4] hover:via-[#8b5cf6] hover:to-[#f59e0b] text-white hover:text-slate-950 text-xs font-black border border-white/10 hover:border-transparent transition-all tracking-wider uppercase font-mono"
+                  className="px-4.5 py-2.5 rounded-xl bg-[#D1E8E2]/5 hover:bg-gradient-to-r hover:from-[#06b6d4] hover:via-[#8b5cf6] hover:to-[#f59e0b] text-[#D1E8E2] hover:text-slate-950 text-xs font-black border border-[#D1E8E2]/10 hover:border-transparent transition-all tracking-wider uppercase font-mono"
                 >
                   Request Scope
                 </button>
@@ -176,7 +176,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               <ShieldCheck className="w-7 h-7" />
             </div>
             <div>
-              <h4 className="text-base sm:text-xl font-black text-white">
+              <h4 className="text-base sm:text-xl font-black text-[#D1E8E2]">
                 Guaranteed Architectural Sign-Off & 100% Clean IP Handover
               </h4>
               <p className="text-xs sm:text-sm text-slate-300 mt-1">

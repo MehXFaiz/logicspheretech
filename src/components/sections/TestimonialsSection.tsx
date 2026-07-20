@@ -16,14 +16,14 @@ export const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-28 bg-[#050608] relative overflow-hidden">
+    <section id="testimonials" className="py-28 bg-[#2C3531] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/35 mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
             <Sparkles className="w-3.5 h-3.5" /> VERIFIED EXECUTIVE REVIEWS
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
             Client Testimonials &{' '}
             <span className="text-gradient-gold">
               Architectural Success Stories
@@ -36,17 +36,17 @@ export const TestimonialsSection: React.FC = () => {
 
         {/* Featured Testimonial Showcase Card */}
         <div className="max-w-4xl mx-auto relative mb-12">
-          <div className="relative p-8 sm:p-14 rounded-3xl bg-[#0B0E14] border border-[#D4AF37]/40 shadow-2xl overflow-hidden backdrop-blur-2xl shadow-[#D4AF37]/15">
-            <Quote className="absolute top-6 right-8 w-24 h-24 text-[#D4AF37]/10 pointer-events-none" />
+          <div className="relative p-8 sm:p-14 rounded-3xl bg-[#343e39] border border-[#116466]/40 shadow-2xl overflow-hidden backdrop-blur-2xl shadow-[#116466]/15">
+            <Quote className="absolute top-6 right-8 w-24 h-24 text-[#116466]/10 pointer-events-none" />
 
             {/* Rating Stars & Badge */}
             <div className="flex items-center justify-between mb-8 relative z-10">
               <div className="flex items-center gap-1.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#D4AF37] text-[#D4AF37]" />
+                  <Star key={i} className="w-5 h-5 fill-[#116466] text-[#116466]" />
                 ))}
               </div>
-              <span className="flex items-center gap-1.5 text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/40">
+              <span className="flex items-center gap-1.5 text-xs font-mono font-bold px-3 py-1 rounded-full bg-[#116466]/15 text-[#116466] border border-[#116466]/40">
                 <ShieldCheck className="w-4 h-4" /> Verified Architectural Sign-Off
               </span>
             </div>
@@ -57,20 +57,20 @@ export const TestimonialsSection: React.FC = () => {
             </p>
 
             {/* Author Profile Footer */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-white/10 relative z-10">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-[#D1E8E2]/10 relative z-10">
               <div className="flex items-center gap-4">
                 <img
                   src={TESTIMONIALS_DATA[activeIndex].avatar}
                   alt={TESTIMONIALS_DATA[activeIndex].name}
-                  className="w-16 h-16 rounded-2xl object-cover border-2 border-[#D4AF37] shadow-md"
+                  className="w-16 h-16 rounded-2xl object-cover border-2 border-[#116466] shadow-md"
                 />
                 <div>
-                  <h4 className="text-xl font-black text-white">
+                  <h4 className="text-xl font-black text-[#D1E8E2]">
                     {TESTIMONIALS_DATA[activeIndex].name}
                   </h4>
                   <p className="text-sm text-slate-400">
                     {TESTIMONIALS_DATA[activeIndex].role} •{' '}
-                    <span className="text-[#D4AF37] font-bold">
+                    <span className="text-[#116466] font-bold">
                       {TESTIMONIALS_DATA[activeIndex].company}
                     </span>
                   </p>
@@ -81,14 +81,14 @@ export const TestimonialsSection: React.FC = () => {
               <div className="flex items-center gap-2.5 self-end sm:self-auto">
                 <button
                   onClick={prevSlide}
-                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-[#D4AF37]/20 text-slate-300 hover:text-[#D4AF37] transition-all border border-white/10 hover:border-[#D4AF37]/40"
+                  className="p-3.5 rounded-2xl bg-[#D1E8E2]/5 hover:bg-[#116466]/20 text-slate-300 hover:text-[#116466] transition-all border border-[#D1E8E2]/10 hover:border-[#116466]/40"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="p-3.5 rounded-2xl bg-white/5 hover:bg-[#D4AF37]/20 text-slate-300 hover:text-[#D4AF37] transition-all border border-white/10 hover:border-[#D4AF37]/40"
+                  className="p-3.5 rounded-2xl bg-[#D1E8E2]/5 hover:bg-[#116466]/20 text-slate-300 hover:text-[#116466] transition-all border border-[#D1E8E2]/10 hover:border-[#116466]/40"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -105,7 +105,7 @@ export const TestimonialsSection: React.FC = () => {
               key={idx}
               onClick={() => setActiveIndex(idx)}
               className={`h-2.5 rounded-full transition-all ${
-                activeIndex === idx ? 'w-10 bg-gradient-to-r from-[#9E822F] via-[#D4AF37] to-[#E5C158]' : 'w-2.5 bg-white/10 hover:bg-white/30'
+                activeIndex === idx ? 'w-10 bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C]' : 'w-2.5 bg-[#D1E8E2]/10 hover:bg-[#D1E8E2]/30'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />

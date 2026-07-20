@@ -144,46 +144,46 @@ export const SERVICES_DATA: ServiceItem[] = [
 
 export const TECHNOLOGIES_DATA: TechnologyItem[] = [
   // Frontend
-  { name: 'HTML', category: 'Frontend', iconColor: '#D4AF37', description: 'Semantic HTML5 markup' },
-  { name: 'CSS', category: 'Frontend', iconColor: '#E5C158', description: 'Modern styling & animation' },
+  { name: 'HTML', category: 'Frontend', iconColor: '#116466', description: 'Semantic HTML5 markup' },
+  { name: 'CSS', category: 'Frontend', iconColor: '#D9B08C', description: 'Modern styling & animation' },
   { name: 'JavaScript', category: 'Frontend', iconColor: '#F5D77F', description: 'Core dynamic web language' },
-  { name: 'TypeScript', category: 'Frontend', iconColor: '#D4AF37', description: 'Strict type safety architecture' },
-  { name: 'React', category: 'Frontend', iconColor: '#E5C158', description: 'Interactive UI library' },
-  { name: 'Next.js', category: 'Frontend', iconColor: '#9E822F', description: 'Full-stack App Router React framework' },
-  { name: 'Vue.js', category: 'Frontend', iconColor: '#D4AF37', description: 'Progressive JavaScript UI framework' },
-  { name: 'Angular', category: 'Frontend', iconColor: '#E2E8F0', description: 'Enterprise frontend platform' },
+  { name: 'TypeScript', category: 'Frontend', iconColor: '#116466', description: 'Strict type safety architecture' },
+  { name: 'React', category: 'Frontend', iconColor: '#D9B08C', description: 'Interactive UI library' },
+  { name: 'Next.js', category: 'Frontend', iconColor: '#FFCB9A', description: 'Full-stack App Router React framework' },
+  { name: 'Vue.js', category: 'Frontend', iconColor: '#116466', description: 'Progressive JavaScript UI framework' },
+  { name: 'Angular', category: 'Frontend', iconColor: '#D1E8E2', description: 'Enterprise frontend platform' },
 
   // Backend
-  { name: 'Node.js', category: 'Backend', iconColor: '#D4AF37', description: 'Event-driven server runtime' },
-  { name: 'Express', category: 'Backend', iconColor: '#E5C158', description: 'Fast RESTful server framework' },
+  { name: 'Node.js', category: 'Backend', iconColor: '#116466', description: 'Event-driven server runtime' },
+  { name: 'Express', category: 'Backend', iconColor: '#D9B08C', description: 'Fast RESTful server framework' },
   { name: 'Laravel', category: 'Backend', iconColor: '#F5D77F', description: 'Full-featured artisan PHP framework' },
-  { name: 'PHP', category: 'Backend', iconColor: '#9E822F', description: 'Enterprise server scripting' },
-  { name: 'Python', category: 'Backend', iconColor: '#D4AF37', description: 'AI & backend systems language' },
-  { name: 'Django', category: 'Backend', iconColor: '#E5C158', description: 'High-level Python web framework' },
+  { name: 'PHP', category: 'Backend', iconColor: '#FFCB9A', description: 'Enterprise server scripting' },
+  { name: 'Python', category: 'Backend', iconColor: '#116466', description: 'AI & backend systems language' },
+  { name: 'Django', category: 'Backend', iconColor: '#D9B08C', description: 'High-level Python web framework' },
   { name: 'FastAPI', category: 'Backend', iconColor: '#F5D77F', description: 'High-performance async Python APIs' },
-  { name: 'Java', category: 'Backend', iconColor: '#D4AF37', description: 'Robust enterprise mission-critical platform' },
+  { name: 'Java', category: 'Backend', iconColor: '#116466', description: 'Robust enterprise mission-critical platform' },
 
   // Mobile
-  { name: 'Kotlin', category: 'Mobile', iconColor: '#E5C158', description: 'Native Android performance' },
-  { name: 'Flutter', category: 'Mobile', iconColor: '#D4AF37', description: 'Cross-platform 60fps UI engine' },
+  { name: 'Kotlin', category: 'Mobile', iconColor: '#D9B08C', description: 'Native Android performance' },
+  { name: 'Flutter', category: 'Mobile', iconColor: '#116466', description: 'Cross-platform 60fps UI engine' },
   { name: 'React Native', category: 'Mobile', iconColor: '#F5D77F', description: 'Native mobile apps with React' },
 
   // Database
-  { name: 'MySQL', category: 'Database', iconColor: '#9E822F', description: 'Reliable relational SQL engine' },
-  { name: 'PostgreSQL', category: 'Database', iconColor: '#D4AF37', description: 'Advanced open-source SQL database' },
-  { name: 'MongoDB', category: 'Database', iconColor: '#E5C158', description: 'Scalable NoSQL document store' },
+  { name: 'MySQL', category: 'Database', iconColor: '#FFCB9A', description: 'Reliable relational SQL engine' },
+  { name: 'PostgreSQL', category: 'Database', iconColor: '#116466', description: 'Advanced open-source SQL database' },
+  { name: 'MongoDB', category: 'Database', iconColor: '#D9B08C', description: 'Scalable NoSQL document store' },
   { name: 'Firebase', category: 'Database', iconColor: '#F5D77F', description: 'Real-time cloud database & auth' },
 
   // Cloud & DevOps
-  { name: 'AWS', category: 'Cloud & DevOps', iconColor: '#D4AF37', description: 'Amazon Web Services cloud infrastructure' },
-  { name: 'Azure', category: 'Cloud & DevOps', iconColor: '#E5C158', description: 'Microsoft enterprise cloud suite' },
-  { name: 'Docker', category: 'Cloud & DevOps', iconColor: '#9E822F', description: 'Container runtime isolation' },
-  { name: 'Kubernetes', category: 'Cloud & DevOps', iconColor: '#D4AF37', description: 'Automated container orchestration' },
-  { name: 'Git', category: 'Cloud & DevOps', iconColor: '#E5C158', description: 'Distributed version control' },
-  { name: 'GitHub', category: 'Cloud & DevOps', iconColor: '#E2E8F0', description: 'CI/CD & repository collaboration' },
+  { name: 'AWS', category: 'Cloud & DevOps', iconColor: '#116466', description: 'Amazon Web Services cloud infrastructure' },
+  { name: 'Azure', category: 'Cloud & DevOps', iconColor: '#D9B08C', description: 'Microsoft enterprise cloud suite' },
+  { name: 'Docker', category: 'Cloud & DevOps', iconColor: '#FFCB9A', description: 'Container runtime isolation' },
+  { name: 'Kubernetes', category: 'Cloud & DevOps', iconColor: '#116466', description: 'Automated container orchestration' },
+  { name: 'Git', category: 'Cloud & DevOps', iconColor: '#D9B08C', description: 'Distributed version control' },
+  { name: 'GitHub', category: 'Cloud & DevOps', iconColor: '#D1E8E2', description: 'CI/CD & repository collaboration' },
 
   // Design
-  { name: 'Figma', category: 'Design', iconColor: '#D4AF37', description: 'Collaborative interface design & tokens' },
+  { name: 'Figma', category: 'Design', iconColor: '#116466', description: 'Collaborative interface design & tokens' },
 ];
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [

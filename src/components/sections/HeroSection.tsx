@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.06]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-[#D1E8E2] leading-[1.06]">
               Transform your digital footprint with
               <span className="text-gradient-primary"> precision engineering</span>.
             </h1>
@@ -73,14 +73,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
 
               <a
                 href="#portfolio"
-                className="px-8 py-4.5 rounded-2xl bg-white/5 hover:bg-[#06b6d4]/15 text-white hover:text-[#06b6d4] font-bold text-sm sm:text-base border border-white/15 hover:border-[#06b6d4]/40 transition-all duration-300 flex items-center justify-center text-center"
+                className="px-8 py-4.5 rounded-2xl bg-[#D1E8E2]/5 hover:bg-[#06b6d4]/15 text-[#D1E8E2] hover:text-[#06b6d4] font-bold text-sm sm:text-base border border-[#D1E8E2]/15 hover:border-[#06b6d4]/40 transition-all duration-300 flex items-center justify-center text-center"
               >
                 Explore Case Studies
               </a>
             </div>
 
             {/* SLA & Engineering Pillars Bar */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-xs">
+            <div className="pt-6 border-t border-[#D1E8E2]/10 grid grid-cols-3 gap-4 text-xs">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#06b6d4] shrink-0" />
                 <span className="text-slate-300 font-semibold">100% IP Handover</span>
@@ -105,7 +105,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
           >
             <div className="relative rounded-3xl bg-[#0f172a]/95 border border-[#06b6d4]/40 shadow-2xl backdrop-blur-2xl overflow-hidden shadow-[#06b6d4]/15">
               {/* Studio Window Header Bar */}
-              <div className="px-6 py-4 border-b border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#050816]/90">
+              <div className="px-6 py-4 border-b border-[#D1E8E2]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#050816]/90">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-rose-500/80" />
                   <span className="w-3 h-3 rounded-full bg-amber-500/80" />
@@ -116,13 +116,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                 </div>
 
                 {/* Tab Switcher */}
-                <div className="flex flex-wrap items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10 text-xs w-full sm:w-auto justify-between">
+                <div className="flex flex-wrap items-center gap-1 bg-[#D1E8E2]/5 p-1 rounded-xl border border-[#D1E8E2]/10 text-xs w-full sm:w-auto justify-between">
                   <button
                     onClick={() => setActiveTab('metrics')}
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
                       activeTab === 'metrics'
                         ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow'
-                        : 'text-slate-400 hover:text-white'
+                        : 'text-slate-400 hover:text-[#D1E8E2]'
                     }`}
                   >
                     Telemetry
@@ -132,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
                       activeTab === 'code'
                         ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow'
-                        : 'text-slate-400 hover:text-white'
+                        : 'text-slate-400 hover:text-[#D1E8E2]'
                     }`}
                   >
                     Blueprint
@@ -142,7 +142,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
                       activeTab === 'ai'
                         ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow'
-                        : 'text-slate-400 hover:text-white'
+                        : 'text-slate-400 hover:text-[#D1E8E2]'
                     }`}
                   >
                     AI Copilot
@@ -152,7 +152,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
                       activeTab === 'roi'
                         ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow'
-                        : 'text-slate-400 hover:text-white'
+                        : 'text-slate-400 hover:text-[#D1E8E2]'
                     }`}
                   >
                     ROI Simulator
@@ -177,7 +177,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                         <span className="text-[10px] font-mono uppercase text-[#06b6d4] tracking-widest block font-bold">
                           PRODUCTION TELEMETRY
                         </span>
-                        <h4 className="text-lg font-black text-white">
+                        <h4 className="text-lg font-black text-[#D1E8E2]">
                           Global Core Web Vitals Benchmark
                         </h4>
                       </div>
@@ -187,8 +187,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     </div>
 
                     <div className="grid grid-cols-3 gap-4">
-                      <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
-                        <span className="text-2xl sm:text-3xl font-black text-white">
+                      <div className="p-4 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 space-y-1">
+                        <span className="text-2xl sm:text-3xl font-black text-[#D1E8E2]">
                           {simulatedScore}
                         </span>
                         <span className="text-[10px] text-[#06b6d4] block font-mono font-bold">
@@ -196,15 +196,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                         </span>
                         <p className="text-xs text-slate-400">SSR + Edge Cache</p>
                       </div>
-                      <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
+                      <div className="p-4 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 space-y-1">
                         <span className="text-2xl sm:text-3xl font-black text-[#06b6d4]">0.04ms</span>
                         <span className="text-[10px] text-[#f59e0b] block font-mono font-bold">
                           GLOBAL TTFB
                         </span>
                         <p className="text-xs text-slate-400">Zero Cold Start</p>
                       </div>
-                      <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1">
-                        <span className="text-2xl sm:text-3xl font-black text-white">99.99%</span>
+                      <div className="p-4 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 space-y-1">
+                        <span className="text-2xl sm:text-3xl font-black text-[#D1E8E2]">99.99%</span>
                         <span className="text-[10px] text-[#06b6d4] block font-mono font-bold">
                           UPTIME SLA
                         </span>
@@ -213,14 +213,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     </div>
 
                     {/* Simulated Server Cluster Graph */}
-                    <div className="p-4 rounded-2xl bg-[#050816] border border-white/10 space-y-2.5 shadow-inner">
+                    <div className="p-4 rounded-2xl bg-[#050816] border border-[#D1E8E2]/10 space-y-2.5 shadow-inner">
                       <div className="flex items-center justify-between text-xs text-slate-300">
                         <span className="flex items-center gap-1.5 font-mono font-bold">
                           <Globe className="w-3.5 h-3.5 text-[#06b6d4]" /> Edge CDN Routing Matrix
                         </span>
                         <span className="text-[#06b6d4] font-mono font-bold">36 Active Regions</span>
                       </div>
-                      <div className="h-2.5 rounded-full bg-white/10 overflow-hidden p-0.5">
+                      <div className="h-2.5 rounded-full bg-[#D1E8E2]/10 overflow-hidden p-0.5">
                         <div className="h-full rounded-full bg-gradient-to-r from-[#06b6d4] via-[#06b6d4] to-[#f59e0b] w-[97%]" />
                       </div>
                     </div>
@@ -277,12 +277,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                       <span className="text-[11px] font-mono text-[#f59e0b] font-bold">0.03s Inference</span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#050816] border border-white/10 flex items-center justify-between gap-3 shadow-inner">
+                    <div className="p-4 rounded-2xl bg-[#050816] border border-[#D1E8E2]/10 flex items-center justify-between gap-3 shadow-inner">
                       <input
                         type="text"
                         value={queryInput}
                         onChange={(e) => setQueryInput(e.target.value)}
-                        className="bg-transparent text-white text-xs sm:text-sm w-full focus:outline-none font-mono"
+                        className="bg-transparent text-[#D1E8E2] text-xs sm:text-sm w-full focus:outline-none font-mono"
                       />
                       <button
                         onClick={() => setSimulatedScore(100)}
@@ -292,7 +292,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                       </button>
                     </div>
 
-                    <div className="p-4.5 rounded-2xl bg-white/[0.03] border border-[#06b6d4]/30 space-y-2 text-xs text-slate-300">
+                    <div className="p-4.5 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#06b6d4]/30 space-y-2 text-xs text-slate-300">
                       <div className="flex items-center gap-2 text-[#06b6d4] font-bold">
                         <Database className="w-4 h-4" /> Vector Embedding Match (Similarity: 0.998)
                       </div>
@@ -321,7 +321,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                       </span>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-[#050816] border border-white/10 space-y-4">
+                    <div className="p-4 rounded-2xl bg-[#050816] border border-[#D1E8E2]/10 space-y-4">
                       <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
                         <span>Monthly Active Users / Visitors:</span>
                         <span className="font-mono text-base font-black text-[#06b6d4]">
@@ -340,14 +340,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 text-center">
-                      <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
+                      <div className="p-3.5 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10">
                         <span className="text-xl sm:text-2xl font-black text-[#06b6d4]">-74%</span>
                         <span className="block text-[10px] font-mono text-slate-400 uppercase mt-1">
                           Latency Reduction
                         </span>
                       </div>
-                      <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-                        <span className="text-xl sm:text-2xl font-black text-white">+48%</span>
+                      <div className="p-3.5 rounded-2xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10">
+                        <span className="text-xl sm:text-2xl font-black text-[#D1E8E2]">+48%</span>
                         <span className="block text-[10px] font-mono text-slate-400 uppercase mt-1">
                           Conversion Velocity
                         </span>
@@ -358,7 +358,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                 </AnimatePresence>
 
                 {/* Bottom interactive card trigger */}
-                <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+                <div className="pt-5 border-t border-[#D1E8E2]/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
                   <span className="text-slate-400">Ready to engineer your executive platform?</span>
                   <button
                     onClick={onOpenQuote}
