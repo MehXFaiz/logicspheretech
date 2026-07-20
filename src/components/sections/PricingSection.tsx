@@ -12,53 +12,53 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenQuote }) =
   const [annualBilling, setAnnualBilling] = useState(true);
 
   return (
-    <section id="pricing" className="py-28 bg-[#2C3531] relative overflow-hidden">
+    <section id="pricing" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> PREDICTABLE ARCHITECTURAL INVESTMENT
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-[10px] font-mono font-semibold uppercase tracking-widest bg-[#116466]/20 text-[#D9B08C] border border-[#116466] mb-3">
+            <Sparkles className="w-3.5 h-3.5" /> REVENUE RETENTION MODEL
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
-            Transparent Pricing With{' '}
-            <span className="text-gradient-gold">
-              Guaranteed Deliverables
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#D1E8E2] tracking-wide">
+            Transparent Retainers &{' '}
+            <span className="text-gradient-gold font-bold">
+              Milestone Sprints
             </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-            No hidden retainers or scope creep. Choose milestone sprint billing or an annual engineering retainer with a dedicated Principal Architect.
+          <p className="mt-4 text-[#94a3b8] text-sm sm:text-base leading-relaxed font-mono">
+            No hidden scope creep. Choose milestone sprint billing or an annual engineering retainer with a dedicated architect.
           </p>
 
           {/* Billing Toggle */}
-          <div className="mt-8 inline-flex items-center gap-2 p-1.5 rounded-2xl bg-[#343e39] border border-[#D1E8E2]/10 shadow-inner">
+          <div className="mt-8 inline-flex items-center gap-1 p-1 rounded-none bg-[#242b28] border border-[#116466]/40 font-mono">
             <button
               onClick={() => setAnnualBilling(false)}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              className={`px-5 py-2.5 rounded-none text-xs font-semibold uppercase tracking-wider transition-all ${
                 !annualBilling
-                  ? 'bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 shadow-md'
-                  : 'text-slate-400 hover:text-[#D1E8E2]'
+                  ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
+                  : 'text-[#D1E8E2]/60 hover:text-[#D1E8E2]'
               }`}
             >
               Milestone Sprints
             </button>
             <button
               onClick={() => setAnnualBilling(true)}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-5 py-2.5 rounded-none text-xs font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 ${
                 annualBilling
-                  ? 'bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 shadow-md'
-                  : 'text-slate-400 hover:text-[#D1E8E2]'
+                  ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
+                  : 'text-[#D1E8E2]/60 hover:text-[#D1E8E2]'
               }`}
             >
               <span>Annual Retainer</span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] bg-slate-950 text-[#116466] font-black border border-[#116466]/40">
-                SAVE 20%
+              <span className="px-2 py-0.5 text-[9px] bg-[#2C3531] text-[#FFCB9A] border border-[#FFCB9A]/40">
+                -20%
               </span>
             </button>
           </div>
         </div>
 
         {/* 3 Pricing Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch font-mono">
           {PRICING_PLANS.map((plan) => {
             const price = annualBilling ? plan.annualPrice : plan.monthlyPrice;
             const isPopular = plan.popular;
@@ -66,36 +66,36 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenQuote }) =
             return (
               <div
                 key={plan.id}
-                className={`relative rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 ${
+                className={`relative rounded-none p-8 flex flex-col justify-between transition-all duration-300 ${
                   isPopular
-                    ? 'bg-[#343e39] border-2 border-[#116466] shadow-2xl shadow-[#116466]/25 scale-105 z-10'
-                    : 'bg-[#343e39]/80 border border-[#D1E8E2]/10 hover:border-[#116466]/40'
+                    ? 'bg-[#242b28] border-2 border-[#FFCB9A] shadow-md z-10 lg:scale-105'
+                    : 'bg-[#242b28]/80 border border-[#116466]/40 hover:border-[#FFCB9A]'
                 }`}
               >
                 {plan.badge && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[10px] font-mono font-black uppercase tracking-widest bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 shadow-lg">
+                  <span className="absolute -top-3.5 left-6 px-3 py-1 rounded-none text-[9px] font-semibold uppercase tracking-widest bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]">
                     {plan.badge}
                   </span>
                 )}
 
                 <div>
-                  <h3 className="text-2xl font-black text-[#D1E8E2] mb-2">{plan.name}</h3>
-                  <p className="text-xs sm:text-sm text-slate-300 min-h-[40px] mb-6">
+                  <h3 className="text-xl font-bold text-[#D1E8E2] mb-2 uppercase tracking-wide">{plan.name}</h3>
+                  <p className="text-xs text-slate-300 min-h-[40px] mb-6 font-sans">
                     {plan.tagline}
                   </p>
 
-                  <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-[#D1E8E2]/10">
-                    <span className="text-4xl sm:text-5xl font-black text-[#D1E8E2]">
+                  <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-[#116466]/30">
+                    <span className="text-3xl sm:text-4xl font-bold text-[#D1E8E2]">
                       ${price.toLocaleString()}
                     </span>
-                    <span className="text-xs text-slate-400">
-                      {annualBilling ? '/mo billed annually' : '/sprint milestone'}
+                    <span className="text-[10px] text-slate-400">
+                      {annualBilling ? '/mo billed annually' : '/sprint'}
                     </span>
                   </div>
 
                   <ul className="space-y-3.5 mb-8">
                     {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                      <li key={i} className="flex items-start gap-3 text-xs text-slate-300">
                         <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
@@ -104,24 +104,24 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onOpenQuote }) =
                 </div>
 
                 <div>
-                  <div className="mb-6 p-3.5 rounded-xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 text-xs text-slate-300 space-y-1 font-mono">
+                  <div className="mb-6 p-4 rounded-none bg-[#2C3531]/40 border border-[#116466]/30 text-[10px] text-slate-300 space-y-1">
                     <p>
-                      <strong className="text-[#116466]">Sprint Delivery:</strong> {plan.deliveryTime}
+                      <strong className="text-[#FFCB9A] uppercase">Delivery:</strong> {plan.deliveryTime}
                     </p>
                     <p>
-                      <strong className="text-[#D9B08C]">Support SLA:</strong> {plan.supportLevel}
+                      <strong className="text-[#D9B08C] uppercase">SLA Grade:</strong> {plan.supportLevel}
                     </p>
                   </div>
 
                   <button
                     onClick={() => onOpenQuote(plan.name)}
-                    className={`w-full py-4 rounded-2xl font-black uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-all ${
+                    className={`w-full py-3.5 rounded-none font-semibold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-all ${
                       isPopular
-                        ? 'bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] hover:opacity-95 text-slate-950 shadow-xl shadow-[#116466]/30'
-                        : 'bg-[#D1E8E2]/5 hover:bg-[#116466]/20 text-[#D1E8E2] hover:text-[#116466] border border-[#D1E8E2]/15'
+                        ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2] hover:bg-[#D9B08C] hover:text-[#2C3531] hover:border-[#116466]'
+                        : 'bg-[#2C3531] hover:bg-[#116466]/20 text-[#D1E8E2] border border-[#116466]/60'
                     }`}
                   >
-                    <span>Request Plan Consultation</span>
+                    <span>Request Solution Consultation</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

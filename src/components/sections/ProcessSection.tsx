@@ -11,86 +11,86 @@ export const ProcessSection: React.FC = () => {
   const currentStepData = PROCESS_STEPS.find((s) => s.step === selectedStep) || PROCESS_STEPS[0];
 
   return (
-    <section id="process" className="py-28 bg-[#2C3531] relative overflow-hidden">
+    <section id="process" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> AGILE ATELIER LIFECYCLE
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-[10px] font-mono font-semibold uppercase tracking-widest bg-[#116466]/20 text-[#D9B08C] border border-[#116466] mb-3">
+            <Sparkles className="w-3.5 h-3.5" /> DEVELOPMENT LIFECYCLE
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#D1E8E2] tracking-wide">
             Our 7-Step Architectural{' '}
-            <span className="text-gradient-gold">
-              Development Methodology
+            <span className="text-gradient-gold font-bold">
+              Engineering Process
             </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-            Click any phase below to explore our systematic engineering timeline, deliverables, and rigorous sign-off methodology.
+          <p className="mt-4 text-[#94a3b8] text-sm sm:text-base leading-relaxed font-mono">
+            Explore our systematic agile development stages, specific deliverables, and code sign-off methodology.
           </p>
         </div>
 
         {/* Interactive Step Navigator Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-12 font-mono">
           {PROCESS_STEPS.map((stepItem) => {
             const isSelected = selectedStep === stepItem.step;
             return (
               <button
                 key={stepItem.step}
                 onClick={() => setSelectedStep(stepItem.step)}
-                className={`p-4 rounded-2xl text-left transition-all flex flex-col justify-between border ${
+                className={`p-4 rounded-none text-left transition-all flex flex-col justify-between border ${
                   isSelected
-                    ? 'bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 border-[#116466] shadow-xl shadow-[#116466]/30 scale-[1.04]'
-                    : 'bg-[#343e39]/90 text-slate-300 border-[#D1E8E2]/10 hover:border-[#116466]/40 hover:bg-[#D1E8E2]/5'
+                    ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
+                    : 'bg-[#242b28] text-slate-300 border-[#116466]/40 hover:border-[#FFCB9A] hover:bg-[#116466]/10'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <span
-                    className={`text-xs font-mono font-black px-2 py-0.5 rounded ${
-                      isSelected ? 'bg-slate-950/20 text-slate-950' : 'bg-[#D1E8E2]/5 text-[#116466]'
+                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-none ${
+                      isSelected ? 'bg-[#2C3531] text-[#FFCB9A] border border-[#FFCB9A]/40' : 'bg-[#2C3531] text-[#116466]'
                     }`}
                   >
                     0{stepItem.step}
                   </span>
                   <DynamicIcon name={stepItem.icon} className="w-4 h-4" />
                 </div>
-                <h4 className="font-bold text-xs sm:text-sm line-clamp-1">{stepItem.title}</h4>
+                <h4 className="font-semibold text-xs tracking-wider uppercase truncate">{stepItem.title}</h4>
               </button>
             );
           })}
         </div>
 
         {/* Selected Step Deep Specification Showcase */}
-        <div className="rounded-3xl bg-[#343e39]/95 border border-[#116466]/40 shadow-2xl p-8 sm:p-12 shadow-[#116466]/15">
+        <div className="rounded-none bg-[#242b28] border border-[#116466] p-8 sm:p-12 shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-[#116466]/15 text-[#116466] border border-[#116466]/40">
+              <div className="flex items-center gap-3 font-mono">
+                <span className="px-3.5 py-1 rounded-none text-[10px] font-semibold bg-[#116466]/20 text-[#D1E8E2] border border-[#116466]/60">
                   PHASE 0{currentStepData.step} • {currentStepData.duration}
                 </span>
-                <span className="text-xs font-semibold text-slate-400">
+                <span className="text-[10px] uppercase tracking-wider text-slate-400">
                   {currentStepData.subtitle}
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-4xl font-black text-[#D1E8E2]">
+              <h3 className="text-xl sm:text-2xl font-bold text-[#D1E8E2] font-mono uppercase tracking-wide">
                 {currentStepData.title}
               </h3>
 
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
                 {currentStepData.description}
               </p>
 
               <div>
-                <h4 className="text-xs font-mono font-bold text-[#116466] uppercase tracking-wider mb-3">
+                <h4 className="text-[10px] font-mono font-semibold text-[#FFCB9A] uppercase tracking-widest mb-3">
                   Key Sprint Deliverables
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono">
                   {currentStepData.deliverables.map((deliv, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-[#D1E8E2]/[0.03] border border-[#D1E8E2]/10 flex items-center gap-2.5 text-xs text-slate-200"
+                      className="p-3 bg-[#2C3531] border border-[#116466]/40 flex items-center gap-2.5 text-[10px] text-slate-200"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#116466] shrink-0" />
                       <span className="font-medium">{deliv}</span>
                     </div>
                   ))}
@@ -99,15 +99,15 @@ export const ProcessSection: React.FC = () => {
             </div>
 
             {/* Right step visual indicator card */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-[#2C3531] border border-[#D1E8E2]/10 text-center space-y-4">
-              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] flex items-center justify-center shadow-2xl shadow-[#116466]/30">
-                <DynamicIcon name={currentStepData.icon} className="w-10 h-10 text-slate-950 stroke-[2.5]" />
+            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-none bg-[#2C3531] border border-[#116466]/40 text-center space-y-4 font-mono">
+              <div className="w-16 h-16 rounded-none bg-[#116466] border border-[#FFCB9A] flex items-center justify-center text-[#D1E8E2]">
+                <DynamicIcon name={currentStepData.icon} className="w-8 h-8" />
               </div>
-              <h4 className="text-lg font-bold text-[#D1E8E2]">
+              <h4 className="text-sm font-semibold text-[#D1E8E2] uppercase tracking-wider">
                 Phase 0{currentStepData.step}: {currentStepData.title}
               </h4>
-              <p className="text-xs text-slate-400 max-w-xs">
-                Guaranteed sign-off and rigorous architecture review before proceeding to subsequent sprints.
+              <p className="text-[10px] text-slate-400 max-w-xs font-sans">
+                Guaranteed code sign-off and architecture review before proceeding to subsequent sprints.
               </p>
             </div>
           </div>

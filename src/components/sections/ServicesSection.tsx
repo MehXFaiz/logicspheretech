@@ -53,47 +53,47 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   });
 
   return (
-    <section id="services" className="py-28 bg-[#050816] relative overflow-hidden">
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+    <section id="services" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#06b6d4]/10 text-[#06b6d4] border border-[#06b6d4]/35 mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> CORE ARCHITECTURAL CAPABILITIES
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none text-[10px] font-mono font-semibold uppercase tracking-widest bg-[#116466]/20 text-[#D9B08C] border border-[#116466] mb-3">
+            <Sparkles className="w-3.5 h-3.5" /> CORE CAPABILITIES
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
-            End-To-End Architecture For{' '}
-            <span className="text-gradient-primary">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#D1E8E2] tracking-wide leading-tight">
+            Bespoke Architecture For{' '}
+            <span className="text-gradient-primary font-bold">
               High-Velocity Enterprises
             </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-            From Next.js 16 edge web applications to custom RAG AI engines, we build robust, documented, and fully owned digital products.
+          <p className="mt-4 text-[#94a3b8] text-sm sm:text-base leading-relaxed font-mono">
+            From custom Next.js web applications to secure offline RAG vector architectures, we build production systems designed for reliability and performance.
           </p>
         </motion.div>
 
         {/* Capability Navigation Tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-14"
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-2 mb-14 font-mono"
         >
           {tabs.map((tabName) => (
             <button
               key={tabName}
               onClick={() => setActiveTab(tabName)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                 activeTab === tabName
-                  ? 'bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow-lg shadow-[#06b6d4]/30 scale-105'
-                  : 'bg-[#0f172a] hover:bg-[#D1E8E2]/[0.06] text-slate-300 hover:text-[#D1E8E2] border border-[#D1E8E2]/10'
+                  ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
+                  : 'bg-[#242b28] hover:bg-[#116466]/20 text-[#D1E8E2]/70 hover:text-[#D1E8E2] border border-[#116466]/40'
               }`}
             >
               {tabName}
@@ -103,91 +103,86 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
         {/* Bento Service Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredServices.map((service, index) => (
-            <motion.div
+          {filteredServices.map((service) => (
+            <div
               key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group relative rounded-3xl bg-[#0f172a]/90 border border-[#D1E8E2]/10 hover:border-[#06b6d4]/50 p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-2xl hover:shadow-[#06b6d4]/15"
+              className="group relative rounded-none bg-[#242b28] border border-[#116466]/40 hover:border-[#FFCB9A] p-8 flex flex-col justify-between transition-all duration-300 shadow-md"
             >
               {service.popular && (
-                <span className="absolute top-6 right-6 px-3.5 py-1 rounded-full text-[10px] font-mono font-black uppercase tracking-wider bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] text-slate-950 shadow-md">
+                <span className="absolute top-6 right-6 px-3 py-1 rounded-none text-[9px] font-mono font-semibold uppercase tracking-widest bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]">
                   FLAGSHIP
                 </span>
               )}
 
               <div>
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#06b6d4]/15 via-[#8b5cf6]/10 to-transparent border border-[#06b6d4]/35 flex items-center justify-center text-[#06b6d4] mb-6 group-hover:scale-110 transition-transform">
-                  <DynamicIcon name={service.iconName} className="w-7 h-7" />
+                <div className="w-12 h-12 rounded-none bg-[#2C3531] border border-[#116466]/60 flex items-center justify-center text-[#FFCB9A] mb-6">
+                  <DynamicIcon name={service.iconName} className="w-6 h-6" />
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-black text-[#D1E8E2] group-hover:text-[#06b6d4] transition-colors mb-3">
+                <h3 className="text-lg font-bold text-[#D1E8E2] group-hover:text-[#FFCB9A] transition-colors mb-3 font-mono uppercase tracking-wide">
                   {service.title}
                 </h3>
 
-                <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                <p className="text-xs text-slate-300 leading-relaxed mb-6 font-sans">
                   {service.description}
                 </p>
 
                 {/* Key Architectural Deliverables */}
-                <ul className="space-y-2.5 mb-8">
+                <ul className="space-y-2.5 mb-8 font-mono">
                   {service.features.slice(0, 3).map((feat, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-[#06b6d4] shrink-0 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2.5 text-[11px] text-[#D1E8E2]/80">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#116466] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-6 border-t border-[#D1E8E2]/10 flex items-center justify-between gap-4">
+              <div className="pt-6 border-t border-[#116466]/30 flex items-center justify-between gap-4 font-mono">
                 <button
                   onClick={() => onSelectService(service)}
-                  className="text-xs font-bold text-slate-300 hover:text-[#06b6d4] flex items-center gap-1.5 transition-colors group/btn uppercase tracking-wider font-mono"
+                  className="text-[10px] font-semibold text-[#D1E8E2]/70 hover:text-[#FFCB9A] flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                 >
-                  <span>Architecture Specs</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                  <span>Specs</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
                 <button
                   onClick={() => onOpenQuote(service.title)}
-                  className="px-4.5 py-2.5 rounded-xl bg-[#D1E8E2]/5 hover:bg-gradient-to-r hover:from-[#06b6d4] hover:via-[#8b5cf6] hover:to-[#f59e0b] text-[#D1E8E2] hover:text-slate-950 text-xs font-black border border-[#D1E8E2]/10 hover:border-transparent transition-all tracking-wider uppercase font-mono"
+                  className="px-4 py-2 bg-[#2C3531] border border-[#116466]/60 hover:bg-[#116466]/40 text-[#D1E8E2] hover:border-[#FFCB9A] text-[10px] font-semibold tracking-widest uppercase transition-all"
                 >
                   Request Scope
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Enterprise Guarantee Footer Banner */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 rounded-3xl bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#0f172a] border border-[#06b6d4]/35 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl shadow-[#06b6d4]/15"
+          transition={{ duration: 0.5 }}
+          className="mt-16 rounded-none bg-[#242b28] border border-[#116466] p-8 flex flex-col lg:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#06b6d4]/15 border border-[#06b6d4]/40 flex items-center justify-center text-[#06b6d4] shrink-0">
-              <ShieldCheck className="w-7 h-7" />
+            <div className="w-12 h-12 rounded-none bg-[#2C3531] border border-[#116466] flex items-center justify-center text-[#FFCB9A] shrink-0">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-base sm:text-xl font-black text-[#D1E8E2]">
-                Guaranteed Architectural Sign-Off & 100% Clean IP Handover
+              <h4 className="text-base font-semibold text-[#D1E8E2] font-mono uppercase tracking-wide">
+                Guaranteed Architectural Code ownership & 100% IP Handover
               </h4>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                All deliverables come with comprehensive technical documentation, automated testing suites, and immediate copyright transfer upon completion.
+              <p className="text-xs text-[#94a3b8] mt-1 font-sans">
+                All deliverables come with comprehensive automated testing suites, clean documentation, and immediate copyright transfer.
               </p>
             </div>
           </div>
 
           <button
             onClick={() => onOpenQuote()}
-            className="px-7 py-4 rounded-2xl bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] hover:opacity-95 text-slate-950 font-black text-xs uppercase tracking-wider shrink-0 shadow-xl shadow-[#06b6d4]/30 transform hover:scale-105 transition-all"
+            className="px-7 py-3 bg-[#116466] border border-[#FFCB9A] hover:bg-[#D9B08C] hover:text-[#2C3531] hover:border-[#116466] text-[#D1E8E2] text-xs font-semibold uppercase tracking-[0.18em] transition-all font-mono shrink-0"
           >
             Schedule Architecture Review
           </button>
