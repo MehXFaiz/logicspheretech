@@ -5,7 +5,6 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
-import { LiveChatWidget } from '@/components/common/LiveChatWidget';
 import { CookieConsent } from '@/components/common/CookieConsent';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 
@@ -114,13 +113,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-[#050816] text-slate-100 font-sans antialiased selection:bg-[#06b6d4] selection:text-slate-950">
+      <body className="min-h-screen bg-[#2C3531] text-slate-100 font-sans antialiased selection:bg-[#116466] selection:text-[#D1E8E2]">
         <ThemeProvider>
           <ScrollProgress />
           {children}
           <BackToTop />
           <WhatsAppFloatingBtn />
-          <LiveChatWidget />
           <CookieConsent />
         </ThemeProvider>
       </body>
