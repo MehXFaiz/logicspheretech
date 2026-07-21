@@ -6,16 +6,16 @@ import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
 import { CookieConsent } from '@/components/common/CookieConsent';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Orbitron, Roboto_Mono } from 'next/font/google';
 
-const inter = Inter({
+const orbitron = Orbitron({
   variable: '--font-sans',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const jetBrainsMono = JetBrains_Mono({
+const robotoMono = Roboto_Mono({
   variable: '--font-mono',
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
