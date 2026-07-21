@@ -95,7 +95,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#8b5cf6]/20 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#22d3ee]/20 rounded-full blur-3xl"
           />
         </div>
 
@@ -113,7 +113,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-12 border border-[#8b5cf6]/20 rounded-full"
+              className="absolute -inset-12 border border-[#67e8f9]/20 rounded-full"
             />
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -127,7 +127,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               className="relative w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#0f172a] to-[#050816] rounded-3xl border-2 border-[#06b6d4]/50 shadow-2xl shadow-[#06b6d4]/20 flex items-center justify-center"
             >
               <Layers className="w-12 h-12 sm:w-16 sm:h-16 text-[#06b6d4]" />
-              <Sparkles className="w-5 h-5 text-[#f59e0b] absolute top-3 right-3 animate-float" />
+              <Sparkles className="w-5 h-5 text-[#67e8f9] absolute top-3 right-3 animate-float" />
             </motion.div>
           </div>
 
@@ -157,7 +157,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               className="flex items-center justify-center gap-3 mb-6"
             >
               <span className="text-2xl">{phases[phase].icon}</span>
-              <span className="text-lg font-mono text-[#a0aec0]">
+              <span className="text-lg font-mono text-[#94a3b8]">
                 {phases[phase].text}
               </span>
             </motion.div>
@@ -168,7 +168,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="h-full bg-gradient-to-r from-[#06b6d4] via-[#8b5cf6] to-[#f59e0b] shadow-lg relative"
+                className="h-full bg-gradient-to-r from-[#06b6d4] via-[#22d3ee] to-[#67e8f9] shadow-lg relative"
               >
                 {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
@@ -183,7 +183,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               transition={{ duration: 0.2 }}
               className="flex justify-between items-center mt-4"
             >
-              <span className="text-sm font-mono text-[#a0aec0]">
+              <span className="text-sm font-mono text-[#94a3b8]">
                 {progress}%
               </span>
               <button 
@@ -204,9 +204,9 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
             className="flex items-center gap-6 mt-12"
           >
             {[
-              { icon: Zap, color: "text-[#f59e0b]", label: "Fast" },
+              { icon: Zap, color: "text-[#67e8f9]", label: "Fast" },
               { icon: ShieldCheck, color: "text-[#06b6d4]", label: "Secure" },
-              { icon: Globe, color: "text-[#8b5cf6]", label: "Global" }
+              { icon: Globe, color: "text-[#22d3ee]", label: "Global" }
             ].map((item, index) => (
               <motion.div 
                 key={index}
@@ -216,7 +216,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
                 className="flex flex-col items-center gap-1"
               >
                 <item.icon className={`w-6 h-6 ${item.color}`} />
-                <span className="text-xs font-mono text-[#a0aec0]">
+                <span className="text-xs font-mono text-[#94a3b8]">
                   {item.label}
                 </span>
               </motion.div>

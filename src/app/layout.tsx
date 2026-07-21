@@ -1,21 +1,20 @@
 import type { Metadata } from 'next';
-import { Poppins, Fira_Code } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ScrollProgress } from '@/components/common/ScrollProgress';
 import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
 import { CookieConsent } from '@/components/common/CookieConsent';
-import { Orbitron, Roboto_Mono } from 'next/font/google';
 
-const orbitron = Orbitron({
+const inter = Inter({
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
   display: 'swap',
 });
 
-const robotoMono = Roboto_Mono({
+const jetBrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
@@ -113,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-[#2C3531] text-slate-100 font-sans antialiased selection:bg-[#116466] selection:text-[#D1E8E2]">
+      <body className="min-h-screen bg-[#050816] text-white font-sans antialiased selection:bg-[#06b6d4] selection:text-[#050816]">
         <ThemeProvider>
           <ScrollProgress />
           {children}
