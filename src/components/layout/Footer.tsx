@@ -22,13 +22,13 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#02030f] border-t border-[#D1E8E2]/10 text-slate-400 pt-20 pb-12 relative">
+    <footer className="bg-[#2C3531] border-t border-[#D1E8E2]/10 text-slate-400 pt-20 pb-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-[#D1E8E2]/10">
           {/* Col 1: Brand Info & Mission */}
           <div className="lg:col-span-2 space-y-6">
             <a href="#hero" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-400 via-violet-500 to-amber-400 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#116466] via-[#D9B08C] to-[#FFCB9A] flex items-center justify-center shadow-lg shadow-[#116466]/30">
                 <Shield className="w-5 h-5 text-slate-950 stroke-[2.5]" />
               </div>
               <span className="text-xl font-black tracking-tight text-[#D1E8E2] font-mono">
