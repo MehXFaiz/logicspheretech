@@ -112,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-[#050816] text-white font-sans antialiased selection:bg-[#06b6d4] selection:text-[#050816]">
+      <body className="min-h-screen bg-[#2C3531] text-[#D1E8E2] font-sans antialiased selection:bg-[#116466] selection:text-[#D1E8E2]">
         <ThemeProvider>
           <ScrollProgress />
           {children}

@@ -65,7 +65,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
           scale: 1.1,
           transition: { duration: 0.5, ease: "easeInOut" }
         }}
-        className="fixed inset-0 z-[100] bg-[#050816] flex flex-col items-center justify-center overflow-hidden"
+        className="fixed inset-0 z-[100] bg-[#2C3531] flex flex-col items-center justify-center overflow-hidden"
       >
         {/* Animated background orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -81,7 +81,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#06b6d4]/20 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#116466]/20 rounded-full blur-3xl"
           />
           <motion.div
             animate={{
@@ -95,7 +95,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#22d3ee]/20 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#D9B08C]/20 rounded-full blur-3xl"
           />
         </div>
 
@@ -108,12 +108,12 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-8 border border-[#06b6d4]/30 rounded-full border-dashed"
+              className="absolute -inset-8 border border-[#116466]/30 rounded-full border-dashed"
             />
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-12 border border-[#67e8f9]/20 rounded-full"
+              className="absolute -inset-12 border border-[#D9B08C]/20 rounded-full"
             />
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
@@ -124,10 +124,10 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
                 stiffness: 200,
                 damping: 15
               }}
-              className="relative w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#0f172a] to-[#050816] rounded-3xl border-2 border-[#06b6d4]/50 shadow-2xl shadow-[#06b6d4]/20 flex items-center justify-center"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#343e39] to-[#2C3531] rounded-3xl border-2 border-[#116466]/50 shadow-2xl shadow-[#116466]/20 flex items-center justify-center"
             >
-              <Layers className="w-12 h-12 sm:w-16 sm:h-16 text-[#06b6d4]" />
-              <Sparkles className="w-5 h-5 text-[#67e8f9] absolute top-3 right-3 animate-float" />
+              <Layers className="w-12 h-12 sm:w-16 sm:h-16 text-[#116466]" />
+              <Sparkles className="w-5 h-5 text-[#FFCB9A] absolute top-3 right-3 animate-float" />
             </motion.div>
           </div>
 
@@ -157,7 +157,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               className="flex items-center justify-center gap-3 mb-6"
             >
               <span className="text-2xl">{phases[phase].icon}</span>
-              <span className="text-lg font-mono text-[#94a3b8]">
+              <span className="text-lg font-mono text-[#9fb3aa]">
                 {phases[phase].text}
               </span>
             </motion.div>
@@ -168,7 +168,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="h-full bg-gradient-to-r from-[#06b6d4] via-[#22d3ee] to-[#67e8f9] shadow-lg relative"
+                className="h-full bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] shadow-lg relative"
               >
                 {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
@@ -183,12 +183,12 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
               transition={{ duration: 0.2 }}
               className="flex justify-between items-center mt-4"
             >
-              <span className="text-sm font-mono text-[#94a3b8]">
+              <span className="text-sm font-mono text-[#9fb3aa]">
                 {progress}%
               </span>
               <button 
                 onClick={handleSkip}
-                className="text-sm font-semibold text-[#06b6d4] hover:text-[#67e8f9] transition-colors flex items-center gap-1.5 group"
+                className="text-sm font-semibold text-[#116466] hover:text-[#D9B08C] transition-colors flex items-center gap-1.5 group"
               >
                 Skip
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -204,9 +204,9 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
             className="flex items-center gap-6 mt-12"
           >
             {[
-              { icon: Zap, color: "text-[#67e8f9]", label: "Fast" },
-              { icon: ShieldCheck, color: "text-[#06b6d4]", label: "Secure" },
-              { icon: Globe, color: "text-[#22d3ee]", label: "Global" }
+              { icon: Zap, color: "text-[#FFCB9A]", label: "Fast" },
+              { icon: ShieldCheck, color: "text-[#116466]", label: "Secure" },
+              { icon: Globe, color: "text-[#D9B08C]", label: "Global" }
             ].map((item, index) => (
               <motion.div 
                 key={index}
@@ -216,7 +216,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
                 className="flex flex-col items-center gap-1"
               >
                 <item.icon className={`w-6 h-6 ${item.color}`} />
-                <span className="text-xs font-mono text-[#94a3b8]">
+                <span className="text-xs font-mono text-[#9fb3aa]">
                   {item.label}
                 </span>
               </motion.div>
