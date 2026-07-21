@@ -61,7 +61,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       transition: {
         delay: i * 0.1,
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     })
   };
