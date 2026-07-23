@@ -6,6 +6,9 @@ import { CheckCircle2, Sparkles, Award, Shield } from 'lucide-react';
 export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
+      {/* Background Matrix Grid Graphic */}
+      <div className="absolute inset-0 bg-[url('/matrix_grid_bg.png')] bg-cover bg-center opacity-[0.06] mix-blend-screen pointer-events-none z-0" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual Architecture Blueprint & Executive Stats */}

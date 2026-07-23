@@ -19,10 +19,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -39,98 +40,126 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#242b28]/95 border-[#116466] py-3 shadow-lg'
-          : 'bg-[#2C3531]/90 border-[#116466]/40 py-5'
+          ? 'top-4 max-w-6xl mx-auto px-6 py-2.5 bg-[#242b28]/85 backdrop-blur-xl border border-[#116466]/65 shadow-2xl shadow-black/40'
+          : 'top-0 w-full px-8 py-5 bg-[#2C3531]/40 border-b border-[#116466]/20'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <a href="#hero" className="flex items-center gap-3 transition hover:opacity-90">
-            <div className="relative flex h-11 w-11 items-center justify-center rounded-none bg-[#242b28] border border-[#116466] shadow-[0_0_15px_rgba(17,100,102,0.2)]">
-              <Layers className="h-5 w-5 text-[#D1E8E2] stroke-[2]" />
-              <span className="absolute -top-[1px] -right-[1px] h-2 w-2 bg-[#FFCB9A]" />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-base font-bold tracking-widest text-[#D1E8E2]">LOGICSPHERE</span>
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#D9B08C]">TECH STUDIO</span>
-            </div>
-          </a>
+      <div className="flex items-center justify-between gap-6">
+        {/* Brand/Logo */}
+        <a href="#hero" className="flex items-center gap-3 transition-opacity hover:opacity-90">
+          <div className="relative flex h-10 w-10 items-center justify-center bg-[#242b28] border border-[#116466]">
+            {/* Holographic bracket overlays */}
+            <span className="absolute top-[-1px] left-[-1px] w-1.5 h-1.5 border-t border-l border-[#FFCB9A]" />
+            <span className="absolute bottom-[-1px] right-[-1px] w-1.5 h-1.5 border-b border-r border-[#FFCB9A]" />
+            
+            <Layers className="h-4.5 w-4.5 text-[#FFCB9A] animate-pulse" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="text-sm font-bold tracking-[0.25em] text-[#D1E8E2]">LOGICSPHERE</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-[#D9B08C] mt-0.5">EST. 2026</span>
+          </div>
+        </a>
 
-          <nav className="hidden lg:flex flex-wrap items-center gap-1 rounded-none bg-[#242b28] px-2 py-1 text-slate-300 border border-[#116466]/60">
+        {/* Floating Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-1.5 bg-[#2C3531]/60 border border-[#116466]/30 px-3 py-1 font-mono">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onMouseEnter={() => setActiveLink(link.name)}
+              onMouseLeave={() => setActiveLink('')}
+              className="relative px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#D1E8E2]/85 hover:text-[#FFCB9A] transition-colors"
+            >
+              {link.name}
+              {/* Sleek Underline Transition */}
+              <span
+                className={`absolute bottom-0 left-0 w-full h-[1px] bg-[#FFCB9A] origin-left transition-transform duration-300 ${
+                  activeLink === link.name ? 'scale-x-100' : 'scale-x-0'
+                }`}
+              />
+            </a>
+          ))}
+        </nav>
+
+        {/* Actions (Sleek custom styles buttons) */}
+        <div className="hidden sm:flex items-center gap-4 font-mono">
+          {/* Active node signal indicator */}
+          <div className="flex items-center gap-2 bg-[#242b28]/60 border border-[#116466]/40 px-3 py-1.5 text-[9px] tracking-widest text-[#D1E8E2]/60">
+            <span className="w-1.5 h-1.5 bg-[#FFCB9A] rounded-full animate-ping" />
+            <span>NODE_01</span>
+          </div>
+
+          <button
+            onClick={toggleTheme}
+            className="inline-flex h-9 w-9 items-center justify-center border border-[#116466]/60 bg-[#242b28]/85 text-[#D9B08C] hover:text-[#FFCB9A] transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          
+          <button
+            onClick={onOpenQuote}
+            className="relative px-5 py-2.5 bg-[#116466]/80 hover:bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2] text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 overflow-hidden group"
+          >
+            {/* Absolute corner brackets for button */}
+            <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#D1E8E2]" />
+            <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#D1E8E2]" />
+            
+            <span className="flex items-center gap-1.5 relative z-10">
+              <Sparkles className="h-3.5 w-3.5 text-[#FFCB9A]" />
+              Start Project
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFCB9A]/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+          </button>
+        </div>
+
+        {/* Mobile Navigation Trigger */}
+        <div className="flex sm:hidden items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="inline-flex h-9 w-9 items-center justify-center border border-[#116466]/65 bg-[#242b28]/85 text-[#D9B08C]"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex h-9 w-9 items-center justify-center border border-[#116466] bg-[#242b28]/85 text-[#D1E8E2]"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-4.5 w-4.5" /> : <Menu className="h-4.5 w-4.5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer menu */}
+      {mobileMenuOpen && (
+        <div className="mt-4 border border-[#116466] bg-[#242b28]/95 p-6 shadow-2xl backdrop-blur-xl">
+          <div className="grid gap-2 font-mono">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="rounded-none px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] transition hover:bg-[#116466]/30 hover:text-[#D1E8E2]"
+                onClick={() => setMobileMenuOpen(false)}
+                className="border border-[#116466]/40 bg-[#2C3531]/40 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-200 hover:border-[#FFCB9A] transition-all"
               >
                 {link.name}
               </a>
             ))}
-          </nav>
-
-          <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-none border border-[#116466]/60 bg-[#242b28] text-[#D9B08C] transition hover:bg-[#116466]/20"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-            <button
-              onClick={onOpenQuote}
-              className="inline-flex items-center gap-2 rounded-none bg-[#116466] border border-[#FFCB9A] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#D1E8E2] transition hover:bg-[#D9B08C] hover:text-[#2C3531] hover:border-[#116466]"
-            >
-              <Sparkles className="h-4 w-4 text-[#FFCB9A]" />
-              Start Project
-            </button>
           </div>
-
-          <div className="flex sm:hidden items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-none border border-[#116466]/60 bg-[#242b28] text-[#D9B08C]"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-none border border-[#116466] bg-[#242b28] text-[#D1E8E2]"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenQuote();
+            }}
+            className="mt-6 w-full py-3 bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2] text-xs font-semibold uppercase tracking-wider transition-all"
+          >
+            Start Project
+          </button>
         </div>
-
-        {mobileMenuOpen && (
-          <div className="mt-4 rounded-none border border-[#116466] bg-[#242b28] p-5 shadow-xl">
-            <div className="grid gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-none border border-[#116466]/40 bg-[#2C3531] px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-slate-200 transition hover:bg-[#116466]/20 hover:text-[#D1E8E2]"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenQuote();
-              }}
-              className="mt-5 w-full rounded-none bg-[#116466] border border-[#FFCB9A] px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#D1E8E2] transition hover:bg-[#D9B08C] hover:text-[#2C3531]"
-            >
-              Start Project
-            </button>
-          </div>
-        )}
-      </div>
+      )}
     </header>
   );
 };
