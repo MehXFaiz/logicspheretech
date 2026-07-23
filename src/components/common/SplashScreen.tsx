@@ -1,58 +1,50 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Terminal, Cpu, Shield, Zap, Sparkles, ArrowRight } from 'lucide-react';
+import { Cpu, ShieldCheck } from 'lucide-react';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
-  const [logIndex, setLogIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
-
-  const logs = [
-    { time: '[0.000000]', text: 'Booting Quantum Core Kernel...' },
-    { time: '[0.284102]', text: 'Initializing Neural Synapse Pipeline...' },
-    { time: '[0.748192]', text: 'Establishing secure tunnel to Edge Cluster...' },
-    { time: '[1.109283]', text: 'Checking security protocols... SOC2 Node verified.' },
-    { time: '[1.628491]', text: 'Syncing UI Matrix and design parameters...' },
-    { time: '[2.204812]', text: 'Quantum Core check: 100% operational.' },
-    { time: '[2.784910]', text: 'Launching Command Interface...' }
-  ];
+  const [activeMatrix, setActiveMatrix] = useState<boolean[]>(new Array(16).fill(false));
 
   useEffect(() => {
-    const progressInterval = setInterval(() => {
+    // Simulated load progress
+    const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(progressInterval);
+          clearInterval(interval);
           return 100;
         }
-        const step = Math.floor(Math.random() * 6) + 3;
-        const next = prev + step;
-        
-        // Progressively trigger log messages based on loading percentage
-        const targetLogIndex = Math.min(
-          Math.floor((next / 100) * logs.length),
-          logs.length - 1
-        );
-        setLogIndex(targetLogIndex);
-        
-        return Math.min(next, 100);
+        const step = Math.floor(Math.random() * 8) + 4;
+        return Math.min(prev + step, 100);
       });
-    }, 80);
+    }, 100);
 
-    return () => clearInterval(progressInterval);
+    // Dynamic grid block highlight animation
+    const matrixInterval = setInterval(() => {
+      setActiveMatrix(() => {
+        return new Array(16).fill(0).map(() => Math.random() > 0.6);
+      });
+    }, 250);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(matrixInterval);
+    };
   }, []);
 
   useEffect(() => {
     if (progress === 100) {
       const fadeTimer = setTimeout(() => {
         setIsFadingOut(true);
-      }, 800);
+      }, 1000);
 
       const finishTimer = setTimeout(() => {
         setIsVisible(false);
         onFinish?.();
-      }, 1500);
+      }, 1700);
 
       return () => {
         clearTimeout(fadeTimer);
@@ -61,7 +53,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
     }
   }, [progress, onFinish]);
 
-  const handleSkip = () => {
+  const handleDismiss = () => {
     setIsFadingOut(true);
     setTimeout(() => {
       setIsVisible(false);
@@ -73,94 +65,115 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
 
   return (
     <div
-      className={`fixed inset-0 z-[100] bg-[#2C3531] text-[#D1E8E2] flex flex-col items-center justify-between p-6 sm:p-10 md:p-16 font-mono select-none transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[100] bg-[#2C3531] text-[#D1E8E2] flex flex-col items-center justify-between p-8 font-mono select-none overflow-hidden transition-all duration-1000 ease-out ${
         isFadingOut ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
       }`}
     >
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(17,100,102,0.15),transparent_60%)] pointer-events-none" />
+      {/* Laser Scanning Line */}
+      <div className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#FFCB9A] to-transparent shadow-[0_0_10px_#FFCB9A] opacity-60 animate-[bounce_5s_infinite] pointer-events-none z-30" />
 
-      {/* Top Header */}
-      <div className="w-full flex items-center justify-between text-[10px] sm:text-xs tracking-[0.25em] text-[#D1E8E2]/60 z-20">
-        <div className="flex items-center gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFCB9A] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFCB9A]"></span>
-          </span>
-          <span className="font-semibold text-[#D1E8E2] uppercase">The Quantum Core Boot</span>
+      {/* Cybernetic Grid Background */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_40%,_#242b28_100%)] pointer-events-none" />
+
+      {/* Ambient Top and Bottom Bars */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#116466] to-transparent opacity-40" />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#116466] to-transparent opacity-40" />
+
+      {/* Edge-to-edge Loading Line (Top-anchored tracker) */}
+      <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#116466] via-[#FFCB9A] to-[#D9B08C] transition-all duration-150" style={{ width: `${progress}%` }} />
+
+      {/* Top HUD Metadata */}
+      <div className="w-full flex items-center justify-between text-[9px] sm:text-[10px] tracking-[0.3em] text-[#D1E8E2]/50 z-20">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 bg-[#FFCB9A] inline-block animate-pulse" />
+          <span>MATRIX.SYS: ACTIVE</span>
         </div>
-        <div className="hidden sm:flex items-center gap-6 text-[#94a3b8]">
-          <span>CORE_SYS: v4.8.9</span>
-          <span>NET: SECURE</span>
+        <div className="flex items-center gap-4">
+          <span>LATENCY: 0.04MS</span>
+          <span className="text-[#FFCB9A]">IP_HANDOVER: READY</span>
         </div>
       </div>
 
-      {/* Central Interactive HUD display */}
-      <div className="relative w-full max-w-2xl flex-1 flex flex-col items-center justify-center py-8 z-10">
-        {/* Decorative Ring Animations */}
-        <div className="absolute w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px] rounded-full border border-[#116466]/20 border-dashed animate-[spin_40s_linear_infinite]" />
-        <div className="absolute w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] rounded-full border border-[#D9B08C]/15 animate-[spin_20s_linear_infinite_reverse]" />
+      {/* Central Interactive HUD Segment */}
+      <div className="relative w-full max-w-xl flex-1 flex flex-col items-center justify-center z-10">
         
-        {/* Core Pulsing Node */}
-        <div className="relative w-40 h-40 sm:w-52 sm:h-52 bg-[#242b28]/90 border border-[#116466]/40 flex flex-col items-center justify-center p-6 text-center shadow-lg">
-          {/* Corner highlights */}
-          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#FFCB9A]" />
-          <span className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-[#FFCB9A]" />
-          <span className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-[#FFCB9A]" />
-          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#FFCB9A]" />
+        {/* Layered Geometric Hexagon/Diamond HUD segments */}
+        <div className="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
           
-          <Cpu className="w-10 h-10 text-[#FFCB9A] animate-pulse mb-3" />
-          <span className="text-[10px] tracking-[0.2em] text-[#D9B08C] uppercase mb-1">Quantum Core</span>
-          <span className="text-xl font-bold tracking-widest text-[#D1E8E2]">{progress}%</span>
-        </div>
-
-        {/* Console Logs Terminal Output */}
-        <div className="w-full max-w-lg mt-8 p-4 bg-[#242b28] border border-[#116466]/40 text-left text-[10px] sm:text-xs text-[#94a3b8] space-y-1.5 h-28 overflow-hidden relative">
-          <div className="absolute top-0 right-0 p-2 text-[9px] text-[#116466]/70 uppercase tracking-widest">Console Feed</div>
+          {/* External Bracket Ring (Counter-rotating) */}
+          <div className="absolute inset-0 border border-t-[#FFCB9A] border-b-[#FFCB9A] border-l-transparent border-r-transparent rounded-full animate-[spin_10s_linear_infinite]" />
+          <div className="absolute inset-4 border border-l-[#116466] border-r-[#116466] border-t-transparent border-b-transparent rounded-full animate-[spin_15s_linear_infinite_reverse]" />
           
-          <div className="space-y-1">
-            {logs.slice(0, logIndex + 1).map((log, idx) => (
-              <div key={idx} className="flex gap-2.5 font-mono items-start">
-                <span className="text-[#FFCB9A] shrink-0">{log.time}</span>
-                <span className={`${idx === logIndex ? 'text-[#D1E8E2] font-semibold animate-pulse' : 'text-[#94a3b8]/80'}`}>
-                  {log.text}
-                </span>
-              </div>
+          {/* Intermittent grid matrix pixels */}
+          <div className="absolute w-44 h-44 grid grid-cols-4 gap-2.5 opacity-20">
+            {activeMatrix.map((isActive, index) => (
+              <div
+                key={index}
+                className={`w-full h-full border transition-all duration-300 ${
+                  isActive ? 'bg-[#FFCB9A] border-[#FFCB9A]/50' : 'bg-transparent border-[#116466]/30'
+                }`}
+              />
             ))}
           </div>
+
+          {/* Central Holographic Core */}
+          <div className="relative w-32 h-32 bg-[#242b28]/95 border border-[#116466] flex flex-col items-center justify-center shadow-lg">
+            {/* Absolute corner markers */}
+            <span className="absolute top-[-2px] left-[-2px] w-2 h-2 border-t-2 border-l-2 border-[#FFCB9A]" />
+            <span className="absolute top-[-2px] right-[-2px] w-2 h-2 border-t-2 border-r-2 border-[#FFCB9A]" />
+            <span className="absolute bottom-[-2px] left-[-2px] w-2 h-2 border-b-2 border-l-2 border-[#FFCB9A]" />
+            <span className="absolute bottom-[-2px] right-[-2px] w-2 h-2 border-b-2 border-r-2 border-[#FFCB9A]" />
+            
+            <Cpu className="w-8 h-8 text-[#FFCB9A] mb-2 animate-pulse" />
+            <span className="text-[9px] tracking-[0.2em] text-[#D9B08C] uppercase">QUANTUM CORE</span>
+            <span className="text-lg font-bold tracking-widest text-[#D1E8E2] mt-1">{progress}%</span>
+          </div>
+
+        </div>
+
+        {/* Text Shimmer Reveal */}
+        <div className="mt-8 text-center space-y-1">
+          <h1 className="text-3xl sm:text-4xl font-light tracking-[0.35em] text-[#D1E8E2] uppercase">
+            Logic<span className="font-bold text-[#FFCB9A]">Sphere</span>
+          </h1>
+          <p className="text-[9px] tracking-[0.5em] text-[#116466] uppercase font-bold animate-pulse">
+            Architectural System Launch
+          </p>
         </div>
       </div>
 
-      {/* Bottom Progress Bar & Skip */}
-      <div className="w-full max-w-md space-y-6 z-20">
-        <div className="space-y-2">
-          <div className="flex justify-between items-center text-[10px] tracking-wider text-[#94a3b8]">
-            <span className="uppercase">Loading Architecture Matrices</span>
-            <span className="font-bold text-[#D1E8E2]">{progress}%</span>
-          </div>
-          {/* Loading bar container */}
-          <div className="w-full h-1.5 bg-[#242b28] border border-[#116466]/35 overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] transition-all duration-100"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+      {/* Bottom Audio / Signal Wave HUD Visualization */}
+      <div className="w-full max-w-sm flex items-center justify-between gap-1.5 h-6 z-20">
+        <div className="flex items-end gap-1 w-full justify-center h-full">
+          {[...Array(24)].map((_, i) => {
+            const h = [2, 4, 3, 5, 2, 6, 4, 3, 2, 5, 4, 6, 2, 4, 3, 5, 2, 6, 4, 3, 2, 5, 4, 6];
+            return (
+              <div
+                key={i}
+                className="w-1 bg-[#116466] transition-all duration-300"
+                style={{
+                  height: `${progress === 100 ? 1 : Math.max(2, Math.floor(Math.random() * h[i] * 4))}px`,
+                  backgroundColor: progress === 100 ? '#FFCB9A' : '#116466'
+                }}
+              />
+            );
+          })}
         </div>
+      </div>
 
-        <div className="flex items-center justify-between text-[9px] tracking-widest text-[#116466]">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5" /> SECURE SEC_NODE</span>
-            <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5" /> EDGE LAUNCH</span>
-          </div>
-          <button
-            onClick={handleSkip}
-            className="text-[#FFCB9A] hover:text-[#D1E8E2] transition-colors flex items-center gap-1 uppercase font-semibold text-[10px] tracking-widest border border-[#FFCB9A]/20 px-3 py-1 bg-[#242b28]/50"
-          >
-            Skip Boot
-            <ArrowRight className="w-3 h-3" />
-          </button>
+      {/* Footer Branding */}
+      <div className="w-full flex items-center justify-between text-[9px] tracking-[0.25em] text-[#116466] z-20">
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#FFCB9A]" />
+          <span>SOC2 PRIVACY SECURE</span>
         </div>
+        <button
+          onClick={handleDismiss}
+          className="hover:text-[#FFCB9A] text-[#D9B08C] transition-all duration-300 font-bold uppercase tracking-widest px-3.5 py-1 border border-[#116466]/40 hover:border-[#FFCB9A]/40 bg-[#242b28]"
+        >
+          Skip Introduction
+        </button>
       </div>
     </div>
   );
