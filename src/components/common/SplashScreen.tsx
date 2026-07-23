@@ -1,229 +1,167 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Layers, Zap, ShieldCheck, Globe, Sparkles, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Terminal, Cpu, Shield, Zap, Sparkles, ArrowRight } from 'lucide-react';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
-  const [phase, setPhase] = useState(0);
+  const [logIndex, setLogIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  
-  const phases = [
-    { text: "Initializing Systems", icon: "⚡" },
-    { text: "Loading Core Modules", icon: "🔧" },
-    { text: "Syncing Global Network", icon: "🌐" },
-    { text: "Welcome to LogicSphere", icon: "🚀" }
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  const logs = [
+    { time: '[0.000000]', text: 'Booting Quantum Core Kernel...' },
+    { time: '[0.284102]', text: 'Initializing Neural Synapse Pipeline...' },
+    { time: '[0.748192]', text: 'Establishing secure tunnel to Edge Cluster...' },
+    { time: '[1.109283]', text: 'Checking security protocols... SOC2 Node verified.' },
+    { time: '[1.628491]', text: 'Syncing UI Matrix and design parameters...' },
+    { time: '[2.204812]', text: 'Quantum Core check: 100% operational.' },
+    { time: '[2.784910]', text: 'Launching Command Interface...' }
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(interval);
+          clearInterval(progressInterval);
           return 100;
         }
-        const next = prev + Math.floor(Math.random() * 8) + 2;
+        const step = Math.floor(Math.random() * 6) + 3;
+        const next = prev + step;
         
-        // Update phase based on progress
-        if (next < 25) setPhase(0);
-        else if (next < 50) setPhase(1);
-        else if (next < 75) setPhase(2);
-        else setPhase(3);
+        // Progressively trigger log messages based on loading percentage
+        const targetLogIndex = Math.min(
+          Math.floor((next / 100) * logs.length),
+          logs.length - 1
+        );
+        setLogIndex(targetLogIndex);
         
         return Math.min(next, 100);
       });
-    }, 120);
-    
-    return () => clearInterval(interval);
+    }, 80);
+
+    return () => clearInterval(progressInterval);
   }, []);
 
   useEffect(() => {
     if (progress === 100) {
-      const timer = setTimeout(() => {
+      const fadeTimer = setTimeout(() => {
+        setIsFadingOut(true);
+      }, 800);
+
+      const finishTimer = setTimeout(() => {
         setIsVisible(false);
         onFinish?.();
       }, 1500);
-      return () => clearTimeout(timer);
+
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(finishTimer);
+      };
     }
   }, [progress, onFinish]);
 
   const handleSkip = () => {
-    setProgress(100);
-    setPhase(3);
+    setIsFadingOut(true);
+    setTimeout(() => {
+      setIsVisible(false);
+      onFinish?.();
+    }, 500);
   };
 
   if (!isVisible) return null;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ 
-          opacity: 0,
-          scale: 1.1,
-          transition: { duration: 0.5, ease: "easeInOut" }
-        }}
-        className="fixed inset-0 z-[100] bg-[#2C3531] flex flex-col items-center justify-center overflow-hidden"
-      >
-        {/* Animated background orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -50, 0],
-              opacity: [0.3, 0.6, 0.3],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#116466]/20 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              x: [0, -80, 0],
-              y: [0, 80, 0],
-              opacity: [0.2, 0.5, 0.2],
-              scale: [1.1, 1, 1.1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-[#D9B08C]/20 rounded-full blur-3xl"
-          />
+    <div
+      className={`fixed inset-0 z-[100] bg-[#2C3531] text-[#D1E8E2] flex flex-col items-center justify-between p-6 sm:p-10 md:p-16 font-mono select-none transition-all duration-700 ease-out ${
+        isFadingOut ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
+      }`}
+    >
+      {/* Background patterns */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(17,100,102,0.15),transparent_60%)] pointer-events-none" />
+
+      {/* Top Header */}
+      <div className="w-full flex items-center justify-between text-[10px] sm:text-xs tracking-[0.25em] text-[#D1E8E2]/60 z-20">
+        <div className="flex items-center gap-3">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFCB9A] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFCB9A]"></span>
+          </span>
+          <span className="font-semibold text-[#D1E8E2] uppercase">The Quantum Core Boot</span>
+        </div>
+        <div className="hidden sm:flex items-center gap-6 text-[#94a3b8]">
+          <span>CORE_SYS: v4.8.9</span>
+          <span>NET: SECURE</span>
+        </div>
+      </div>
+
+      {/* Central Interactive HUD display */}
+      <div className="relative w-full max-w-2xl flex-1 flex flex-col items-center justify-center py-8 z-10">
+        {/* Decorative Ring Animations */}
+        <div className="absolute w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] md:w-[420px] md:h-[420px] rounded-full border border-[#116466]/20 border-dashed animate-[spin_40s_linear_infinite]" />
+        <div className="absolute w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] rounded-full border border-[#D9B08C]/15 animate-[spin_20s_linear_infinite_reverse]" />
+        
+        {/* Core Pulsing Node */}
+        <div className="relative w-40 h-40 sm:w-52 sm:h-52 bg-[#242b28]/90 border border-[#116466]/40 flex flex-col items-center justify-center p-6 text-center shadow-lg">
+          {/* Corner highlights */}
+          <span className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-[#FFCB9A]" />
+          <span className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-[#FFCB9A]" />
+          <span className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-[#FFCB9A]" />
+          <span className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-[#FFCB9A]" />
+          
+          <Cpu className="w-10 h-10 text-[#FFCB9A] animate-pulse mb-3" />
+          <span className="text-[10px] tracking-[0.2em] text-[#D9B08C] uppercase mb-1">Quantum Core</span>
+          <span className="text-xl font-bold tracking-widest text-[#D1E8E2]">{progress}%</span>
         </div>
 
-        {/* Grid pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" />
-
-        <div className="relative z-10 flex flex-col items-center justify-center max-w-2xl w-full px-6">
-          {/* Logo with rotating rings */}
-          <div className="relative mb-12">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-8 border border-[#116466]/30 rounded-full border-dashed"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-12 border border-[#D9B08C]/20 rounded-full"
-            />
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ 
-                duration: 0.8, 
-                type: "spring",
-                stiffness: 200,
-                damping: 15
-              }}
-              className="relative w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-[#343e39] to-[#2C3531] rounded-3xl border-2 border-[#116466]/50 shadow-2xl shadow-[#116466]/20 flex items-center justify-center"
-            >
-              <Layers className="w-12 h-12 sm:w-16 sm:h-16 text-[#116466]" />
-              <Sparkles className="w-5 h-5 text-[#FFCB9A] absolute top-3 right-3 animate-float" />
-            </motion.div>
-          </div>
-
-          {/* Brand name */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-center mb-10"
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-2">
-              LOGICSPHERE
-            </h1>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gradient-primary tracking-tight">
-              TECH
-            </h2>
-          </motion.div>
-
-          {/* Progress container */}
-          <div className="w-full max-w-md">
-            {/* Phase indicator */}
-            <motion.div 
-              key={phase}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex items-center justify-center gap-3 mb-6"
-            >
-              <span className="text-2xl">{phases[phase].icon}</span>
-              <span className="text-lg font-mono text-[#9fb3aa]">
-                {phases[phase].text}
-              </span>
-            </motion.div>
-
-            {/* Progress bar */}
-            <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden shadow-inner border border-white/10">
-              <motion.div
-                initial={{ width: "0%" }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="h-full bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] shadow-lg relative"
-              >
-                {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
-              </motion.div>
-            </div>
-
-            {/* Progress percentage */}
-            <motion.div 
-              key={progress}
-              initial={{ scale: 0.9, opacity: 0.8 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.2 }}
-              className="flex justify-between items-center mt-4"
-            >
-              <span className="text-sm font-mono text-[#9fb3aa]">
-                {progress}%
-              </span>
-              <button 
-                onClick={handleSkip}
-                className="text-sm font-semibold text-[#116466] hover:text-[#D9B08C] transition-colors flex items-center gap-1.5 group"
-              >
-                Skip
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-            </motion.div>
-          </div>
-
-          {/* Features row */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex items-center gap-6 mt-12"
-          >
-            {[
-              { icon: Zap, color: "text-[#FFCB9A]", label: "Fast" },
-              { icon: ShieldCheck, color: "text-[#116466]", label: "Secure" },
-              { icon: Globe, color: "text-[#D9B08C]", label: "Global" }
-            ].map((item, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9 + index * 0.1 }}
-                className="flex flex-col items-center gap-1"
-              >
-                <item.icon className={`w-6 h-6 ${item.color}`} />
-                <span className="text-xs font-mono text-[#9fb3aa]">
-                  {item.label}
+        {/* Console Logs Terminal Output */}
+        <div className="w-full max-w-lg mt-8 p-4 bg-[#242b28] border border-[#116466]/40 text-left text-[10px] sm:text-xs text-[#94a3b8] space-y-1.5 h-28 overflow-hidden relative">
+          <div className="absolute top-0 right-0 p-2 text-[9px] text-[#116466]/70 uppercase tracking-widest">Console Feed</div>
+          
+          <div className="space-y-1">
+            {logs.slice(0, logIndex + 1).map((log, idx) => (
+              <div key={idx} className="flex gap-2.5 font-mono items-start">
+                <span className="text-[#FFCB9A] shrink-0">{log.time}</span>
+                <span className={`${idx === logIndex ? 'text-[#D1E8E2] font-semibold animate-pulse' : 'text-[#94a3b8]/80'}`}>
+                  {log.text}
                 </span>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+
+      {/* Bottom Progress Bar & Skip */}
+      <div className="w-full max-w-md space-y-6 z-20">
+        <div className="space-y-2">
+          <div className="flex justify-between items-center text-[10px] tracking-wider text-[#94a3b8]">
+            <span className="uppercase">Loading Architecture Matrices</span>
+            <span className="font-bold text-[#D1E8E2]">{progress}%</span>
+          </div>
+          {/* Loading bar container */}
+          <div className="w-full h-1.5 bg-[#242b28] border border-[#116466]/35 overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] transition-all duration-100"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-[9px] tracking-widest text-[#116466]">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5" /> SECURE SEC_NODE</span>
+            <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5" /> EDGE LAUNCH</span>
+          </div>
+          <button
+            onClick={handleSkip}
+            className="text-[#FFCB9A] hover:text-[#D1E8E2] transition-colors flex items-center gap-1 uppercase font-semibold text-[10px] tracking-widest border border-[#FFCB9A]/20 px-3 py-1 bg-[#242b28]/50"
+          >
+            Skip Boot
+            <ArrowRight className="w-3 h-3" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
