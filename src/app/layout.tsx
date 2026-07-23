@@ -99,6 +99,8 @@ const structuredData = {
   },
 };
 
+import { BackgroundEffects } from '@/components/common/BackgroundEffects';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -112,8 +114,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className="min-h-screen bg-[#2C3531] text-[#D1E8E2] font-sans antialiased selection:bg-[#116466] selection:text-[#D1E8E2]">
+      <body className="min-h-screen bg-[#2C3531] text-slate-100 font-sans antialiased selection:bg-[#116466] selection:text-[#D1E8E2] relative">
         <ThemeProvider>
+          <BackgroundEffects />
           <ScrollProgress />
           {children}
           <BackToTop />
