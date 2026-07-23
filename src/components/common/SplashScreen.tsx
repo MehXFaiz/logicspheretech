@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Shield, Sparkles } from 'lucide-react';
+import { Logo } from '@/components/common/Logo';
 
 export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
@@ -234,7 +235,7 @@ export const SplashScreen: React.FC<{ onFinish?: () => void }> = ({ onFinish }) 
             <span className="absolute bottom-[-2px] left-[-2px] w-2.5 h-2.5 border-b-2 border-l-2 border-[#FFCB9A]" />
             <span className="absolute bottom-[-2px] right-[-2px] w-2.5 h-2.5 border-b-2 border-r-2 border-[#FFCB9A]" />
             
-            <span className="text-[9px] tracking-[0.25em] text-[#D9B08C] uppercase font-semibold">QUANTUM CORE</span>
+            <Logo className="h-12 w-12 mb-1 animate-pulse" />
             <span className="text-2xl font-bold tracking-widest text-[#D1E8E2] mt-1.5">{progress}%</span>
           </div>
 

@@ -11,6 +11,8 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+import { Logo } from '@/components/common/Logo';
+
 interface NavbarProps {
   onOpenQuote: () => void;
 }
@@ -48,18 +50,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
     >
       <div className="flex items-center justify-between gap-6">
         {/* Brand/Logo */}
-        <a href="#hero" className="flex items-center gap-3 transition-opacity hover:opacity-90">
-          <div className="relative flex h-10 w-10 items-center justify-center bg-[#242b28] border border-[#116466]">
-            {/* Holographic bracket overlays */}
-            <span className="absolute top-[-1px] left-[-1px] w-1.5 h-1.5 border-t border-l border-[#FFCB9A]" />
-            <span className="absolute bottom-[-1px] right-[-1px] w-1.5 h-1.5 border-b border-r border-[#FFCB9A]" />
-            
-            <Layers className="h-4.5 w-4.5 text-[#FFCB9A] animate-pulse" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-sm font-bold tracking-[0.25em] text-[#D1E8E2]">LOGICSPHERE</span>
-            <span className="text-[9px] uppercase tracking-[0.3em] text-[#D9B08C] mt-0.5">EST. 2026</span>
-          </div>
+        <a href="#hero" className="transition-opacity hover:opacity-90">
+          <Logo showText={true} />
         </a>
 
         {/* Floating Navigation Links */}
