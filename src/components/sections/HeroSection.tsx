@@ -34,8 +34,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
     >
 
       {/* Sleek, subtle, high-performance ambient shading */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#116466]/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[550px] h-[550px] bg-[#D9B08C]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#116466]/10 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" />
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[550px] h-[550px] bg-[#D9B08C]/5 rounded-full blur-[100px] pointer-events-none animate-pulse-glow" style={{ animationDelay: '2s' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
@@ -47,7 +47,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             className="lg:col-span-6 space-y-8 text-left"
           >
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-[#242b28] border border-[#116466] text-[#D1E8E2] text-xs font-semibold tracking-[0.25em] uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-none bg-[#242b28] border border-[#116466] text-[#D1E8E2] text-xs font-semibold tracking-[0.25em] uppercase animate-pulse-glow">
               <Sparkles className="w-3.5 h-3.5 text-[#FFCB9A]" />
               <span>LOGICSPHERE COMMAND</span>
             </div>
@@ -106,12 +106,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             className="lg:col-span-6 relative group"
           >
             {/* Glowing background gradient shadow with custom Tailwind animations */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-[#116466]/40 via-[#D9B08C]/20 to-[#FFCB9A]/40 rounded-none blur-2xl opacity-75 group-hover:opacity-100 group-hover:scale-102 transition duration-700 animate-pulse pointer-events-none" />
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-[#116466]/40 via-[#D9B08C]/20 to-[#FFCB9A]/40 rounded-none blur-2xl opacity-75 group-hover:opacity-100 group-hover:scale-102 transition duration-700 animate-pulse-glow pointer-events-none" />
 
             {/* Decorative Floating Tech Illustration Card */}
             <div className="absolute -bottom-8 -left-8 w-44 h-44 rounded-none overflow-hidden border border-[#FFCB9A] bg-[#242b28] shadow-[0_20px_50px_rgba(0,0,0,0.65)] animate-float pointer-events-none hidden sm:block z-20">
               <Image 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" 
+                src="/tech_blueprint_bg.png" 
                 alt="System Architecture Visual"
                 fill
                 sizes="(max-w-768px) 100vw, 200px"
@@ -127,9 +127,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
               {/* Studio Window Header Bar */}
               <div className="px-6 py-4 border-b border-[#116466] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#2C3531]">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 bg-[#FFCB9A]" />
-                  <span className="w-2.5 h-2.5 bg-[#D9B08C]" />
-                  <span className="w-2.5 h-2.5 bg-[#116466]" />
+                  <span className="w-2.5 h-2.5 bg-[#FFCB9A] animate-pulse-glow" />
+                  <span className="w-2.5 h-2.5 bg-[#D9B08C] animate-pulse-glow" />
+                  <span className="w-2.5 h-2.5 bg-[#116466] animate-pulse-glow" />
                   <span className="ml-2 text-xs font-mono text-[#D1E8E2] font-semibold flex items-center gap-1.5">
                     <Terminal className="w-3.5 h-3.5 text-[#116466]" /> ATELIER.CONTROL
                   </span>
