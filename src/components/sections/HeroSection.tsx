@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import {
   ArrowRight,
   Sparkles,
@@ -53,13 +52,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-wide text-[#D1E8E2] leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-wide text-[#D1E8E2] leading-[1.1] animate-slide-in-up">
               Transform your digital footprint with
               <span className="text-gradient-primary block font-bold mt-2"> precision engineering.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base text-[#94a3b8] leading-relaxed max-w-xl font-mono">
+            <p className="text-sm sm:text-base text-[#94a3b8] leading-relaxed max-w-xl font-mono animate-slide-in-up animation-delay-100">
               We design premium web platforms, bespoke AI systems, and enterprise cloud architectures with a sharp, professional, and custom Tailwind UI.
             </p>
 
@@ -67,7 +66,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <button
                 onClick={onOpenQuote}
-                className="px-8 py-4 bg-[#116466] border border-[#FFCB9A] hover:bg-[#D9B08C] hover:text-[#2C3531] text-[#D1E8E2] font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2.5 group"
+                className="px-8 py-4 bg-[#116466] border border-[#FFCB9A] hover:bg-[#D9B08C] hover:text-[#2C3531] text-[#D1E8E2] font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2.5 group animate-scale-in"
               >
                 <span>Request a Quote</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -75,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
 
               <a
                 href="#portfolio"
-                className="px-8 py-4 bg-[#242b28]/60 hover:bg-[#116466]/20 text-[#D1E8E2] font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] border border-[#116466]/40 hover:border-[#116466] transition-all duration-300 flex items-center justify-center text-center"
+                className="px-8 py-4 bg-[#242b28]/60 hover:bg-[#116466]/20 text-[#D1E8E2] font-semibold text-xs sm:text-sm uppercase tracking-[0.2em] border border-[#116466]/40 hover:border-[#116466] transition-all duration-300 flex items-center justify-center text-center animate-scale-in animation-delay-200"
               >
                 Explore Case Studies
               </a>
@@ -83,15 +82,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
 
             {/* SLA & Engineering Pillars Bar */}
             <div className="pt-6 border-t border-[#116466]/30 grid grid-cols-3 gap-4 text-[10px] sm:text-xs font-mono">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 animate-slide-in-up animation-delay-100">
                 <ShieldCheck className="w-4 h-4 text-[#FFCB9A] shrink-0" />
                 <span className="text-[#D1E8E2] opacity-80">100% IP Handover</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 animate-slide-in-up animation-delay-300">
                 <Zap className="w-4 h-4 text-[#D9B08C] shrink-0" />
                 <span className="text-[#D1E8E2] opacity-80">Sub-0.04ms Edge</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 animate-slide-in-up animation-delay-500">
                 <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0" />
                 <span className="text-[#D1E8E2] opacity-80">SOC2 Verified</span>
               </div>
@@ -107,21 +106,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
           >
             {/* Glowing background gradient shadow with custom Tailwind animations */}
             <div className="absolute -inset-1.5 bg-gradient-to-r from-[#116466]/40 via-[#D9B08C]/20 to-[#FFCB9A]/40 rounded-none blur-2xl opacity-75 group-hover:opacity-100 group-hover:scale-102 transition duration-700 animate-pulse-glow pointer-events-none" />
-
-            {/* Decorative Floating Tech Illustration Card */}
-            <div className="absolute -bottom-8 -left-8 w-44 h-44 rounded-none overflow-hidden border border-[#FFCB9A] bg-[#242b28] shadow-[0_20px_50px_rgba(0,0,0,0.65)] animate-float pointer-events-none hidden sm:block z-20">
-              <Image 
-                src="/tech_blueprint_bg.png" 
-                alt="System Architecture Visual"
-                fill
-                sizes="(max-w-768px) 100vw, 200px"
-                className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-transparent to-transparent" />
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 text-[8px] font-mono text-[#D1E8E2] bg-[#242b28]/95 py-1 px-2 border border-[#116466]/60">
-                SYSTEMS ARCHITECTURE // 0xFA
-              </div>
-            </div>
 
             <div className="relative rounded-none bg-[#242b28] border border-[#116466] shadow-[0_0_30px_rgba(17,100,102,0.15)] overflow-hidden z-10">
               {/* Studio Window Header Bar */}
@@ -141,10 +125,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`px-3 py-1.5 font-medium uppercase tracking-wider transition-all ${
+                      className={`px-3 py-1.5 font-medium uppercase tracking-wider transition-all duration-300 ${
                         activeTab === tab
                           ? 'bg-[#116466] text-[#D1E8E2]'
-                          : 'text-[#D1E8E2]/60 hover:text-[#D1E8E2]'
+                          : 'text-[#D1E8E2]/60 hover:text-[#D1E8E2] hover:bg-[#116466]/20'
                       }`}
                     >
                       {tab}
@@ -211,7 +195,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                           <span className="text-[#FFCB9A] font-semibold">36 Active Regions</span>
                         </div>
                         <div className="h-2 bg-[#2C3531] border border-[#116466]/40 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-[#116466] to-[#D9B08C] w-[97%]" />
+                          <div className="h-full bg-gradient-to-r from-[#116466] to-[#D9B08C] w-[97%] animate-[pulse_3s_ease-in-out_infinite]" />
                         </div>
                       </div>
                     </motion.div>
@@ -349,10 +333,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
 
                 {/* Bottom interactive card trigger */}
                 <div className="pt-5 border-t border-[#116466]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
-                  <span className="text-[#94a3b8]">Ready to engineer your custom system?</span>
+                  <span className="text-[#94a3b8] animate-slide-in-up animation-delay-200">Ready to engineer your custom system?</span>
                   <button
                     onClick={onOpenQuote}
-                    className="text-[#FFCB9A] hover:text-[#D1E8E2] font-semibold flex items-center gap-1.5 group tracking-widest uppercase text-[10px]"
+                    className="text-[#FFCB9A] hover:text-[#D1E8E2] font-semibold flex items-center gap-1.5 group tracking-widest uppercase text-[10px] animate-scale-in animation-delay-400"
                   >
                     <span>Schedule Architecture Call</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
