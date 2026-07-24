@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { SERVICES_DATA } from '@/data';
 import { ServiceItem } from '@/types';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
@@ -135,12 +136,23 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               {/* Card background with gradient border */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#116466]/50 to-[#D9B08C]/50 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-300" />
               
-              <div className="relative rounded-3xl bg-[#343e39] border border-white/10 group-hover:border-[#116466]/50 p-8 flex flex-col justify-between transition-all duration-500 overflow-hidden">
+              <div className="relative rounded-3xl bg-[#343e39] border border-white/10 group-hover:border-[#116466]/50 flex flex-col justify-between transition-all duration-500 overflow-hidden h-full">
                 {/* Top decorative gradient */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
                 
-                {/* Animated background pattern */}
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#116466]/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                {/* 1. Header Image */}
+                {service.image && (
+                  <div className="relative h-44 w-full overflow-hidden bg-[#2C3531] shrink-0">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-w-768px) 100vw, 30vw"
+                      className="object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#343e39] via-transparent to-transparent" />
+                  </div>
+                )}
 
                 {service.popular && (
                   <motion.span
@@ -148,65 +160,66 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     whileInView={{ scale: 1, rotate: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-                    className="absolute top-6 right-6 px-3 py-1 rounded-full text-[9px] font-mono font-semibold uppercase tracking-widest bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] shadow-lg"
+                    className="absolute top-6 right-6 px-3 py-1 rounded-full text-[9px] font-mono font-semibold uppercase tracking-widest bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] shadow-lg z-20"
                   >
                     FLAGSHIP
                   </motion.span>
                 )}
 
-                <div className="relative z-10">
-                  {/* Icon with glow effect */}
-                  <motion.div
-                    whileHover={{ rotate: 10, scale: 1.1 }}
-                    className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#343e39] to-[#2C3531] border border-[#116466]/30 group-hover:border-[#116466] flex items-center justify-center text-[#116466] mb-6 shadow-lg group-hover:shadow-[#116466]/30 transition-all duration-300"
-                  >
-                    <DynamicIcon name={service.iconName} className="w-8 h-8" />
-                  </motion.div>
+                {/* 2. Content Container */}
+                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    {/* Icon and Title */}
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#343e39] to-[#2C3531] border border-[#116466]/30 group-hover:border-[#116466] flex items-center justify-center text-[#116466] shadow-lg group-hover:shadow-[#116466]/30 transition-all duration-300 shrink-0">
+                        <DynamicIcon name={service.iconName} className="w-6 h-6" />
+                      </div>
+                      <h3 className="text-lg font-bold text-[#D1E8E2] group-hover:text-gradient-primary transition-all duration-300">
+                        {service.title}
+                      </h3>
+                    </div>
 
-                  <h3 className="text-xl font-bold text-[#D1E8E2] group-hover:text-gradient-primary transition-all duration-300 mb-3">
-                    {service.title}
-                  </h3>
+                    <p className="text-sm text-[#9fb3aa] leading-relaxed mb-6 group-hover:text-[#D1E8E2] transition-colors duration-300">
+                      {service.description}
+                    </p>
 
-                  <p className="text-sm text-[#9fb3aa] leading-relaxed mb-6 group-hover:text-[#D1E8E2] transition-colors duration-300">
-                    {service.description}
-                  </p>
+                    {/* Key features with animated checkmarks */}
+                    <ul className="space-y-3 mb-8">
+                      {service.features.slice(0, 3).map((feat, idx) => (
+                        <motion.li
+                          key={idx}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + idx * 0.1 + 0.4 }}
+                          className="flex items-start gap-2.5 text-sm text-[#9fb3aa] group-hover:text-[#D1E8E2] transition-colors duration-300"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0 mt-0.5 group-hover:scale-125 transition-transform duration-300" />
+                          <span>{feat}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  {/* Key features with animated checkmarks */}
-                  <ul className="space-y-3 mb-8">
-                    {service.features.slice(0, 3).map((feat, idx) => (
-                      <motion.li
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 + idx * 0.1 + 0.4 }}
-                        className="flex items-start gap-2.5 text-sm text-[#9fb3aa] group-hover:text-[#D1E8E2] transition-colors duration-300"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0 mt-0.5 group-hover:scale-125 transition-transform duration-300" />
-                        <span>{feat}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
+                  {/* Action buttons */}
+                  <div className="relative z-10 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+                    <button
+                      onClick={() => onSelectService(service)}
+                      className="text-xs font-semibold text-[#9fb3aa] hover:text-[#116466] flex items-center gap-1.5 transition-all duration-300 group/btn"
+                    >
+                      <span>View Specs</span>
+                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
 
-                {/* Action buttons */}
-                <div className="relative z-10 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
-                  <button
-                    onClick={() => onSelectService(service)}
-                    className="text-xs font-semibold text-[#9fb3aa] hover:text-[#116466] flex items-center gap-1.5 transition-all duration-300 group/btn"
-                  >
-                    <span>View Specs</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => onOpenQuote(service.title)}
-                    className="px-5 py-2.5 bg-gradient-to-r from-[#116466] to-[#D9B08C] hover:from-[#D9B08C] hover:to-[#116466] text-[#D1E8E2] text-xs font-semibold tracking-widest uppercase rounded-full shadow-lg shadow-[#116466]/20 transition-all duration-300"
-                  >
-                    Request Scope
-                  </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => onOpenQuote(service.title)}
+                      className="px-5 py-2.5 bg-gradient-to-r from-[#116466] to-[#D9B08C] hover:from-[#D9B08C] hover:to-[#116466] text-[#D1E8E2] text-xs font-semibold tracking-widest uppercase rounded-full shadow-lg shadow-[#116466]/20 transition-all duration-300"
+                    >
+                      Request Scope
+                    </motion.button>
+                  </div>
                 </div>
               </div>
             </motion.div>

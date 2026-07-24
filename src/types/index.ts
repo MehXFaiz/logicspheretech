@@ -7,6 +7,7 @@ export interface ServiceItem {
   features: string[];
   deliverables: string[];
   popular?: boolean;
+  image?: string;
 }
 
 export interface TechnologyItem {
@@ -68,4 +69,5 @@ export interface ProcessStep {
   duration: string;
   deliverables: string[];
   icon: string;
+  image?: string;
 }

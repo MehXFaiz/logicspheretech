@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   Mail,
   Phone,
@@ -124,8 +125,18 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Simulated HQ Map Card */}
-            <div className="relative rounded-3xl overflow-hidden border border-[#D1E8E2]/10 shadow-2xl bg-[#2C3531] h-64 flex flex-col justify-between p-6">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,#11646620,transparent_60%),radial-gradient(ellipse_at_bottom_left,#D9B08C20,transparent_60%)]" />
+            <div className="relative rounded-3xl overflow-hidden border border-[#D1E8E2]/10 shadow-2xl h-64 flex flex-col justify-between p-6 group">
+              {/* Background Workspace Image with dark overlay */}
+              <div className="absolute inset-0 bg-[#2C3531] z-0">
+                <Image
+                  src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=600&q=80"
+                  alt="SF Studio Desk"
+                  fill
+                  sizes="(max-w-768px) 100vw, 30vw"
+                  className="object-cover opacity-25 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-[#242b28]/60 to-transparent" />
+              </div>
 
               <div className="relative z-10 flex items-center justify-between">
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#116466]/15 text-[#116466] border border-[#116466]/35 flex items-center gap-1.5">

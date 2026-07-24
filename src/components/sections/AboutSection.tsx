@@ -1,18 +1,36 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { CheckCircle2, Sparkles, Award, Shield } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
-      {/* Background Matrix Grid Graphic */}
-      <div className="absolute inset-0 bg-[url('/matrix_grid_bg.png')] bg-cover bg-center opacity-[0.06] mix-blend-screen pointer-events-none z-0" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Visual Architecture Blueprint & Executive Stats */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 space-y-6 relative">
+            {/* Visual Team Image Card */}
+            <div className="relative rounded-none overflow-hidden border border-[#116466] bg-[#242b28] shadow-2xl aspect-[16/10] group">
+              <Image
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                alt="LogicSphere Engineering Atelier"
+                fill
+                sizes="(max-w-768px) 100vw, 50vw"
+                className="object-cover opacity-85 group-hover:scale-[1.02] group-hover:opacity-100 transition-all duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#242b28]/95 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-[#D1E8E2] bg-[#242b28]/95 px-3 py-1.5 border border-[#116466]/60">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#116466] animate-pulse" />
+                  LOGICSPHERE CO-DEVELOPMENT
+                </span>
+                <span className="text-[#FFCB9A]">ATELIER SUITE 4A</span>
+              </div>
+            </div>
+
             <div className="relative rounded-none overflow-hidden border border-[#116466] bg-[#242b28] shadow-xl p-8">
               {/* Corner tech details */}
               <span className="absolute top-0 right-0 w-2 h-2 bg-[#FFCB9A]" />

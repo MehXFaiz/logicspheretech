@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { WHY_CHOOSE_US_DATA } from '@/data';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
 import {
@@ -42,27 +43,49 @@ export const WhyChooseUsSection: React.FC = () => {
       
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
-            <Award className="w-3.5 h-3.5" /> WHY LOGICSPHERE TECH
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
-            Built For Executives Who Demand{' '}
-            <span className="text-gradient-primary">
-              Architectural Perfection
+        {/* Header Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 space-y-4 text-left"
+          >
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-xs font-mono font-bold uppercase tracking-widest bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-1">
+              <Award className="w-3.5 h-3.5" /> WHY LOGICSPHERE TECH
             </span>
-          </h2>
-          <p className="mt-4 text-[#9fb3aa] text-base sm:text-lg leading-relaxed">
-            We bridge the gap between bespoke Silicon Valley engineering and high-speed agile execution without compromises.
-          </p>
-        </motion.div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight leading-tight">
+              Built For Executives Who Demand{' '}
+              <span className="text-gradient-primary">
+                Architectural Perfection
+              </span>
+            </h2>
+            <p className="text-[#9fb3aa] text-base leading-relaxed">
+              We bridge the gap between bespoke Silicon Valley engineering and high-speed agile execution without compromises.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:col-span-5 relative h-64 rounded-none overflow-hidden border border-[#116466] bg-[#242b28] shadow-xl group"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+              alt="Operational Metrics Dashboard"
+              fill
+              sizes="(max-w-768px) 100vw, 40vw"
+              className="object-cover opacity-80 group-hover:scale-102 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#242b28]/90 via-transparent to-transparent" />
+            <div className="absolute bottom-3 left-3 font-mono text-[9px] text-[#FFCB9A] bg-[#2C3531]/95 px-2.5 py-1 border border-[#116466]/40">
+              PRODUCTION TELEMETRY // LOAD TIME: 0.04s
+            </div>
+          </motion.div>
+        </div>
 
         {/* Comparison Executive Matrix Card */}
         <motion.div

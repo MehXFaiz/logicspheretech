@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { PROCESS_STEPS } from '@/data';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
 import { Sparkles, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const ProcessSection: React.FC = () => {
   const [selectedStep, setSelectedStep] = useState<number>(1);
@@ -99,16 +101,48 @@ export const ProcessSection: React.FC = () => {
             </div>
 
             {/* Right step visual indicator card */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-none bg-[#2C3531] border border-[#116466]/40 text-center space-y-4 font-mono">
-              <div className="w-16 h-16 rounded-none bg-[#116466] border border-[#FFCB9A] flex items-center justify-center text-[#D1E8E2]">
-                <DynamicIcon name={currentStepData.icon} className="w-8 h-8" />
+            <div className="lg:col-span-5 relative h-80 w-full overflow-hidden border border-[#116466]/40 bg-[#242b28] shadow-2xl flex flex-col justify-end p-6 group">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStepData.step}
+                  initial={{ opacity: 0, scale: 1.02 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  {currentStepData.image && (
+                    <Image
+                      src={currentStepData.image}
+                      alt={currentStepData.title}
+                      fill
+                      sizes="(max-w-768px) 100vw, 40vw"
+                      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-[6s] ease-out"
+                      priority
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-[#242b28]/35 to-transparent" />
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="relative z-10 space-y-3 font-mono">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-none bg-[#116466]/90 border border-[#FFCB9A] flex items-center justify-center text-[#D1E8E2]">
+                    <DynamicIcon name={currentStepData.icon} className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-[#D9B08C] block uppercase tracking-widest">
+                      PHASE 0{currentStepData.step} // TARGET
+                    </span>
+                    <h4 className="text-sm font-bold text-[#D1E8E2] uppercase tracking-wider">
+                      {currentStepData.title}
+                    </h4>
+                  </div>
+                </div>
+                <p className="text-[10px] text-slate-300 font-sans leading-relaxed">
+                  Guaranteed deliverables sign-off and architecture review before proceeding to subsequent sprints.
+                </p>
               </div>
-              <h4 className="text-sm font-semibold text-[#D1E8E2] uppercase tracking-wider">
-                Phase 0{currentStepData.step}: {currentStepData.title}
-              </h4>
-              <p className="text-[10px] text-slate-400 max-w-xs font-sans">
-                Guaranteed code sign-off and architecture review before proceeding to subsequent sprints.
-              </p>
             </div>
           </div>
         </div>

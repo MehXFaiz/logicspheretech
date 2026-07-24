@@ -18,6 +18,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Next.js App Router Architecture', 'SEO & Core Web Vitals Optimized', 'Custom Glassmorphic Design System', 'Multilingual & Localization Ready'],
     deliverables: ['Custom Source Code', 'CMS Integration', 'SEO Schema Configuration', '3 Months Warranty & Support'],
     popular: true,
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'web-applications',
@@ -28,6 +29,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Microservices & Serverless Backend', 'Role-Based Access Control (RBAC)', 'Real-time WebSocket Feeds', 'Automated CI/CD Pipeline'],
     deliverables: ['Full Stack Application', 'API Documentation', 'Automated Test Suite', 'Cloud Deployment Strategy'],
     popular: true,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'mobile-app-development',
@@ -38,6 +40,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Cross-Platform iOS & Android Codebase', 'Offline-First Data Caching', 'Biometric & Hardware Integration', 'App Store & Google Play Publishing'],
     deliverables: ['Published Store Binaries', 'Complete UI Kit & Assets', 'Analytics & Crash Reporting Setup', 'Post-Launch App Care'],
     popular: true,
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'ui-ux-design',
@@ -47,6 +50,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Palette',
     features: ['Figma Component Library & Tokens', 'Interactive High-Fidelity Prototypes', 'User Journey Mapping & Persona Testing', 'WCAG 2.1 AA Accessibility Standards'],
     deliverables: ['Figma Design System', 'Clickable Prototype', 'Developer Handover Specification', 'User Research Report'],
+    image: 'https://images.unsplash.com/photo-1561070791-26c113006238?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'ai-solutions',
@@ -57,6 +61,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Custom RAG & Vector Database Systems', 'Fine-Tuned LLM Assistants', 'Computer Vision & Document OCR', 'Automated Enterprise Copilots'],
     deliverables: ['Trained AI Model / Pipeline', 'Secure API Gateway', 'Prompt Engineering Suite', 'Compliance & Bias Testing'],
     popular: true,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'saas-development',
@@ -67,6 +72,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Multi-Tenant Cloud Isolation', 'Stripe Billing & Metered Usage Integration', 'Enterprise SAML/SSO Authentication', 'Automated Usage Analytics'],
     deliverables: ['Turnkey SaaS Platform', 'Stripe Webhook Infrastructure', 'Admin Backoffice Console', 'SLA Monitoring Setup'],
     popular: true,
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'erp-crm-systems',
@@ -76,6 +82,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Database',
     features: ['Custom Workflow & Approval Automation', 'Real-time Financial & KPI Dashboards', 'Granular Department Permissions', 'Legacy Data Migration Tools'],
     deliverables: ['Custom ERP/CRM Core Engine', 'Data Migration Script', 'Employee Training Guide', 'Ongoing SLA Support'],
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'ecommerce-development',
@@ -85,15 +92,17 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'ShoppingBag',
     features: ['Headless Next.js Commerce Engine', 'Multi-Currency & Instant Checkout', 'Automated Inventory & Shipping APIs', 'Personalized Product Recommendations'],
     deliverables: ['Live E-Commerce Platform', 'Payment Provider Integration', 'Admin Inventory Panel', 'SEO & Schema Optimization'],
+    image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'cloud-solutions',
     title: 'Cloud Solutions',
     description: 'AWS & Azure cloud architecture, Kubernetes container orchestration, serverless migrations, and DevOps automation.',
-    fullDescription: 'Modernize your infrastructure for maximum uptime and cost efficiency. Our DevOps engineers architect zero-downtime deployments, auto-scaling Kubernetes clusters, and automated continuous delivery pipelines.',
+    fullDescription: 'Modernize your infrastructure for maximum upscale and cost efficiency. Our DevOps engineers architect zero-downtime deployments, auto-scaling Kubernetes clusters, and automated continuous delivery pipelines.',
     iconName: 'Cloud',
     features: ['AWS / Azure Infrastructure as Code (Terraform)', 'Kubernetes & Docker Microservices', '99.99% Uptime Architecture', 'Automated Security & Vulnerability Scans'],
     deliverables: ['Terraform Cloud Architecture', 'CI/CD GitHub Actions Pipeline', 'Cloud Cost Audit & Optimization', 'Disaster Recovery Plan'],
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'api-development',
@@ -103,6 +112,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Code2',
     features: ['REST, GraphQL & gRPC Protocols', 'OAuth2 / OpenID Connect Security', 'Automated Swagger/OpenAPI Specs', 'High-Throughput Rate Limiting'],
     deliverables: ['Production API Endpoint Suite', 'Interactive API Documentation', 'Postman / SDK Testing Kit', 'Security Audit Certificate'],
+    image: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'software-maintenance',
@@ -112,6 +122,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'ShieldCheck',
     features: ['24/7 Automated Health & Performance Monitoring', 'Monthly Security Vulnerability Patches', 'Database Query & Index Optimization', 'Dedicated On-Call Engineer SLA'],
     deliverables: ['Monthly Health Audit Report', 'Zero-Day Patch Guarantee', 'Continuous Dependency Updates', 'Quarterly Scalability Review'],
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'digital-marketing',
@@ -121,6 +132,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'TrendingUp',
     features: ['Omnichannel Growth & PPC Management', 'Conversion Rate Optimization (CRO)', 'Analytics Attribution Modeling', 'Funnel A/B & Multivariate Testing'],
     deliverables: ['Growth Strategy Roadmap', 'Bi-Weekly ROI Dashboard', 'Ad Copy & Creative Suite', 'Funnel Optimization Report'],
+    image: 'https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'seo-services',
@@ -130,6 +142,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Search',
     features: ['Technical Core Web Vitals Acceleration', 'JSON-LD Rich Snippet Engineering', 'Deep Keyword Opportunity Mapping', 'High-Authority Backlink Acquisition'],
     deliverables: ['Technical SEO Audit & Fixes', 'Keyword Ranking Tracker', 'Schema Configuration Report', 'Monthly Organic Growth Review'],
+    image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'graphic-design',
@@ -139,6 +152,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Layers',
     features: ['Complete Corporate Identity System', 'Custom 3D & Isometric Brand Illustrations', 'Motion Graphics & UI Micro-Animations', 'Brand Guidelines & Typography Book'],
     deliverables: ['Logo & Vector Asset Kit', 'Interactive Brand Guide', 'Social Media Asset Pack', 'Print & Digital Collateral Suite'],
+    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
@@ -267,6 +281,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Week 1',
     deliverables: ['Product Requirement Document (PRD)', 'Technical Scope Blueprint', 'Project Milestone Schedule'],
     icon: 'SearchCheck',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 2,
@@ -276,15 +291,17 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Week 2',
     deliverables: ['Entity Relationship Diagram (ERD)', 'Cloud Infrastructure Spec', 'Security & Compliance Strategy'],
     icon: 'Compass',
+    image: 'https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 3,
     title: 'UI/UX Design',
     subtitle: 'Interactive Figma Prototyping',
-    description: 'Our design team crafts bespoke, conversion-driven user interfaces with glassmorphism, responsive breakpoints, design tokens, and clickable prototypes.',
+    description: 'Our design team crafts bespoke, conversion-driven user interfaces with glassmorphic, responsive breakpoints, design tokens, and clickable prototypes.',
     duration: 'Weeks 2-3',
     deliverables: ['Complete Figma Design System', 'High-Fidelity Interactive Prototype', 'Usability Testing Sign-Off'],
     icon: 'Figma',
+    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 4,
@@ -294,6 +311,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Weeks 4-8+',
     deliverables: ['Production Ready Source Code', 'Sprint Staging Reviews', 'Live Demo Environment'],
     icon: 'Code2',
+    image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 5,
@@ -303,6 +321,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Continuous',
     deliverables: ['QA Test Coverage Report', 'Penetration Testing Certificate', 'Performance Benchmark Scorebook'],
     icon: 'CheckCircle2',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 6,
@@ -312,6 +331,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Launch Day',
     deliverables: ['Live Production Domain', 'SSL & DNS Configuration', 'Automated Backup System Setup'],
     icon: 'Rocket',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80',
   },
   {
     step: 7,
@@ -321,6 +341,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     duration: 'Ongoing',
     deliverables: ['24/7 Server Health Monitoring', 'Monthly Optimization Reports', 'Priority SLA Bug Fixes'],
     icon: 'ShieldCheck',
+    image: 'https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=600&q=80',
   },
 ];
 

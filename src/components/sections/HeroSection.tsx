@@ -31,8 +31,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
       id="hero"
       className="relative min-h-screen pt-36 sm:pt-44 pb-28 flex items-center justify-center overflow-hidden bg-[#2C3531] bg-grid-pattern"
     >
-      {/* Background Graphic Blueprint Image */}
-      <div className="absolute inset-0 bg-[url('/tech_blueprint_bg.png')] bg-cover bg-center opacity-[0.08] mix-blend-screen pointer-events-none z-0" />
 
       {/* Sleek, subtle, high-performance ambient shading */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#116466]/10 rounded-full blur-[100px] pointer-events-none" />

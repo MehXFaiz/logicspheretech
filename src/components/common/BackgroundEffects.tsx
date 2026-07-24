@@ -16,8 +16,9 @@ export const BackgroundEffects: React.FC = () => {
     let height = (canvas.height = window.innerHeight);
 
     const particles: Particle[] = [];
-    const maxParticles = 40; // Lightweight count for background
-    const connectionDist = 140;
+    const maxParticles = 60; // Slightly richer particle count
+    const connectionDist = 120;
+    const mouse = { x: -1000, y: -1000, radius: 180 };
 
     class Particle {
       x: number;
@@ -30,17 +31,35 @@ export const BackgroundEffects: React.FC = () => {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.4; // Very slow drift
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.5; // Very slow drift
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 2 + 0.5;
         // Theme accent colors
-        const colors = ['rgba(255, 203, 154, 0.3)', 'rgba(217, 176, 140, 0.2)', 'rgba(17, 100, 102, 0.4)'];
+        const colors = [
+          'rgba(255, 203, 154, 0.4)', // light peach
+          'rgba(217, 176, 140, 0.3)', // gold/tan
+          'rgba(17, 100, 102, 0.5)',  // deep teal
+        ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
+        // Slow bounce on boundaries
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
+        
+        // Minor mouse influence (slight push away)
+        if (mouse.x > -1000) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x += (dx / dist) * force * 1.5;
+            this.y += (dy / dist) * force * 1.5;
+          }
+        }
+
         this.x += this.vx;
         this.y += this.vy;
       }
@@ -58,11 +77,24 @@ export const BackgroundEffects: React.FC = () => {
     }
 
     const handleResize = () => {
+      if (!canvas) return;
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    };
+
     window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseleave', handleMouseLeave);
 
     const drawFrame = () => {
       ctx.clearRect(0, 0, width, height);
@@ -80,12 +112,31 @@ export const BackgroundEffects: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDist) {
-            const alpha = (1 - dist / connectionDist) * 0.08; // subtle lines
+            const alpha = (1 - dist / connectionDist) * 0.12; // subtle connections
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.strokeStyle = `rgba(17, 100, 102, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw subtle interactive connections to mouse cursor
+      if (mouse.x > -1000) {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const alpha = (1 - dist / mouse.radius) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(255, 203, 154, ${alpha})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
@@ -99,29 +150,34 @@ export const BackgroundEffects: React.FC = () => {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-      {/* 1. Scrolling Tech Matrix Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.06] animate-[spin_180s_linear_infinite]" />
+    <div className="fixed inset-0 w-full h-full pointer-events-none overflow-hidden z-0 bg-[#2C3531]">
+      {/* 1. Slow-Scrolling Digital Grid Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.06] animate-grid-scroll" />
 
-      {/* 2. Abstract High-Tech Blueprint Image Layer (Slow pulsating zoom) */}
+      {/* 2. Slow-Rotating Digital Radial Grid for layered depth */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] animate-[spin_300s_linear_infinite] scale-150" />
+
+      {/* 3. Glowing Ambient Orbs (Float/Nebula effects) */}
       <div 
-        className="absolute inset-0 bg-[url('/tech_blueprint_bg.png')] bg-cover bg-center opacity-[0.05] mix-blend-screen animate-[pulse_12s_ease-in-out_infinite]" 
-        style={{ animationDelay: '2s' }}
+        className="absolute top-[-10%] left-[-10%] w-[55vw] h-[55vw] bg-[#116466]/15 rounded-full blur-[130px] animate-[pulse_10s_ease-in-out_infinite]" 
       />
       <div 
-        className="absolute inset-0 bg-[url('/matrix_grid_bg.png')] bg-cover bg-center opacity-[0.04] mix-blend-screen animate-[pulse_18s_ease-in-out_infinite]" 
+        className="absolute bottom-[-10%] right-[-10%] w-[55vw] h-[55vw] bg-[#D9B08C]/8 rounded-full blur-[130px] animate-[pulse_14s_ease-in-out_infinite]" 
+        style={{ animationDelay: '4s' }} 
+      />
+      <div 
+        className="absolute top-[40%] left-[30%] w-[35vw] h-[35vw] bg-[#FFCB9A]/5 rounded-full blur-[140px] animate-[pulse_12s_ease-in-out_infinite]" 
+        style={{ animationDelay: '2s' }} 
       />
 
-      {/* 3. Drifting Ambient Orbs (Nebula/Glow effect) */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#116466]/10 rounded-full blur-[120px] animate-[pulse_10s_ease-in-out_infinite]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[#D9B08C]/5 rounded-full blur-[120px] animate-[pulse_14s_ease-in-out_infinite]" style={{ animationDelay: '4s' }} />
-
-      {/* 4. Constellation Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-60" />
+      {/* 4. Constellation Interactive Canvas */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-70" />
     </div>
   );
 };
