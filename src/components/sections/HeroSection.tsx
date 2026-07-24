@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   ArrowRight,
   Sparkles,
@@ -102,9 +103,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-6"
+            className="lg:col-span-6 relative group"
           >
-            <div className="relative rounded-none bg-[#242b28] border border-[#116466] shadow-[0_0_30px_rgba(17,100,102,0.15)] overflow-hidden">
+            {/* Glowing background gradient shadow with custom Tailwind animations */}
+            <div className="absolute -inset-1.5 bg-gradient-to-r from-[#116466]/40 via-[#D9B08C]/20 to-[#FFCB9A]/40 rounded-none blur-2xl opacity-75 group-hover:opacity-100 group-hover:scale-102 transition duration-700 animate-pulse pointer-events-none" />
+
+            {/* Decorative Floating Tech Illustration Card */}
+            <div className="absolute -bottom-8 -left-8 w-44 h-44 rounded-none overflow-hidden border border-[#FFCB9A] bg-[#242b28] shadow-[0_20px_50px_rgba(0,0,0,0.65)] animate-float pointer-events-none hidden sm:block z-20">
+              <Image 
+                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" 
+                alt="System Architecture Visual"
+                fill
+                sizes="(max-w-768px) 100vw, 200px"
+                className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-transparent to-transparent" />
+              <div className="absolute bottom-2.5 left-2.5 right-2.5 text-[8px] font-mono text-[#D1E8E2] bg-[#242b28]/95 py-1 px-2 border border-[#116466]/60">
+                SYSTEMS ARCHITECTURE // 0xFA
+              </div>
+            </div>
+
+            <div className="relative rounded-none bg-[#242b28] border border-[#116466] shadow-[0_0_30px_rgba(17,100,102,0.15)] overflow-hidden z-10">
               {/* Studio Window Header Bar */}
               <div className="px-6 py-4 border-b border-[#116466] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-[#2C3531]">
                 <div className="flex items-center gap-2">
