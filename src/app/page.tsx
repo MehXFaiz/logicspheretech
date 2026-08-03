@@ -18,13 +18,14 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { ServiceModal } from '@/components/common/ServiceModal';
 import { QuoteModal } from '@/components/common/QuoteModal';
 import { SplashScreen } from '@/components/common/SplashScreen';
-
-import { BackgroundEffects } from '@/components/common/BackgroundEffects';
+import { CustomCursor } from '@/components/common/CustomCursor';
+import { AnimatePresence } from 'framer-motion';
 
 export default function HomePage() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [initialQuoteService, setInitialQuoteService] = useState<string>('Website Development');
+  const [loading, setLoading] = useState(true);
 
   const handleOpenQuote = (serviceName?: string) => {
     if (serviceName) {
@@ -34,9 +35,13 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-900 dark:text-slate-100 selection:bg-[#0F766E] selection:text-white relative transition-colors duration-300">
-      <BackgroundEffects />
-      <SplashScreen />
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#0A0A0A] text-white selection:bg-[#00D9A6] selection:text-[#0A0A0A] relative transition-colors duration-300">
+      <CustomCursor />
+
+      <AnimatePresence mode="wait">
+        {loading && <SplashScreen onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
       <Navbar onOpenQuote={() => handleOpenQuote('Website Development')} />
       <HeroSection onOpenQuote={() => handleOpenQuote('Website Development')} />
       <StatsCounters />
