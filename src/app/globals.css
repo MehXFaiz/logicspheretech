@@ -60,35 +60,38 @@ h1, h2, h3, h4, h5, h6 {
   scrollbar-width: none;
 }
 
-/* Apple Glass Panel */
+/* Apple × Linear Glass Panels */
 .apple-glass-panel {
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
-.apple-glass-dark {
-  background: rgba(17, 17, 17, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.dark .apple-glass-panel {
+  background: rgba(28, 28, 30, 0.8);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Apple Pill Button */
+/* Linear & Apple Pill Button Effects */
 .apple-btn-primary {
   background-color: #0071E3;
   color: #FFFFFF;
   border-radius: 9999px;
-  font-weight: 500;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 600;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .apple-btn-primary:hover {
   background-color: #0077ED;
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.25);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 113, 227, 0.3);
+}
+.apple-btn-primary:active {
+  transform: translateY(0px) scale(0.98);
 }
 
 .apple-btn-secondary {
@@ -97,11 +100,19 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 9999px;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .apple-btn-secondary {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .apple-btn-secondary:hover {
+  transform: translateY(-2px) scale(1.02);
   background-color: rgba(0, 0, 0, 0.08);
-  transform: scale(1.02);
+}
+.dark .apple-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Floating animation */
@@ -110,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
 }
 .animate-apple-float {
