@@ -19,6 +19,8 @@ import { ServiceModal } from '@/components/common/ServiceModal';
 import { QuoteModal } from '@/components/common/QuoteModal';
 import { SplashScreen } from '@/components/common/SplashScreen';
 
+import { BackgroundEffects } from '@/components/common/BackgroundEffects';
+
 export default function HomePage() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
@@ -32,7 +34,8 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#2C3531] text-slate-100 selection:bg-[#116466] selection:text-[#D1E8E2]">
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#2C3531] text-slate-100 selection:bg-[#116466] selection:text-[#D1E8E2] relative">
+      <BackgroundEffects />
       <SplashScreen />
       <Navbar onOpenQuote={() => handleOpenQuote('Website Development')} />
       <HeroSection onOpenQuote={() => handleOpenQuote('Website Development')} />

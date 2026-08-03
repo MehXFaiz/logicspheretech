@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   ArrowRight,
   Sparkles,
@@ -186,16 +187,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                         </div>
                       </div>
 
-                      {/* Simulated Server Cluster Graph */}
-                      <div className="p-4 bg-[#2C3531]/50 border border-[#116466]/30 space-y-2.5 font-mono">
-                        <div className="flex items-center justify-between text-xs text-slate-300">
-                          <span className="flex items-center gap-1.5">
-                            <Globe className="w-3.5 h-3.5 text-[#116466]" /> Edge CDN Routing Matrix
-                          </span>
-                          <span className="text-[#FFCB9A] font-semibold">36 Active Regions</span>
-                        </div>
-                        <div className="h-2 bg-[#2C3531] border border-[#116466]/40 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-[#116466] to-[#D9B08C] w-[97%] animate-[pulse_3s_ease-in-out_infinite]" />
+                      {/* Simulated Server Cluster Graph & Architecture Visual */}
+                      <div className="relative rounded-xl overflow-hidden border border-[#116466]/40 h-28 group">
+                        <Image
+                          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+                          alt="Cloud System Infrastructure"
+                          fill
+                          sizes="(max-w-768px) 100vw, 40vw"
+                          className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-[#242b28]/60 to-transparent" />
+                        <div className="relative z-10 p-3 h-full flex flex-col justify-between font-mono">
+                          <div className="flex items-center justify-between text-xs text-slate-200">
+                            <span className="flex items-center gap-1.5">
+                              <Globe className="w-3.5 h-3.5 text-[#FFCB9A]" /> Edge CDN Routing Matrix
+                            </span>
+                            <span className="text-[#FFCB9A] font-semibold text-[10px]">36 Active Regions</span>
+                          </div>
+                          <div className="h-2 bg-[#2C3531] border border-[#116466]/60 overflow-hidden rounded-full">
+                            <div className="h-full bg-gradient-to-r from-[#116466] via-[#FFCB9A] to-[#D9B08C] w-[97%] animate-[pulse_3s_ease-in-out_infinite]" />
+                          </div>
                         </div>
                       </div>
                     </motion.div>
