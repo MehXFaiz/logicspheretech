@@ -9,7 +9,7 @@ import { GithubIcon } from '@/components/common/BrandIcons';
 export const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Web App', 'Mobile App', 'AI & SaaS', 'E-Commerce'];
+  const categories = ['All', 'Website', 'Web App', 'Mobile App', 'AI & SaaS', 'E-Commerce'];
 
   const filteredProjects =
     selectedCategory === 'All'
@@ -36,12 +36,12 @@ export const PortfolioSection: React.FC = () => {
         </div>
 
         {/* Category Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-14 font-mono">
+        <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 mb-10 sm:mb-14 font-mono no-scrollbar">
           {categories.map((catName) => (
             <button
               key={catName}
               onClick={() => setSelectedCategory(catName)}
-              className={`px-5 py-2 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              className={`shrink-0 px-4 sm:px-5 py-2 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                 selectedCategory === catName
                   ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
                   : 'bg-[#242b28] hover:bg-[#116466]/20 text-[#D1E8E2]/70 hover:text-[#D1E8E2] border border-[#116466]/40'

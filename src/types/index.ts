@@ -20,7 +20,7 @@ export interface TechnologyItem {
 export interface PortfolioProject {
   id: string;
   title: string;
-  category: 'Web App' | 'Mobile App' | 'AI & SaaS' | 'E-Commerce';
+  category: 'Website' | 'Web App' | 'Mobile App' | 'AI & SaaS' | 'E-Commerce';
   description: string;
   image: string;
   technologies: string[];
