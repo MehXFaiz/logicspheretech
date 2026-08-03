@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Cpu } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Cpu } from 'lucide-react';
 
 export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -17,7 +17,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         }
         return prev + 5;
       });
-    }, 40);
+    }, 35);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -26,46 +26,37 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeInOut' } }}
-      className="fixed inset-0 z-50 bg-[#0A0A0A] flex flex-col items-center justify-center font-body p-4"
+      className="fixed inset-0 z-50 bg-[#F5F5F7] flex flex-col items-center justify-center font-body p-4"
     >
-      {/* Background Aurora Blob */}
-      <div className="absolute w-[500px] h-[500px] bg-[#00D9A6]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
-
-      <div className="relative z-10 text-center space-y-6 max-w-sm w-full">
-        {/* Brand Icon */}
+      <div className="text-center space-y-6 max-w-xs w-full">
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00D9A6] to-[#3B82F6] p-0.5 mx-auto shadow-2xl shadow-[#00D9A6]/20"
+          className="w-14 h-14 rounded-2xl bg-[#1D1D1F] text-white mx-auto flex items-center justify-center shadow-lg"
         >
-          <div className="w-full h-full bg-[#0A0A0A] rounded-[14px] flex items-center justify-center">
-            <Cpu className="w-8 h-8 text-[#00D9A6]" />
-          </div>
+          <Cpu className="w-7 h-7 text-[#0071E3]" />
         </motion.div>
 
-        {/* Title */}
         <div>
-          <h1 className="text-2xl font-bold font-heading tracking-tight text-white flex items-center justify-center gap-2">
-            <span>LOGICSPHERE</span>
-            <span className="text-[#00D9A6]">TECH</span>
+          <h1 className="text-xl font-bold font-heading tracking-tight text-[#1D1D1F]">
+            Logic Sphere <span className="text-[#0071E3]">Technology</span>
           </h1>
-          <p className="text-xs font-mono text-[#A1A1AA] uppercase tracking-widest mt-1">
-            ENTERPRISE SOFTWARE ATELIER
+          <p className="text-[11px] font-mono text-[#86868B] uppercase tracking-widest mt-1">
+            Product Engineering Studio
           </p>
         </div>
 
-        {/* Progress Bar Container */}
         <div className="space-y-2">
-          <div className="w-full h-1.5 bg-[#18181B] rounded-full overflow-hidden border border-white/5">
+          <div className="w-full h-1 bg-[#E5E5EA] rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#00D9A6] via-[#38BDF8] to-[#3B82F6]"
+              className="h-full bg-[#0071E3]"
               style={{ width: `${progress}%` }}
             />
           </div>
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#A1A1AA]">
-            <span>LOADING ARCHITECTURE</span>
-            <span className="text-[#00D9A6] font-bold">{progress}%</span>
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#86868B]">
+            <span>LOADING EXPERIENCE</span>
+            <span className="text-[#0071E3] font-bold">{progress}%</span>
           </div>
         </div>
       </div>

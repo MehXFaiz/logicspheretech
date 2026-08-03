@@ -35,7 +35,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#0A0A0A] text-white selection:bg-[#00D9A6] selection:text-[#0A0A0A] relative transition-colors duration-300">
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#F5F5F7] dark:bg-[#111111] text-[#1D1D1F] dark:text-white selection:bg-[#0071E3] selection:text-white relative transition-colors duration-300">
       <CustomCursor />
 
       <AnimatePresence mode="wait">

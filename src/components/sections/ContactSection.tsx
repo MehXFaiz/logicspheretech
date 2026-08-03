@@ -10,7 +10,7 @@ import {
   Clock,
   Sparkles,
   MessageSquare,
-  ArrowRight,
+  ChevronRight,
   Headphones,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -84,26 +84,23 @@ export const ContactSection: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-28 bg-[#0A0A0A] relative transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-body">
+    <section id="contact" className="py-32 bg-[#F5F5F7] dark:bg-[#111111] relative transition-colors duration-300 font-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#00D9A6]/10 text-[#00D9A6] border border-[#00D9A6]/30 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" /> Contact Us
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-tight bg-black/5 dark:bg-white/10 text-[#1D1D1F] dark:text-white mb-4 font-body">
+            <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Contact Us
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-            Let&apos;s Build Your{' '}
-            <span className="text-gradient-emerald">
-              Next Digital Solution
-            </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1D1D1F] dark:text-white tracking-tight leading-tight">
+            Let&apos;s Build Your <span className="text-[#0071E3]">Next Digital Solution.</span>
           </h2>
-          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-[#86868B] dark:text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
             Whether you need a business website, ERP system, CRM platform, SaaS product, AI-powered application, mobile app, or custom software, our team is ready to help turn your ideas into reality.
           </p>
         </motion.div>
@@ -115,7 +112,7 @@ export const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 space-y-8"
+            className="lg:col-span-5 space-y-8 font-body"
           >
             <div className="grid grid-cols-2 gap-4">
               {highlights.map((item, idx) => {
@@ -123,15 +120,15 @@ export const ContactSection: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="p-5 rounded-[20px] bg-[#18181B] border border-white/10 shadow-xl hover:border-[#00D9A6]/50 transition-all hover:-translate-y-1"
+                    className="p-5 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 shadow-sm hover:border-[#0071E3]/40 transition-all hover:-translate-y-1"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center mb-3">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-xs text-[#A1A1AA] font-mono block uppercase font-semibold">
+                    <span className="text-xs text-[#86868B] font-mono block uppercase font-semibold">
                       {item.title}
                     </span>
-                    <span className="text-sm font-bold font-heading text-white mt-0.5 block">
+                    <span className="text-sm font-bold font-heading text-[#1D1D1F] dark:text-white mt-0.5 block">
                       {item.desc}
                     </span>
                   </div>
@@ -139,70 +136,70 @@ export const ContactSection: React.FC = () => {
               })}
             </div>
 
-            <div className="p-8 rounded-3xl bg-[#18181B] border border-white/10 space-y-7 shadow-xl">
+            <div className="p-8 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 space-y-7 shadow-sm">
               <div>
-                <span className="text-xs font-mono text-[#00D9A6] font-semibold block mb-1">
+                <span className="text-xs font-mono text-[#0071E3] font-semibold block mb-1">
                   DIRECT EXECUTIVE DESK
                 </span>
-                <h3 className="text-2xl font-bold font-heading text-white">
+                <h3 className="text-2xl font-bold font-heading text-[#1D1D1F] dark:text-white">
                   Get in Touch Directly
                 </h3>
               </div>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm font-heading">Email Address</h4>
+                    <h4 className="font-bold text-[#1D1D1F] dark:text-white text-sm font-heading">Email Address</h4>
                     <a
                       href="mailto:logicspheretech@gmail.com"
-                      className="text-sm text-[#00D9A6] hover:underline mt-0.5 block font-mono font-bold"
+                      className="text-sm text-[#0071E3] hover:underline mt-0.5 block font-mono font-bold"
                     >
                       logicspheretech@gmail.com
                     </a>
-                    <p className="text-xs text-[#A1A1AA] mt-0.5">Encrypted enterprise quotes & briefs</p>
+                    <p className="text-xs text-[#86868B] mt-0.5">Encrypted enterprise quotes & briefs</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm font-heading">Phone & WhatsApp</h4>
+                    <h4 className="font-bold text-[#1D1D1F] dark:text-white text-sm font-heading">Phone & WhatsApp</h4>
                     <a
                       href="https://wa.me/923032567909"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-[#00D9A6] hover:underline mt-0.5 block font-mono font-bold"
+                      className="text-sm text-[#0071E3] hover:underline mt-0.5 block font-mono font-bold"
                     >
                       +92 3032567909
                     </a>
-                    <p className="text-xs text-[#A1A1AA] mt-0.5">Instant WhatsApp priority desk</p>
+                    <p className="text-xs text-[#86868B] mt-0.5">Instant WhatsApp priority desk</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm font-heading">Office Location</h4>
-                    <p className="text-sm text-[#A1A1AA] mt-0.5">
+                    <h4 className="font-bold text-[#1D1D1F] dark:text-white text-sm font-heading">Office Location</h4>
+                    <p className="text-sm text-[#86868B] dark:text-[#A1A1AA] mt-0.5">
                       San Francisco Tech Atelier & Global Ops
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm font-heading">Business Hours</h4>
-                    <p className="text-sm text-[#A1A1AA] mt-0.5">
+                    <h4 className="font-bold text-[#1D1D1F] dark:text-white text-sm font-heading">Business Hours</h4>
+                    <p className="text-sm text-[#86868B] dark:text-[#A1A1AA] mt-0.5">
                       24/7 Global Priority Support Desk
                     </p>
                   </div>
@@ -217,19 +214,19 @@ export const ContactSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 font-body"
           >
-            <div className="p-8 sm:p-12 rounded-3xl bg-[#18181B] border border-white/10 shadow-2xl">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 shadow-sm">
               {submitted ? (
                 <div className="text-center py-16 space-y-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[#00D9A6] text-[#0A0A0A] mx-auto flex items-center justify-center shadow-lg">
+                  <div className="w-16 h-16 rounded-2xl bg-[#0071E3] text-white mx-auto flex items-center justify-center shadow-lg">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white">
+                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#1D1D1F] dark:text-white">
                     Consultation Booked Successfully!
                   </h3>
-                  <p className="text-[#A1A1AA] max-w-md mx-auto leading-relaxed text-sm sm:text-base">
-                    Thank you, <strong className="text-[#00D9A6]">{formData.name}</strong>. Our Principal Architect has received your request for <strong className="text-white">{formData.service}</strong> and will reach out within 24 hours.
+                  <p className="text-[#86868B] dark:text-[#A1A1AA] max-w-md mx-auto leading-relaxed text-sm sm:text-base">
+                    Thank you, <strong className="text-[#0071E3]">{formData.name}</strong>. Our Principal Architect has received your request for <strong className="text-[#1D1D1F] dark:text-white">{formData.service}</strong> and will reach out within 24 hours.
                   </p>
                   <button
                     onClick={() => {
@@ -245,7 +242,7 @@ export const ContactSection: React.FC = () => {
                         privacyAgreed: false,
                       });
                     }}
-                    className="px-8 py-3.5 rounded-full bg-[#00D9A6] hover:bg-[#00D9A6]/90 text-[#0A0A0A] font-bold text-sm transition-all shadow-md"
+                    className="apple-btn-primary px-8 py-3.5 text-sm font-semibold shadow-md"
                   >
                     Book Another Consultation
                   </button>
@@ -253,17 +250,17 @@ export const ContactSection: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold font-heading text-white mb-1.5">
+                    <h3 className="text-2xl font-bold font-heading text-[#1D1D1F] dark:text-white mb-1.5">
                       Book a Free Technical Consultation
                     </h3>
-                    <p className="text-sm text-[#A1A1AA]">
+                    <p className="text-sm text-[#86868B] dark:text-[#A1A1AA]">
                       Fill out the form below to receive a free architecture review and project scope breakdown.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Full Name *
                       </label>
                       <input
@@ -271,8 +268,8 @@ export const ContactSection: React.FC = () => {
                         placeholder="Alex Johnson"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border text-white placeholder-slate-500 text-sm focus:outline-none transition-all ${
-                          errors.name ? 'border-rose-500' : 'border-white/10 focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20'
+                        className={`w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border text-[#1D1D1F] dark:text-white placeholder-[#86868B] text-sm focus:outline-none transition-all ${
+                          errors.name ? 'border-rose-500' : 'border-black/5 dark:border-white/10 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20'
                         }`}
                       />
                       {errors.name && (
@@ -281,7 +278,7 @@ export const ContactSection: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Company Name (Optional)
                       </label>
                       <input
@@ -289,14 +286,14 @@ export const ContactSection: React.FC = () => {
                         placeholder="Acme Corp"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border border-black/5 dark:border-white/10 text-[#1D1D1F] dark:text-white placeholder-[#86868B] text-sm focus:outline-none focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Email Address *
                       </label>
                       <input
@@ -304,8 +301,8 @@ export const ContactSection: React.FC = () => {
                         placeholder="alex@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border text-white placeholder-slate-500 text-sm focus:outline-none transition-all ${
-                          errors.email ? 'border-rose-500' : 'border-white/10 focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20'
+                        className={`w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border text-[#1D1D1F] dark:text-white placeholder-[#86868B] text-sm focus:outline-none transition-all ${
+                          errors.email ? 'border-rose-500' : 'border-black/5 dark:border-white/10 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20'
                         }`}
                       />
                       {errors.email && (
@@ -314,7 +311,7 @@ export const ContactSection: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Phone Number
                       </label>
                       <input
@@ -322,20 +319,20 @@ export const ContactSection: React.FC = () => {
                         placeholder="+1 (415) 000-0000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-white/10 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border border-black/5 dark:border-white/10 text-[#1D1D1F] dark:text-white placeholder-[#86868B] text-sm focus:outline-none focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Service Required
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-white/10 text-white text-sm focus:outline-none focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border border-black/5 dark:border-white/10 text-[#1D1D1F] dark:text-white text-sm focus:outline-none focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 transition-all"
                       >
                         <option value="Website Development">Website Development</option>
                         <option value="ERP Development">ERP Development</option>
@@ -351,13 +348,13 @@ export const ContactSection: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                         Budget Tier
                       </label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border border-white/10 text-white text-sm focus:outline-none focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20 transition-all"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border border-black/5 dark:border-white/10 text-[#1D1D1F] dark:text-white text-sm focus:outline-none focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 transition-all"
                       >
                         <option value="Under $1,000">Under $1,000</option>
                         <option value="$1,000–$5,000">$1,000 – $5,000</option>
@@ -368,7 +365,7 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#A1A1AA] mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">
                       Project Description *
                     </label>
                     <textarea
@@ -376,10 +373,10 @@ export const ContactSection: React.FC = () => {
                       placeholder="Share your goals, requirements, desired timeline, or reference applications..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-[#0A0A0A] border text-white placeholder-slate-500 text-sm focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border text-[#1D1D1F] dark:text-white placeholder-[#86868B] text-sm focus:outline-none transition-all ${
                         errors.message
                           ? 'border-rose-500'
-                          : 'border-white/10 focus:border-[#00D9A6] focus:ring-2 focus:ring-[#00D9A6]/20'
+                          : 'border-black/5 dark:border-white/10 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20'
                       }`}
                     />
                     {errors.message && (
@@ -388,12 +385,12 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="flex items-center gap-2.5 cursor-pointer text-xs text-[#A1A1AA] select-none">
+                    <label className="flex items-center gap-2.5 cursor-pointer text-xs text-[#86868B] select-none">
                       <input
                         type="checkbox"
                         checked={formData.privacyAgreed}
                         onChange={(e) => setFormData({ ...formData, privacyAgreed: e.target.checked })}
-                        className="w-4 h-4 rounded text-[#00D9A6] focus:ring-[#00D9A6] border-slate-700 bg-[#0A0A0A] accent-[#00D9A6]"
+                        className="w-4 h-4 rounded text-[#0071E3] focus:ring-[#0071E3] border-slate-300 accent-[#0071E3]"
                       />
                       <span>I agree to the Privacy Policy and confidential data handling.</span>
                     </label>
@@ -405,14 +402,14 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-full bg-[#00D9A6] hover:bg-[#00D9A6]/90 disabled:opacity-50 text-[#0A0A0A] font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#00D9A6]/20 hover:scale-[1.01]"
+                    className="apple-btn-primary w-full py-4 text-sm font-semibold flex items-center justify-center gap-2 shadow-md"
                   >
                     {isSubmitting ? (
                       <span>Processing Consultation Request...</span>
                     ) : (
                       <>
                         <span>Book Free Consultation</span>
-                        <Send className="w-4 h-4 stroke-[2.5]" />
+                        <Send className="w-4 h-4" />
                       </>
                     )}
                   </button>
@@ -428,10 +425,10 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-20 font-body"
         >
           <div className="text-center mb-8">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#A1A1AA]">
+            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#86868B]">
               WHY PARTNER WITH US
             </span>
           </div>
@@ -440,13 +437,13 @@ export const ContactSection: React.FC = () => {
             {whyContactUs.map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-[20px] bg-[#18181B] border border-white/10 shadow-xl hover:border-[#00D9A6]/50 transition-all hover:-translate-y-1.5"
+                className="p-6 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 shadow-sm hover:border-[#0071E3]/40 transition-all hover:-translate-y-1.5"
               >
-                <div className="flex items-center gap-2.5 text-[#00D9A6] font-bold font-heading mb-2">
+                <div className="flex items-center gap-2.5 text-[#0071E3] font-bold font-heading mb-2">
                   <CheckCircle2 className="w-5 h-5 shrink-0" />
                   <h4>{item.title}</h4>
                 </div>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed">
+                <p className="text-xs text-[#86868B] dark:text-[#A1A1AA] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -460,14 +457,11 @@ export const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-3xl bg-[#18181B] border border-white/10 p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden"
+          className="rounded-3xl bg-[#1D1D1F] text-white p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
         >
-          <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#00D9A6]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-[#3B82F6]/10 rounded-full blur-3xl pointer-events-none" />
-
           <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#00D9A6]/10 text-[#00D9A6] border border-[#00D9A6]/30">
-              <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" /> Start Building Today
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 text-white">
+              <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Start Building Today
             </span>
             <h3 className="text-3xl sm:text-4xl font-bold font-heading text-white leading-tight">
               Ready to Start Your Project?
@@ -482,15 +476,15 @@ export const ContactSection: React.FC = () => {
                   const el = document.getElementById('contact');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto px-8 py-4 bg-[#00D9A6] hover:bg-[#00D9A6]/90 text-[#0A0A0A] font-bold rounded-full text-sm shadow-lg shadow-[#00D9A6]/20 transition-all flex items-center justify-center gap-2.5 group"
+                className="apple-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
               >
                 <span>Schedule Free Consultation</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[2.5]" />
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <a
                 href="#portfolio"
-                className="w-full sm:w-auto px-8 py-4 bg-[#0A0A0A] hover:bg-black text-white font-medium rounded-full text-sm border border-white/10 transition-all shadow-sm flex items-center justify-center text-center"
+                className="apple-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center text-white bg-white/10 hover:bg-white/15"
               >
                 View Our Portfolio
               </a>

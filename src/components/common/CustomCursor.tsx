@@ -9,7 +9,6 @@ export const CustomCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only enable on desktop/pointer devices
     if (window.matchMedia('(pointer: coarse)').matches) {
       return;
     }
@@ -19,7 +18,6 @@ export const CustomCursor: React.FC = () => {
     const onMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
 
-      // Check if hovering interactive elements
       const target = e.target as HTMLElement;
       if (
         target &&
@@ -45,24 +43,22 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Outer Follower Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-[#00D9A6]/50 pointer-events-none z-50 mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#0071E3]/40 pointer-events-none z-50 hidden md:block"
         animate={{
-          x: mousePosition.x - 20,
-          y: mousePosition.y - 20,
-          scale: isHovered ? 1.6 : 1,
-          borderColor: isHovered ? '#00D9A6' : 'rgba(0, 217, 166, 0.4)',
+          x: mousePosition.x - 16,
+          y: mousePosition.y - 16,
+          scale: isHovered ? 1.5 : 1,
+          borderColor: isHovered ? '#0071E3' : 'rgba(0, 113, 227, 0.3)',
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 350, mass: 0.5 }}
       />
-      {/* Inner Glowing Cursor Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#00D9A6] pointer-events-none z-50 hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#0071E3] pointer-events-none z-50 hidden md:block"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
-          scale: isHovered ? 2.5 : 1,
+          scale: isHovered ? 2 : 1,
         }}
         transition={{ type: 'spring', damping: 30, stiffness: 450, mass: 0.1 }}
       />

@@ -10,7 +10,7 @@ import {
   ShieldCheck,
   Rocket,
   Headphones,
-  ArrowRight,
+  ChevronRight,
   Zap,
   MessageSquare,
   Lock,
@@ -101,35 +101,32 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
   ];
 
   return (
-    <section id="process" className="py-28 bg-[#0A0A0A] relative overflow-hidden transition-colors duration-300 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-body">
+    <section id="process" className="py-32 bg-[#F5F5F7] dark:bg-[#111111] relative overflow-hidden transition-colors duration-300 border-b border-black/5 dark:border-white/10 font-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#00D9A6]/10 text-[#00D9A6] border border-[#00D9A6]/30 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" /> Our Process
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-tight bg-black/5 dark:bg-white/10 text-[#1D1D1F] dark:text-white mb-4 font-body">
+            <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Our Process
           </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-            From Idea to{' '}
-            <span className="text-gradient-emerald">
-              Successful Digital Product
-            </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1D1D1F] dark:text-white tracking-tight leading-tight">
+            From Idea to <span className="text-[#0071E3]">Successful Product.</span>
           </h2>
-          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-[#86868B] dark:text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
             We follow a structured development process that ensures every project is delivered with quality, transparency, and long-term scalability.
           </p>
         </motion.div>
 
-        {/* Workflow Timeline */}
+        {/* Timeline Grid */}
         <div className="relative mb-20">
-          <div className="hidden lg:block absolute top-[52px] left-[40px] right-[40px] h-0.5 bg-white/10 z-0" />
+          <div className="hidden lg:block absolute top-[52px] left-[40px] right-[40px] h-0.5 bg-black/5 dark:bg-white/10 z-0" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-6 relative z-10 font-body">
             {workflowSteps.map((stepItem, idx) => {
               const Icon = stepItem.icon;
               const isCurrent = activeStep === stepItem.step;
@@ -146,34 +143,34 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                   className="group cursor-pointer"
                 >
                   <div
-                    className={`h-full rounded-[20px] bg-[#18181B] border p-6 flex flex-col justify-between transition-all duration-300 shadow-xl ${
+                    className={`h-full rounded-3xl bg-white dark:bg-[#1C1C1E] border p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl ${
                       isCurrent
-                        ? 'border-[#00D9A6] ring-2 ring-[#00D9A6]/20'
-                        : 'border-white/10 hover:border-[#00D9A6]/50'
+                        ? 'border-[#0071E3] ring-2 ring-[#0071E3]/20'
+                        : 'border-black/5 dark:border-white/10 hover:border-[#0071E3]/40'
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="w-9 h-9 rounded-xl bg-[#0A0A0A] text-[#00D9A6] font-mono text-xs font-bold flex items-center justify-center border border-white/10">
+                        <span className="w-9 h-9 rounded-xl bg-[#F5F5F7] dark:bg-[#111111] text-[#0071E3] font-mono text-xs font-bold flex items-center justify-center border border-black/5 dark:border-white/10">
                           {stepItem.num}
                         </span>
-                        <div className="w-10 h-10 rounded-xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
                           <Icon className="w-5 h-5 stroke-[2.2]" />
                         </div>
                       </div>
 
-                      <h3 className="text-base font-bold font-heading text-white group-hover:text-[#00D9A6] transition-colors mb-2">
+                      <h3 className="text-base font-bold font-heading text-[#1D1D1F] dark:text-white group-hover:text-[#0071E3] transition-colors mb-2">
                         {stepItem.title}
                       </h3>
 
-                      <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
+                      <p className="text-xs text-[#86868B] dark:text-[#A1A1AA] leading-relaxed font-body">
                         {stepItem.description}
                       </p>
                     </div>
 
-                    <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-[#A1A1AA]">
+                    <div className="pt-4 mt-4 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] font-mono text-[#86868B]">
                       <span>PHASE {stepItem.num}</span>
-                      <span className="w-2 h-2 rounded-full bg-[#00D9A6]" />
+                      <span className="w-2 h-2 rounded-full bg-[#0071E3]" />
                     </div>
                   </div>
                 </motion.div>
@@ -188,7 +185,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-body"
         >
           {benefits.map((item, idx) => {
             const Icon = item.icon;
@@ -196,15 +193,15 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
               <motion.div
                 key={idx}
                 whileHover={{ y: -6 }}
-                className="group rounded-[20px] bg-[#18181B] border border-white/10 hover:border-[#00D9A6]/50 p-6 shadow-xl transition-all duration-300"
+                className="group rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 p-6 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#00D9A6]/10 text-[#00D9A6] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-6 h-6 stroke-[2.2]" />
                 </div>
-                <h4 className="text-lg font-bold font-heading text-white group-hover:text-[#00D9A6] transition-colors mb-1.5">
+                <h4 className="text-lg font-bold font-heading text-[#1D1D1F] dark:text-white group-hover:text-[#0071E3] transition-colors mb-1.5">
                   {item.title}
                 </h4>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
+                <p className="text-xs text-[#86868B] dark:text-[#A1A1AA] leading-relaxed font-body">
                   {item.description}
                 </p>
               </motion.div>
@@ -218,14 +215,11 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-3xl bg-[#18181B] border border-white/10 p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden"
+          className="rounded-3xl bg-[#1D1D1F] text-white p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
         >
-          <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#00D9A6]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-[#3B82F6]/10 rounded-full blur-3xl pointer-events-none" />
-
           <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#00D9A6]/10 text-[#00D9A6] border border-[#00D9A6]/30">
-              <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" /> Structured Engineering
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 text-white">
+              <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Structured Engineering
             </span>
             <h3 className="text-3xl sm:text-4xl font-bold font-heading text-white leading-tight">
               Ready to Turn Your Vision into Reality?
@@ -243,10 +237,10 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="w-full sm:w-auto px-8 py-4 bg-[#00D9A6] hover:bg-[#00D9A6]/90 text-[#0A0A0A] font-bold rounded-full text-sm shadow-lg shadow-[#00D9A6]/20 transition-all flex items-center justify-center gap-2.5 group"
+                className="apple-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
               >
                 <span>Start Your Project</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[2.5]" />
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
@@ -257,7 +251,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="w-full sm:w-auto px-8 py-4 bg-[#0A0A0A] hover:bg-black text-white font-medium rounded-full text-sm border border-white/10 transition-all shadow-sm flex items-center justify-center text-center"
+                className="apple-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center text-white bg-white/10 hover:bg-white/15"
               >
                 Talk to Our Experts
               </button>
