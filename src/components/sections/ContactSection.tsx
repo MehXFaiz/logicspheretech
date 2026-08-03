@@ -58,20 +58,20 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-28 bg-[#2C3531] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contact" className="py-28 bg-[#F8FAFC] dark:bg-[#0F172A] relative transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-body">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#116466]/10 text-[#116466] border border-[#116466]/35 mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> INITIATE AN ARCHITECTURE BRIEF
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30 mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" /> INITIATE AN ARCHITECTURE BRIEF
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#D1E8E2] tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
             Let&apos;s Architect Your Next{' '}
-            <span className="text-gradient-gold">
+            <span className="text-[#0F766E] dark:text-[#2DD4BF]">
               Breakthrough Product
             </span>
           </h2>
-          <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             Directly connect with our Principal Systems Architect. Guaranteed confidential review and architectural sign-off within 4 hours.
           </p>
         </div>
@@ -79,21 +79,21 @@ export const ContactSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct HQ Info */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="p-8 rounded-3xl bg-[#343e39] border border-[#D1E8E2]/10 space-y-7 shadow-2xl">
+            <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-7 shadow-sm">
               <div>
-                <span className="text-xs font-mono text-[#116466] block mb-1 font-bold">
+                <span className="text-xs font-mono text-[#0F766E] dark:text-[#2DD4BF] font-semibold block mb-1">
                   GLOBAL ENGINEERING & EDGE
                 </span>
-                <h3 className="text-2xl font-black text-[#D1E8E2]">Atelier Headquarters</h3>
+                <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">Atelier Headquarters</h3>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#116466]/15 border border-[#116466]/30 flex items-center justify-center text-[#116466] shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#D1E8E2]">Executive Operations</h4>
-                  <p className="text-sm text-slate-400 mt-1">
+                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Executive Operations</h4>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                     LogicSphere Tech Atelier Desk
                     <br />
                     Global Engineering Headquarters
@@ -102,14 +102,14 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#116466]/15 border border-[#116466]/30 flex items-center justify-center text-[#116466] shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#D1E8E2]">Direct Executive Inbox</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Direct Executive Inbox</h4>
                   <a
                     href="mailto:logicspheretech@gmail.com"
-                    className="text-sm text-[#116466] hover:underline mt-1 block font-mono font-bold"
+                    className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-1 block font-mono font-bold"
                   >
                     logicspheretech@gmail.com
                   </a>
@@ -118,16 +118,16 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#116466]/15 border border-[#116466]/30 flex items-center justify-center text-[#116466] shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#D1E8E2]">Direct Line & WhatsApp</h4>
+                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Direct Line & WhatsApp</h4>
                   <a
                     href="https://wa.me/923032567909"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[#116466] hover:underline mt-1 block font-mono font-bold"
+                    className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-1 block font-mono font-bold"
                   >
                     +92 3032567909
                   </a>
@@ -137,37 +137,36 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Simulated HQ Map Card */}
-            <div className="relative rounded-3xl overflow-hidden border border-[#D1E8E2]/10 shadow-2xl h-64 flex flex-col justify-between p-6 group">
-              {/* Background Workspace Image with dark overlay */}
-              <div className="absolute inset-0 bg-[#2C3531] z-0">
+            <div className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm h-64 flex flex-col justify-between p-6 group">
+              <div className="absolute inset-0 bg-slate-900 z-0">
                 <Image
                   src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=600&q=80"
                   alt="SF Studio Desk"
                   fill
                   sizes="(max-w-768px) 100vw, 30vw"
-                  className="object-cover opacity-25 group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-[#242b28]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
               </div>
 
               <div className="relative z-10 flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#116466]/15 text-[#116466] border border-[#116466]/35 flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5" /> Downtown SF Tech Hub
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/10 text-white border border-white/20 flex items-center gap-1.5">
+                  <Globe className="w-3.5 h-3.5 text-[#2DD4BF]" /> Downtown SF Tech Hub
                 </span>
-                <span className="text-xs font-mono text-[#D9B08C] font-bold flex items-center gap-1">
+                <span className="text-xs font-mono text-[#D4AF37] font-bold flex items-center gap-1">
                   <Clock className="w-3.5 h-3.5" /> UTC-8
                 </span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] flex items-center justify-center shadow-xl shadow-[#116466]/30 animate-bounce">
-                  <MapPin className="w-7 h-7 text-slate-950" />
+                <div className="w-12 h-12 rounded-2xl bg-[#0F766E] flex items-center justify-center shadow-lg">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-black text-[#D1E8E2] mt-3 font-mono">LOGICSPHERE ATELIER CAMPUS</h4>
+                <h4 className="font-bold text-white mt-3 font-heading">LOGICSPHERE ATELIER CAMPUS</h4>
                 <p className="text-xs text-slate-400">Innovation Way, San Francisco</p>
               </div>
 
-              <div className="relative z-10 flex items-center justify-between text-xs text-slate-400 border-t border-[#D1E8E2]/10 pt-3 font-mono">
+              <div className="relative z-10 flex items-center justify-between text-xs text-slate-400 border-t border-white/10 pt-3 font-mono">
                 <span>Lat: 37.7749° N</span>
                 <span>Long: 122.4194° W</span>
               </div>
@@ -176,17 +175,17 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-12 rounded-3xl bg-[#343e39] border border-[#D1E8E2]/10 shadow-2xl">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
               {submitted ? (
                 <div className="text-center py-16 space-y-6">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] mx-auto flex items-center justify-center shadow-xl shadow-[#116466]/25">
-                    <CheckCircle2 className="w-10 h-10 text-slate-950" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#0F766E] text-white mx-auto flex items-center justify-center shadow-lg">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#D1E8E2]">
+                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white">
                     Architecture Brief Received
                   </h3>
-                  <p className="text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you, <span className="text-[#116466] font-bold">{formData.name}</span>. Our Principal Architect has received your specification and will send an initial architectural roadmap within 4 hours.
+                  <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
+                    Thank you, <span className="text-[#0F766E] dark:text-[#2DD4BF] font-bold">{formData.name}</span>. Our Principal Architect has received your specification and will send an initial architectural roadmap within 4 hours.
                   </p>
                   <button
                     onClick={() => {
@@ -200,7 +199,7 @@ export const ContactSection: React.FC = () => {
                         message: '',
                       });
                     }}
-                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 font-black text-xs uppercase tracking-wider"
+                    className="px-8 py-3.5 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium text-sm transition-all"
                   >
                     Submit Another Brief
                   </button>
@@ -208,17 +207,17 @@ export const ContactSection: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <h3 className="text-2xl font-black text-[#D1E8E2] mb-1.5">
+                    <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1.5">
                       Send Your Architecture & Project Brief
                     </h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       Guaranteed response from a Principal Systems Architect within 4 hours.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -226,17 +225,17 @@ export const ContactSection: React.FC = () => {
                         placeholder="Executive Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={`w-full px-4 py-3.5 rounded-xl bg-[#2C3531] border text-[#D1E8E2] placeholder-slate-500 text-sm focus:outline-none transition-colors font-mono ${
-                          errors.name ? 'border-rose-500' : 'border-[#D1E8E2]/10 focus:border-[#116466]'
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+                          errors.name ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
                         }`}
                       />
                       {errors.name && (
-                        <span className="text-xs text-rose-400 mt-1 block">{errors.name}</span>
+                        <span className="text-xs text-rose-500 mt-1 block">{errors.name}</span>
                       )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                         Work Email *
                       </label>
                       <input
@@ -244,25 +243,25 @@ export const ContactSection: React.FC = () => {
                         placeholder="alex@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3.5 rounded-xl bg-[#2C3531] border text-[#D1E8E2] placeholder-slate-500 text-sm focus:outline-none transition-colors font-mono ${
-                          errors.email ? 'border-rose-500' : 'border-[#D1E8E2]/10 focus:border-[#116466]'
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+                          errors.email ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
                         }`}
                       />
                       {errors.email && (
-                        <span className="text-xs text-rose-400 mt-1 block">{errors.email}</span>
+                        <span className="text-xs text-rose-500 mt-1 block">{errors.email}</span>
                       )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                         Service Needed
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[#2C3531] border border-[#D1E8E2]/10 text-[#D1E8E2] text-sm focus:outline-none focus:border-[#116466] font-mono"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E]"
                       >
                         <option value="Website Development">Website Development</option>
                         <option value="Web Applications">Web Applications</option>
@@ -275,13 +274,13 @@ export const ContactSection: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300 mb-2">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                         Estimated Scope Budget
                       </label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[#2C3531] border border-[#D1E8E2]/10 text-[#D1E8E2] text-sm focus:outline-none focus:border-[#116466] font-mono"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E]"
                       >
                         <option value="<$15,000">&lt; $15,000</option>
                         <option value="$15k - $35k">$15,000 - $35,000</option>
@@ -292,7 +291,7 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300 mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
                       Project Specifications & Goals *
                     </label>
                     <textarea
@@ -300,27 +299,27 @@ export const ContactSection: React.FC = () => {
                       placeholder="Share your technical requirements, expected concurrency, timeline, or reference architectures..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3.5 rounded-xl bg-[#2C3531] border text-[#D1E8E2] placeholder-slate-500 text-sm focus:outline-none transition-colors font-mono ${
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
                         errors.message
                           ? 'border-rose-500'
-                          : 'border-[#D1E8E2]/10 focus:border-[#116466]'
+                          : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
                       }`}
                     />
                     {errors.message && (
-                      <span className="text-xs text-rose-400 mt-1 block">{errors.message}</span>
+                      <span className="text-xs text-rose-500 mt-1 block">{errors.message}</span>
                     )}
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] hover:opacity-95 text-slate-950 font-black text-xs uppercase tracking-wider shadow-xl shadow-[#116466]/30 flex items-center justify-center gap-2 transition-all hover:scale-[1.01]"
+                    className="w-full py-4 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium text-sm flex items-center justify-center gap-2 transition-all shadow-md"
                   >
                     <span>Send Brief & Receive Architecture Proposal</span>
                     <Send className="w-4 h-4" />
                   </button>
 
-                  <div className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-400 font-mono">
-                    <ShieldCheck className="w-4 h-4 text-[#116466]" />
+                  <div className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-500">
+                    <ShieldCheck className="w-4 h-4 text-[#0F766E]" />
                     <span>Protected under mutual confidentiality agreement</span>
                   </div>
                 </form>

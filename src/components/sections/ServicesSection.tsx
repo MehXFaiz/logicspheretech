@@ -68,12 +68,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   };
 
   return (
-    <section id="services" className="py-28 bg-[#2C3531] relative overflow-hidden">
-      {/* Gradient background blobs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#116466]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#D9B08C]/10 rounded-full blur-3xl pointer-events-none" />
-      
-      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+    <section id="services" className="py-28 bg-[#F8FAFC] dark:bg-[#0F172A] relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -83,17 +78,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-mono font-semibold uppercase tracking-widest bg-[#116466]/20 text-[#116466] border border-[#116466]/30 mb-3">
-            <Sparkles className="w-3.5 h-3.5" /> CORE CAPABILITIES
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-body font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30 mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" /> CORE CAPABILITIES
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#D1E8E2] tracking-wide leading-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
             Bespoke Architecture For{' '}
-            <span className="text-gradient-primary">
+            <span className="text-[#0F766E] dark:text-[#2DD4BF]">
               High-Velocity Enterprises
             </span>
           </h2>
-          <p className="mt-4 text-[#9fb3aa] text-sm sm:text-base leading-relaxed">
-            From custom Next.js web applications to secure offline RAG vector architectures, we build production systems designed for reliability and performance.
+          <p className="mt-4 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-body">
+            From custom Next.js web applications to secure offline RAG vector architectures, we build production systems designed for reliability and scaling.
           </p>
         </motion.div>
 
@@ -109,10 +104,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             <button
               key={tabName}
               onClick={() => setActiveTab(tabName)}
-              className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              className={`shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider font-body transition-all duration-200 ${
                 activeTab === tabName
-                  ? 'bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] shadow-lg shadow-[#116466]/30'
-                  : 'bg-[#343e39] hover:bg-[#116466]/10 text-[#9fb3aa] hover:text-[#D1E8E2] border border-white/10'
+                  ? 'bg-[#0F766E] text-white shadow-sm'
+                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
               }`}
             >
               {tabName}
@@ -130,95 +125,78 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              whileHover={{ y: -12, transition: { duration: 0.3 } }}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="group relative"
             >
-              {/* Card background with gradient border */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#116466]/50 to-[#D9B08C]/50 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-300" />
-              
-              <div className="relative rounded-3xl bg-[#343e39] border border-white/10 group-hover:border-[#116466]/50 flex flex-col justify-between transition-all duration-500 overflow-hidden h-full">
-                {/* Top decorative gradient */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#116466] via-[#D9B08C] to-[#FFCB9A] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20" />
+              <div className="relative rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:shadow-slate-900/5 flex flex-col justify-between transition-all duration-300 overflow-hidden h-full">
                 
                 {/* 1. Header Image */}
                 {service.image && (
-                  <div className="relative h-44 w-full overflow-hidden bg-[#2C3531] shrink-0">
+                  <div className="relative h-44 w-full overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
                       sizes="(max-w-768px) 100vw, 30vw"
-                      className="object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#343e39] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900 via-transparent to-transparent" />
                   </div>
                 )}
 
                 {service.popular && (
-                  <motion.span
-                    initial={{ scale: 0, rotate: -10 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.3, type: "spring" }}
-                    className="absolute top-6 right-6 px-3 py-1 rounded-full text-[9px] font-mono font-semibold uppercase tracking-widest bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] shadow-lg z-20"
-                  >
+                  <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-[#D4AF37] text-slate-950 shadow-md z-20">
                     FLAGSHIP
-                  </motion.span>
+                  </span>
                 )}
 
                 {/* 2. Content Container */}
-                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col justify-between">
+                <div className="p-6 sm:p-8 relative z-10 flex-1 flex flex-col justify-between font-body">
                   <div>
                     {/* Icon and Title */}
-                    <div className="flex items-center gap-4 mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#343e39] to-[#2C3531] border border-[#116466]/30 group-hover:border-[#116466] flex items-center justify-center text-[#116466] shadow-lg group-hover:shadow-[#116466]/30 transition-all duration-300 shrink-0">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
                         <DynamicIcon name={service.iconName} className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-[#D1E8E2] group-hover:text-gradient-primary transition-all duration-300">
+                      <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white group-hover:text-[#0F766E] dark:group-hover:text-[#2DD4BF] transition-colors">
                         {service.title}
                       </h3>
                     </div>
 
-                    <p className="text-sm text-[#9fb3aa] leading-relaxed mb-6 group-hover:text-[#D1E8E2] transition-colors duration-300">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                       {service.description}
                     </p>
 
-                    {/* Key features with animated checkmarks */}
-                    <ul className="space-y-3 mb-8">
+                    {/* Key features with checkmarks */}
+                    <ul className="space-y-2.5 mb-8">
                       {service.features.slice(0, 3).map((feat, idx) => (
-                        <motion.li
+                        <li
                           key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 + idx * 0.1 + 0.4 }}
-                          className="flex items-start gap-2.5 text-sm text-[#9fb3aa] group-hover:text-[#D1E8E2] transition-colors duration-300"
+                          className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-[#116466] shrink-0 mt-0.5 group-hover:scale-125 transition-transform duration-300" />
+                          <CheckCircle2 className="w-4 h-4 text-[#0F766E] dark:text-[#2DD4BF] shrink-0 mt-0.5" />
                           <span>{feat}</span>
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Action buttons */}
-                  <div className="relative z-10 pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+                  <div className="relative z-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
                     <button
                       onClick={() => onSelectService(service)}
-                      className="text-xs font-semibold text-[#9fb3aa] hover:text-[#116466] flex items-center gap-1.5 transition-all duration-300 group/btn"
+                      className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-[#0F766E] dark:hover:text-[#2DD4BF] flex items-center gap-1.5 transition-colors group/btn"
                     >
                       <span>View Specs</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                     </button>
 
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                    <button
                       onClick={() => onOpenQuote(service.title)}
-                      className="px-5 py-2.5 bg-gradient-to-r from-[#116466] to-[#D9B08C] hover:from-[#D9B08C] hover:to-[#116466] text-[#D1E8E2] text-xs font-semibold tracking-widest uppercase rounded-full shadow-lg shadow-[#116466]/20 transition-all duration-300"
+                      className="px-4 py-2 bg-[#0F766E] hover:bg-[#0D9488] text-white text-xs font-medium rounded-full shadow-sm transition-all"
                     >
                       Request Scope
-                    </motion.button>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -231,35 +209,29 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 rounded-3xl bg-gradient-to-r from-[#343e39] via-[#2C3531] to-[#343e39] border border-[#116466]/30 p-8 flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-16 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden"
         >
-          {/* Background decorations */}
-          <div className="absolute top-0 left-0 w-32 h-32 bg-[#116466]/10 rounded-full blur-2xl" />
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#D9B08C]/10 rounded-full blur-2xl" />
-
-          <div className="flex items-center gap-4 relative z-10">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#116466] to-[#D9B08C] flex items-center justify-center text-[#D1E8E2] shrink-0 shadow-lg shadow-[#116466]/30">
+          <div className="flex items-center gap-4 relative z-10 font-body">
+            <div className="w-14 h-14 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
               <ShieldCheck className="w-7 h-7" />
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-[#D1E8E2]">
+              <h4 className="text-lg font-bold font-heading text-slate-900 dark:text-white">
                 Guaranteed Architectural Code ownership & 100% IP Handover
               </h4>
-              <p className="text-sm text-[#9fb3aa] mt-1">
+              <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                 All deliverables come with comprehensive automated testing suites, clean documentation, and immediate copyright transfer.
               </p>
             </div>
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={() => onOpenQuote()}
-            className="px-8 py-3.5 bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] text-sm font-semibold uppercase tracking-[0.18em] rounded-full shadow-lg shadow-[#116466]/30 transition-all duration-300 relative z-10"
+            className="px-6 py-3 bg-[#0F766E] hover:bg-[#0D9488] text-white text-sm font-medium rounded-full shadow-sm transition-all shrink-0 font-body"
           >
             Schedule Architecture Review
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </section>

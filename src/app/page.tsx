@@ -34,7 +34,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#2C3531] text-slate-100 selection:bg-[#116466] selection:text-[#D1E8E2] relative">
+    <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#F8FAFC] dark:bg-[#0F172A] text-slate-900 dark:text-slate-100 selection:bg-[#0F766E] selection:text-white relative transition-colors duration-300">
       <BackgroundEffects />
       <SplashScreen />
       <Navbar onOpenQuote={() => handleOpenQuote('Website Development')} />

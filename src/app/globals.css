@@ -1,32 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    --bg-primary: #2C3531;
-    --bg-secondary: #242b28;
-    --bg-card: #343e39;
-    --border-subtle: #116466;
-    --text-primary: #D1E8E2;
-    --text-secondary: #9fb3aa;
-    --accent-primary: #116466;
-    --accent-secondary: #D9B08C;
-    --accent-tertiary: #FFCB9A;
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --border-subtle: #E2E8F0;
+    --text-primary: #111827;
+    --text-secondary: #475569;
+    --accent-primary: #0F766E;
+    --accent-secondary: #0F172A;
+    --accent-gold: #D4AF37;
+  }
+
+  .dark {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-card: #1E293B;
+    --border-subtle: #334155;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-primary: #14B8A6;
+    --accent-secondary: #0F766E;
+    --accent-gold: #F59E0B;
   }
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  background-image: 
-    radial-gradient(circle at top left, rgba(17, 100, 102, 0.2), transparent 40%), 
-    radial-gradient(circle at bottom right, rgba(217, 176, 140, 0.1), transparent 40%);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Custom modern scrollbar */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom minimal scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -34,162 +57,67 @@ body {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 0;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--accent-secondary), var(--accent-tertiary));
+  background: #0F766E;
 }
 
-/* Modern glassmorphism utilities */
-.glass-card {
-  background: rgba(52, 62, 57, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(17, 100, 102, 0.3);
+/* Premium Card Utilities */
+.saas-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.saas-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 118, 110, 0.3);
 }
 
-.glass-card-hover:hover {
-  border-color: var(--accent-secondary);
-  box-shadow: 0 25px 50px -12px rgba(17, 100, 102, 0.3);
-  transform: translateY(-8px) scale(1.02);
+/* Glassmorphic elements */
+.glass-header {
+  background: rgba(248, 250, 252, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
 
+.dark .glass-header {
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+}
+
+/* Subtle Grid Background */
 .bg-grid-pattern {
-  background-size: 50px 50px;
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(17, 100, 102, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 100, 102, 0.08) 1px, transparent 1px);
-}
-
-@keyframes scrollGrid {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 50px 50px;
-  }
-}
-
-.animate-grid-scroll {
-  animation: scrollGrid 35s linear infinite;
+    linear-gradient(to right, rgba(15, 118, 110, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 118, 110, 0.04) 1px, transparent 1px);
 }
 
 /* Modern Text Gradients */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #D1E8E2 0%, #116466 50%, #D9B08C 100%);
+  background: linear-gradient(135deg, #0F766E 0%, #0F172A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.text-gradient-secondary {
-  background: linear-gradient(135deg, #D9B08C 0%, #FFCB9A 100%);
+.dark .text-gradient-primary {
+  background: linear-gradient(135deg, #2DD4BF 0%, #F8FAFC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(135deg, #FFCB9A 0%, #D9B08C 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* Keyframe animations */
-@keyframes pulseGlow {
-  0%, 100% { 
-    opacity: 1; 
-    transform: scale(1); 
-  }
-  50% { 
-    opacity: 0.7; 
-    transform: scale(1.02); 
-  }
-}
-
-@keyframes spinSlow {
-  from { 
-    transform: rotate(0deg); 
-  }
-  to { 
-    transform: rotate(360deg); 
-  }
-}
-
-@keyframes reverseSpin {
-  from { 
-    transform: rotate(360deg); 
-  }
-  to { 
-    transform: rotate(0deg); 
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Animation classes */
-.animate-pulse-glow {
-  animation: pulseGlow 4s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spinSlow 20s linear infinite;
-}
-
-.animate-reverse-spin {
-  animation: reverseSpin 15s linear infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-slide-in-up {
-  animation: slideInUp 0.6s ease-out forwards;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease-out forwards;
-}
-
-/* Staggered animation delays */
-.animation-delay-100 { animation-delay: 100ms; }
-.animation-delay-200 { animation-delay: 200ms; }
-.animation-delay-300 { animation-delay: 300ms; }
-.animation-delay-400 { animation-delay: 400ms; }
-.animation-delay-500 { animation-delay: 500ms; }

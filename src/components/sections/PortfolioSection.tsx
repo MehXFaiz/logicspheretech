@@ -17,34 +17,34 @@ export const PortfolioSection: React.FC = () => {
       : PORTFOLIO_PROJECTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <section id="portfolio" className="py-28 bg-[#2C3531] relative overflow-hidden border-b border-[#116466]/30">
+    <section id="portfolio" className="py-28 bg-[#F8FAFC] dark:bg-[#0F172A] relative overflow-hidden transition-colors duration-300 border-b border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-[10px] font-mono font-semibold uppercase tracking-widest bg-[#116466]/20 text-[#D9B08C] border border-[#116466] mb-3">
-            <Trophy className="w-3.5 h-3.5" /> DELIVERED WORK
+        <div className="text-center max-w-3xl mx-auto mb-14 font-body">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30 mb-4">
+            <Trophy className="w-3.5 h-3.5 text-[#D4AF37]" /> DELIVERED WORK
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#D1E8E2] tracking-wide">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
             Featured Production Studies &{' '}
-            <span className="text-gradient-primary font-bold">
+            <span className="text-[#0F766E] dark:text-[#2DD4BF]">
               Engineering Milestones
             </span>
           </h2>
-          <p className="mt-4 text-[#94a3b8] text-sm sm:text-base leading-relaxed font-mono">
+          <p className="mt-4 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             Every project below represents a verified codebase delivered with full intellectual property ownership.
           </p>
         </div>
 
         {/* Category Pills */}
-        <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 mb-10 sm:mb-14 font-mono no-scrollbar">
+        <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 mb-10 sm:mb-14 font-body no-scrollbar">
           {categories.map((catName) => (
             <button
               key={catName}
               onClick={() => setSelectedCategory(catName)}
-              className={`shrink-0 px-4 sm:px-5 py-2 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              className={`shrink-0 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
                 selectedCategory === catName
-                  ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
-                  : 'bg-[#242b28] hover:bg-[#116466]/20 text-[#D1E8E2]/70 hover:text-[#D1E8E2] border border-[#116466]/40'
+                  ? 'bg-[#0F766E] text-white shadow-sm'
+                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800'
               }`}
             >
               {catName}
@@ -57,35 +57,36 @@ export const PortfolioSection: React.FC = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group rounded-none bg-[#242b28] border border-[#116466]/40 hover:border-[#FFCB9A] overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-sm"
+              className="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:shadow-slate-900/5 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5"
             >
               {/* Image Preview Header */}
-              <div className="relative h-52 overflow-hidden bg-[#2C3531]">
+              <div className="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  sizes="(max-w-768px) 100vw, 30vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#242b28] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900 via-transparent to-transparent" />
 
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-none text-[9px] font-mono font-semibold uppercase bg-[#242b28] text-[#D1E8E2] border border-[#116466]/60">
+                <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 shadow-sm">
                   {project.category}
                 </span>
 
-                <span className="absolute bottom-4 right-4 px-3 py-1 rounded-none text-[10px] font-mono font-semibold bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]">
+                <span className="absolute bottom-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-[#D4AF37] text-slate-950 shadow-sm">
                   {project.metrics}
                 </span>
               </div>
 
               {/* Card Content */}
-              <div className="p-6 flex flex-col justify-between flex-1">
+              <div className="p-6 flex flex-col justify-between flex-1 font-body">
                 <div>
-                  <h3 className="text-base font-bold text-[#D1E8E2] group-hover:text-[#FFCB9A] transition-colors mb-2.5 font-mono uppercase tracking-wide">
+                  <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white group-hover:text-[#0F766E] dark:group-hover:text-[#2DD4BF] transition-colors mb-2.5">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-6 font-sans">
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                     {project.description}
                   </p>
                 </div>
@@ -96,7 +97,7 @@ export const PortfolioSection: React.FC = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2.5 py-1 rounded-none text-[9px] bg-[#2C3531] text-slate-300 border border-[#116466]/40"
+                        className="px-2.5 py-1 rounded-md text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
                       >
                         {tech}
                       </span>
@@ -104,12 +105,12 @@ export const PortfolioSection: React.FC = () => {
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-5 border-t border-[#116466]/30 flex items-center justify-between font-mono">
+                  <div className="pt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between font-body">
                     <a
                       href={project.liveDemoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[10px] font-semibold text-[#116466] hover:text-[#FFCB9A] flex items-center gap-1.5 transition-colors uppercase tracking-wider"
+                      className="text-xs font-semibold text-[#0F766E] dark:text-[#2DD4BF] hover:underline flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                     >
                       <span>Live Demo</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -119,7 +120,7 @@ export const PortfolioSection: React.FC = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-none bg-[#2C3531] hover:bg-[#116466]/30 text-slate-300 hover:text-[#D1E8E2] transition-colors border border-[#116466]/40"
+                      className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors"
                       aria-label="GitHub Repository"
                     >
                       <GithubIcon className="w-4 h-4" />
