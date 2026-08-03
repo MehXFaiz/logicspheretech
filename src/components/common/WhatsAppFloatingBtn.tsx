@@ -37,7 +37,7 @@ export const WhatsAppFloatingBtn: React.FC = () => {
             </button>
           </div>
           <p className="text-xs text-slate-300 mb-3 leading-relaxed">
-            Direct WhatsApp link to 03032567909. Typical SLA reply within 5 minutes.
+            Direct WhatsApp link to +92 3032567909. Typical SLA reply within 5 minutes.
           </p>
           <textarea
             rows={2}
@@ -49,7 +49,7 @@ export const WhatsAppFloatingBtn: React.FC = () => {
             onClick={handleSend}
             className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] hover:opacity-95 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg shadow-[#116466]/30 transition-all"
           >
-            <span>Open WhatsApp Chat</span>
+            <span>Chat on WhatsApp (+92 3032567909)</span>
             <Send className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -62,8 +62,8 @@ export const WhatsAppFloatingBtn: React.FC = () => {
           setOpenPrompt(!openPrompt);
         }}
         className="group relative p-3.5 sm:p-4 rounded-full bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 shadow-xl hover:shadow-[#116466]/50 transition-all transform hover:scale-110 flex items-center justify-center"
-        aria-label="Chat on WhatsApp (03032567909)"
-        title="Chat on WhatsApp: 03032567909"
+        aria-label="Chat on WhatsApp (+92 3032567909)"
+        title="Chat on WhatsApp: +92 3032567909"
       >
         <MessageCircle className="w-6 h-6 stroke-[2.5]" />
         <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#116466] border-2 border-[#2C3531] rounded-full animate-ping" />
