@@ -24,11 +24,11 @@ export const StatsCounters: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-none bg-[#242b28] border border-[#116466] p-6 sm:p-10 shadow-lg relative overflow-hidden">
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[#116466]/40 relative z-10 font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10 font-mono">
             {STATS_DATA.map((item, idx) => (
               <div
                 key={item.id}
-                className={`flex items-center gap-4 group ${idx > 0 ? 'pt-6 sm:pt-0 sm:pl-8' : ''}`}
+                className="flex items-center gap-4 group p-4 sm:p-0 bg-[#2C3531]/40 sm:bg-transparent border border-[#116466]/30 sm:border-none"
               >
                 <div className="w-12 h-12 rounded-none bg-[#2C3531] border border-[#116466]/65 flex items-center justify-center shrink-0 shadow-inner group-hover:border-[#FFCB9A] transition-colors">
                   {getIcon(idx)}

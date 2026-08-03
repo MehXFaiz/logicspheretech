@@ -42,12 +42,12 @@ export const TechnologiesSection: React.FC = () => {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-14 font-mono">
+        <div className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 sm:pb-0 mb-10 sm:mb-14 font-mono no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              className={`shrink-0 px-4 sm:px-5 py-2 rounded-none text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                 selectedCategory === cat
                   ? 'bg-[#116466] border border-[#FFCB9A] text-[#D1E8E2]'
                   : 'bg-[#242b28] hover:bg-[#116466]/20 text-[#D1E8E2]/70 hover:text-[#D1E8E2] border border-[#116466]/40'
@@ -59,7 +59,7 @@ export const TechnologiesSection: React.FC = () => {
         </div>
 
         {/* Technologies Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-5">
           {filteredTechs.map((tech) => (
             <div
               key={tech.name}

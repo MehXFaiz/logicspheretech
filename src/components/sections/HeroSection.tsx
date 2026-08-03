@@ -163,7 +163,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuote }) => {
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-3 gap-4 font-mono">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 font-mono">
                         <div className="p-4 bg-[#2C3531]/40 border border-[#116466]/40 space-y-1">
                           <span className="text-xl sm:text-2xl font-bold text-[#D1E8E2]">
                             {simulatedScore}

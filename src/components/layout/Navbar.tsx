@@ -37,7 +37,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
     { name: 'Case Studies', href: '#portfolio' },
     { name: 'Methodology', href: '#process' },
     { name: 'Tech Matrix', href: '#technologies' },
-    { name: 'Retainers', href: '#pricing' },
   ];
 
   return (

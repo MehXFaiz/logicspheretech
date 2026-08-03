@@ -13,7 +13,6 @@ import { TechnologiesSection } from '@/components/sections/TechnologiesSection';
 import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { PricingSection } from '@/components/sections/PricingSection';
 import { FaqSection } from '@/components/sections/FaqSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { ServiceModal } from '@/components/common/ServiceModal';
@@ -48,7 +47,6 @@ export default function HomePage() {
       <PortfolioSection />
       <ProcessSection />
       <TestimonialsSection />
-      <PricingSection onOpenQuote={(serviceName) => handleOpenQuote(serviceName)} />
       <FaqSection />
       <ContactSection />
       <Footer />

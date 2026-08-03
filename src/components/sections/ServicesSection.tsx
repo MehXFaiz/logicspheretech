@@ -103,13 +103,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-2 mb-14"
+          className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 sm:pb-0 mb-10 sm:mb-14 no-scrollbar"
         >
           {tabs.map((tabName) => (
             <button
               key={tabName}
               onClick={() => setActiveTab(tabName)}
-              className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+              className={`shrink-0 px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                 activeTab === tabName
                   ? 'bg-gradient-to-r from-[#116466] to-[#D9B08C] text-[#D1E8E2] shadow-lg shadow-[#116466]/30'
                   : 'bg-[#343e39] hover:bg-[#116466]/10 text-[#9fb3aa] hover:text-[#D1E8E2] border border-white/10'
