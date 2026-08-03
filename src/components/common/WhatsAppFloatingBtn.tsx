@@ -5,11 +5,17 @@ import { MessageCircle, X, Send } from 'lucide-react';
 
 export const WhatsAppFloatingBtn: React.FC = () => {
   const [openPrompt, setOpenPrompt] = useState(false);
-  const [message, setMessage] = useState('Hi LogicSphere Atelier! I would like to inquire about a bespoke engineering project.');
+  const [message, setMessage] = useState('Hi LogicSphere Tech! I would like to inquire about a project.');
+
+  const WHATSAPP_PHONE = '923032567909';
 
   const handleSend = () => {
-    const phone = '14155550199'; // Official business support WhatsApp line
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
+
+  const handleDirectClick = () => {
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
@@ -20,7 +26,7 @@ export const WhatsAppFloatingBtn: React.FC = () => {
           <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#D1E8E2]/10">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#116466] animate-pulse" />
-              <span className="text-xs font-black text-[#116466] uppercase tracking-wider">Priority Executive Chat</span>
+              <span className="text-xs font-black text-[#116466] uppercase tracking-wider">Direct WhatsApp Chat</span>
             </div>
             <button
               onClick={() => setOpenPrompt(false)}
@@ -31,7 +37,7 @@ export const WhatsAppFloatingBtn: React.FC = () => {
             </button>
           </div>
           <p className="text-xs text-slate-300 mb-3 leading-relaxed">
-            Direct connection to our Principal Systems Architect. Typical SLA reply within 5 minutes.
+            Direct WhatsApp link to 03032567909. Typical SLA reply within 5 minutes.
           </p>
           <textarea
             rows={2}
@@ -43,16 +49,21 @@ export const WhatsAppFloatingBtn: React.FC = () => {
             onClick={handleSend}
             className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#FFCB9A] via-[#116466] to-[#D9B08C] hover:opacity-95 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg shadow-[#116466]/30 transition-all"
           >
-            <span>Initiate WhatsApp Desk</span>
+            <span>Open WhatsApp Chat</span>
             <Send className="w-3.5 h-3.5" />
           </button>
         </div>
       )}
 
       <button
-        onClick={() => setOpenPrompt(!openPrompt)}
+        onClick={handleDirectClick}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          setOpenPrompt(!openPrompt);
+        }}
         className="group relative p-3.5 sm:p-4 rounded-full bg-gradient-to-br from-[#FFCB9A] via-[#116466] to-[#D9B08C] text-slate-950 shadow-xl hover:shadow-[#116466]/50 transition-all transform hover:scale-110 flex items-center justify-center"
-        aria-label="Chat on WhatsApp"
+        aria-label="Chat on WhatsApp (03032567909)"
+        title="Chat on WhatsApp: 03032567909"
       >
         <MessageCircle className="w-6 h-6 stroke-[2.5]" />
         <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#116466] border-2 border-[#2C3531] rounded-full animate-ping" />

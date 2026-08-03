@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { ScrollProgress } from '@/components/common/ScrollProgress';
@@ -7,19 +6,8 @@ import { BackToTop } from '@/components/common/BackToTop';
 import { WhatsAppFloatingBtn } from '@/components/common/WhatsAppFloatingBtn';
 import { CookieConsent } from '@/components/common/CookieConsent';
 
-const inter = Inter({
-  variable: '--font-sans',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  variable: '--font-mono',
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-});
+const inter = { variable: '--font-sans' };
+const jetBrainsMono = { variable: '--font-mono' };
 
 export const metadata: Metadata = {
   title: {

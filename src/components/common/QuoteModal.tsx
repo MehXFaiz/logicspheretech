@@ -36,6 +36,17 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`Architecture Quote Request: ${formData.service}`);
+    const body = encodeURIComponent(
+      `Full Name: ${formData.name}\n` +
+      `Work Email: ${formData.email}\n` +
+      `Phone Number: ${formData.phone}\n` +
+      `Selected Service: ${formData.service}\n` +
+      `Budget Range: ${formData.budget}\n` +
+      `Timeline: ${formData.timeline}\n\n` +
+      `Project Brief / Notes:\n${formData.notes}`
+    );
+    window.location.href = `mailto:logicspheretech@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 

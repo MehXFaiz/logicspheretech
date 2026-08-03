@@ -43,6 +43,16 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
+      const subject = encodeURIComponent(`Architecture Brief: ${formData.service}`);
+      const body = encodeURIComponent(
+        `Full Name: ${formData.name}\n` +
+        `Work Email: ${formData.email}\n` +
+        `Phone Number: ${formData.phone}\n` +
+        `Service Required: ${formData.service}\n` +
+        `Budget Tier: ${formData.budget}\n\n` +
+        `Project Brief:\n${formData.message}`
+      );
+      window.location.href = `mailto:logicspheretech@gmail.com?subject=${subject}&body=${body}`;
       setSubmitted(true);
     }
   };
@@ -72,7 +82,7 @@ export const ContactSection: React.FC = () => {
             <div className="p-8 rounded-3xl bg-[#343e39] border border-[#D1E8E2]/10 space-y-7 shadow-2xl">
               <div>
                 <span className="text-xs font-mono text-[#116466] block mb-1 font-bold">
-                  SILICON VALLEY & GLOBAL EDGE
+                  GLOBAL ENGINEERING & EDGE
                 </span>
                 <h3 className="text-2xl font-black text-[#D1E8E2]">Atelier Headquarters</h3>
               </div>
@@ -82,11 +92,11 @@ export const ContactSection: React.FC = () => {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#D1E8E2]">San Francisco Campus</h4>
+                  <h4 className="font-bold text-[#D1E8E2]">Executive Operations</h4>
                   <p className="text-sm text-slate-400 mt-1">
-                    100 Innovation Way, Suite 800
+                    LogicSphere Tech Atelier Desk
                     <br />
-                    San Francisco, CA 94105, USA
+                    Global Engineering Headquarters
                   </p>
                 </div>
               </div>
@@ -98,12 +108,12 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <h4 className="font-bold text-[#D1E8E2]">Direct Executive Inbox</h4>
                   <a
-                    href="mailto:contact@logicspheretech.com"
+                    href="mailto:logicspheretech@gmail.com"
                     className="text-sm text-[#116466] hover:underline mt-1 block font-mono font-bold"
                   >
-                    contact@logicspheretech.com
+                    logicspheretech@gmail.com
                   </a>
-                  <p className="text-xs text-slate-500 mt-0.5">PGP encrypted enterprise inquiries</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Encrypted enterprise quotes & briefs</p>
                 </div>
               </div>
 
@@ -114,10 +124,12 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <h4 className="font-bold text-[#D1E8E2]">Direct Line & WhatsApp</h4>
                   <a
-                    href="tel:+14155550199"
+                    href="https://wa.me/923032567909"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm text-[#116466] hover:underline mt-1 block font-mono font-bold"
                   >
-                    +1 (415) 555-0199
+                    +92 303 2567909 (03032567909)
                   </a>
                   <p className="text-xs text-slate-500 mt-0.5">24/7 Global Priority Desk</p>
                 </div>
