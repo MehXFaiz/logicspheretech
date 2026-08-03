@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import {
   Mail,
   Phone,
@@ -9,32 +8,44 @@ import {
   Send,
   CheckCircle2,
   Clock,
-  Globe,
   Sparkles,
   ShieldCheck,
+  Building2,
+  MessageSquare,
+  ArrowRight,
+  Headphones,
+  Award,
+  Lock,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
+    company: '',
     email: '',
     phone: '',
     service: 'Website Development',
-    budget: '$25k - $60k',
+    budget: '$1,000–$5,000',
     message: '',
+    privacyAgreed: false,
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = 'Full name is required';
     if (!formData.email.trim() || !formData.email.includes('@')) {
-      newErrors.email = 'Please enter a valid work email';
+      newErrors.email = 'Please enter a valid work email address';
     }
     if (!formData.message.trim() || formData.message.length < 10) {
       newErrors.message = 'Please provide a brief project summary (min 10 characters)';
+    }
+    if (!formData.privacyAgreed) {
+      newErrors.privacyAgreed = 'You must agree to the Privacy Policy';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -43,138 +54,178 @@ export const ContactSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      const subject = encodeURIComponent(`Architecture Brief: ${formData.service}`);
-      const body = encodeURIComponent(
-        `Full Name: ${formData.name}\n` +
-        `Work Email: ${formData.email}\n` +
-        `Phone Number: ${formData.phone}\n` +
-        `Service Required: ${formData.service}\n` +
-        `Budget Tier: ${formData.budget}\n\n` +
-        `Project Brief:\n${formData.message}`
-      );
-      window.location.href = `mailto:logicspheretech@gmail.com?subject=${subject}&body=${body}`;
-      setSubmitted(true);
+      setIsSubmitting(true);
+      setTimeout(() => {
+        const subject = encodeURIComponent(`Consultation Request: ${formData.service}`);
+        const body = encodeURIComponent(
+          `Full Name: ${formData.name}\n` +
+          `Company Name: ${formData.company || 'N/A'}\n` +
+          `Work Email: ${formData.email}\n` +
+          `Phone Number: ${formData.phone || 'N/A'}\n` +
+          `Service Required: ${formData.service}\n` +
+          `Estimated Budget: ${formData.budget}\n\n` +
+          `Project Description:\n${formData.message}`
+        );
+        window.location.href = `mailto:logicspheretech@gmail.com?subject=${subject}&body=${body}`;
+        setIsSubmitting(false);
+        setSubmitted(true);
+      }, 600);
     }
   };
+
+  const highlights = [
+    { title: 'Response Time', desc: 'Within 24 Hours', icon: Clock },
+    { title: 'Free Consultation', desc: 'Project Discussion', icon: MessageSquare },
+    { title: 'Custom Solutions', desc: 'Tailored for Your Business', icon: Sparkles },
+    { title: 'Long-Term Support', desc: 'Maintenance & Growth', icon: Headphones },
+  ];
+
+  const whyContactUs = [
+    { title: 'Experienced Engineers', desc: 'Senior systems architects & full-stack developers.' },
+    { title: 'Transparent Pricing', desc: 'No hidden fees with milestone-based agreements.' },
+    { title: 'Scalable Solutions', desc: 'Designed for high concurrency and future expansion.' },
+    { title: 'Dedicated Support', desc: 'Post-launch maintenance, SLAs & technical assistance.' },
+  ];
 
   return (
     <section id="contact" className="py-28 bg-[#F8FAFC] dark:bg-[#0F172A] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-body">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" /> INITIATE AN ARCHITECTURE BRIEF
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30 mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" /> Contact Us
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Let&apos;s Architect Your Next{' '}
+            Let&apos;s Build Your{' '}
             <span className="text-[#0F766E] dark:text-[#2DD4BF]">
-              Breakthrough Product
+              Next Digital Solution
             </span>
           </h2>
           <p className="mt-4 text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-            Directly connect with our Principal Systems Architect. Guaranteed confidential review and architectural sign-off within 4 hours.
+            Whether you need a business website, ERP system, CRM platform, SaaS product, AI-powered application, mobile app, or custom software, our team is ready to help turn your ideas into reality.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Direct HQ Info */}
-          <div className="lg:col-span-5 space-y-8">
+        {/* Two-Column Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+          {/* Left Side: Information Panel */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 space-y-8"
+          >
+            {/* Highlight Cards Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {highlights.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-5 rounded-[20px] bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-[#0F766E] dark:hover:border-[#2DD4BF] transition-all hover:-translate-y-1"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs text-slate-500 font-mono block uppercase font-semibold">
+                      {item.title}
+                    </span>
+                    <span className="text-sm font-bold font-heading text-slate-900 dark:text-white mt-0.5 block">
+                      {item.desc}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Direct Contact Info Card */}
             <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-7 shadow-sm">
               <div>
                 <span className="text-xs font-mono text-[#0F766E] dark:text-[#2DD4BF] font-semibold block mb-1">
-                  GLOBAL ENGINEERING & EDGE
+                  DIRECT EXECUTIVE DESK
                 </span>
-                <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">Atelier Headquarters</h3>
+                <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">
+                  Get in Touch Directly
+                </h3>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
-                  <MapPin className="w-6 h-6" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm font-heading">Email Address</h4>
+                    <a
+                      href="mailto:logicspheretech@gmail.com"
+                      className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-0.5 block font-mono font-bold"
+                    >
+                      logicspheretech@gmail.com
+                    </a>
+                    <p className="text-xs text-slate-500 mt-0.5">Encrypted enterprise quotes & briefs</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Executive Operations</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                    LogicSphere Tech Atelier Desk
-                    <br />
-                    Global Engineering Headquarters
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
-                  <Mail className="w-6 h-6" />
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm font-heading">Phone & WhatsApp</h4>
+                    <a
+                      href="https://wa.me/923032567909"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-0.5 block font-mono font-bold"
+                    >
+                      +92 3032567909
+                    </a>
+                    <p className="text-xs text-slate-500 mt-0.5">Instant WhatsApp priority desk</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Direct Executive Inbox</h4>
-                  <a
-                    href="mailto:logicspheretech@gmail.com"
-                    className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-1 block font-mono font-bold"
-                  >
-                    logicspheretech@gmail.com
-                  </a>
-                  <p className="text-xs text-slate-500 mt-0.5">Encrypted enterprise quotes & briefs</p>
-                </div>
-              </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
-                  <Phone className="w-6 h-6" />
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm font-heading">Office Location</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                      San Francisco Tech Atelier & Global Ops
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white font-heading">Direct Line & WhatsApp</h4>
-                  <a
-                    href="https://wa.me/923032567909"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-[#0F766E] dark:text-[#2DD4BF] hover:underline mt-1 block font-mono font-bold"
-                  >
-                    +92 3032567909
-                  </a>
-                  <p className="text-xs text-slate-500 mt-0.5">24/7 Global Priority Desk</p>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-2xl bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm font-heading">Business Hours</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 mt-0.5">
+                      24/7 Global Priority Support Desk
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Simulated HQ Map Card */}
-            <div className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm h-64 flex flex-col justify-between p-6 group">
-              <div className="absolute inset-0 bg-slate-900 z-0">
-                <Image
-                  src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=600&q=80"
-                  alt="SF Studio Desk"
-                  fill
-                  sizes="(max-w-768px) 100vw, 30vw"
-                  className="object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
-              </div>
-
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/10 text-white border border-white/20 flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-[#2DD4BF]" /> Downtown SF Tech Hub
-                </span>
-                <span className="text-xs font-mono text-[#D4AF37] font-bold flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" /> UTC-8
-                </span>
-              </div>
-
-              <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-                <div className="w-12 h-12 rounded-2xl bg-[#0F766E] flex items-center justify-center shadow-lg">
-                  <MapPin className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="font-bold text-white mt-3 font-heading">LOGICSPHERE ATELIER CAMPUS</h4>
-                <p className="text-xs text-slate-400">Innovation Way, San Francisco</p>
-              </div>
-
-              <div className="relative z-10 flex items-center justify-between text-xs text-slate-400 border-t border-white/10 pt-3 font-mono">
-                <span>Lat: 37.7749° N</span>
-                <span>Long: 122.4194° W</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Contact Form */}
-          <div className="lg:col-span-7">
+          {/* Right Side: Modern Consultation Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7"
+          >
             <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
               {submitted ? (
                 <div className="text-center py-16 space-y-6">
@@ -182,39 +233,42 @@ export const ContactSection: React.FC = () => {
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900 dark:text-white">
-                    Architecture Brief Received
+                    Consultation Booked Successfully!
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
-                    Thank you, <span className="text-[#0F766E] dark:text-[#2DD4BF] font-bold">{formData.name}</span>. Our Principal Architect has received your specification and will send an initial architectural roadmap within 4 hours.
+                  <p className="text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed text-sm sm:text-base">
+                    Thank you, <strong className="text-[#0F766E] dark:text-[#2DD4BF]">{formData.name}</strong>. Our Principal Architect has received your request for <strong className="text-slate-900 dark:text-white">{formData.service}</strong> and will reach out within 24 hours.
                   </p>
                   <button
                     onClick={() => {
                       setSubmitted(false);
                       setFormData({
                         name: '',
+                        company: '',
                         email: '',
                         phone: '',
                         service: 'Website Development',
-                        budget: '$25k - $60k',
+                        budget: '$1,000–$5,000',
                         message: '',
+                        privacyAgreed: false,
                       });
                     }}
-                    className="px-8 py-3.5 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium text-sm transition-all"
+                    className="px-8 py-3.5 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium text-sm transition-all shadow-md"
                   >
-                    Submit Another Brief
+                    Book Another Consultation
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white mb-1.5">
-                      Send Your Architecture & Project Brief
+                      Book a Free Technical Consultation
                     </h3>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
-                      Guaranteed response from a Principal Systems Architect within 4 hours.
+                      Fill out the form below to receive a free architecture review and project scope breakdown.
                     </p>
                   </div>
 
+                  {/* Name & Company */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
@@ -222,11 +276,11 @@ export const ContactSection: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        placeholder="Executive Name"
+                        placeholder="Alex Johnson"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
-                          errors.name ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
+                          errors.name ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20'
                         }`}
                       />
                       {errors.name && (
@@ -236,73 +290,107 @@ export const ContactSection: React.FC = () => {
 
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                        Work Email *
+                        Company Name (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Acme Corp"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20 transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email & Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                        Email Address *
                       </label>
                       <input
                         type="email"
                         placeholder="alex@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
-                          errors.email ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
+                        className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
+                          errors.email ? 'border-rose-500' : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20'
                         }`}
                       />
                       {errors.email && (
                         <span className="text-xs text-rose-500 mt-1 block">{errors.email}</span>
                       )}
                     </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="+1 (415) 000-0000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20 transition-all"
+                      />
+                    </div>
                   </div>
 
+                  {/* Service Required & Budget */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                        Service Needed
+                        Service Required
                       </label>
                       <select
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E]"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20 transition-all"
                       >
                         <option value="Website Development">Website Development</option>
-                        <option value="Web Applications">Web Applications</option>
-                        <option value="Mobile App Development">Mobile App Development</option>
-                        <option value="AI Solutions & RAG">AI Solutions & RAG</option>
-                        <option value="SaaS Development">SaaS Development</option>
+                        <option value="ERP Development">ERP Development</option>
+                        <option value="CRM Development">CRM Development</option>
+                        <option value="SaaS Product">SaaS Product</option>
+                        <option value="Mobile Application">Mobile Application</option>
+                        <option value="AI Automation">AI Automation</option>
                         <option value="UI/UX Design">UI/UX Design</option>
-                        <option value="Cloud Solutions & DevOps">Cloud Solutions & DevOps</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="SEO">SEO</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                        Estimated Scope Budget
+                        Budget Tier
                       </label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E]"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20 transition-all"
                       >
-                        <option value="<$15,000">&lt; $15,000</option>
-                        <option value="$15k - $35k">$15,000 - $35,000</option>
-                        <option value="$35k - $75k">$35,000 - $75,000</option>
-                        <option value="$75k+">$75,000+ (Enterprise Custom)</option>
+                        <option value="Under $1,000">Under $1,000</option>
+                        <option value="$1,000–$5,000">$1,000 – $5,000</option>
+                        <option value="$5,000–$10,000">$5,000 – $10,000</option>
+                        <option value="$10,000+">$10,000+ (Enterprise)</option>
                       </select>
                     </div>
                   </div>
 
+                  {/* Project Description */}
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
-                      Project Specifications & Goals *
+                      Project Description *
                     </label>
                     <textarea
                       rows={4}
-                      placeholder="Share your technical requirements, expected concurrency, timeline, or reference architectures..."
+                      placeholder="Share your goals, requirements, desired timeline, or reference applications..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-colors ${
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none transition-all ${
                         errors.message
                           ? 'border-rose-500'
-                          : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E]'
+                          : 'border-slate-200 dark:border-slate-700 focus:border-[#0F766E] focus:ring-2 focus:ring-[#0F766E]/20'
                       }`}
                     />
                     {errors.message && (
@@ -310,23 +398,118 @@ export const ContactSection: React.FC = () => {
                     )}
                   </div>
 
+                  {/* Privacy Checkbox */}
+                  <div>
+                    <label className="flex items-center gap-2.5 cursor-pointer text-xs text-slate-600 dark:text-slate-300 select-none">
+                      <input
+                        type="checkbox"
+                        checked={formData.privacyAgreed}
+                        onChange={(e) => setFormData({ ...formData, privacyAgreed: e.target.checked })}
+                        className="w-4 h-4 rounded text-[#0F766E] focus:ring-[#0F766E] border-slate-300 accent-[#0F766E]"
+                      />
+                      <span>I agree to the Privacy Policy and confidential data handling.</span>
+                    </label>
+                    {errors.privacyAgreed && (
+                      <span className="text-xs text-rose-500 mt-1 block">{errors.privacyAgreed}</span>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium text-sm flex items-center justify-center gap-2 transition-all shadow-md"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-full bg-[#0F766E] hover:bg-[#0D9488] disabled:opacity-50 text-white font-medium text-sm flex items-center justify-center gap-2 transition-all shadow-md hover:scale-[1.01]"
                   >
-                    <span>Send Brief & Receive Architecture Proposal</span>
-                    <Send className="w-4 h-4" />
+                    {isSubmitting ? (
+                      <span>Processing Consultation Request...</span>
+                    ) : (
+                      <>
+                        <span>Book Free Consultation</span>
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
-
-                  <div className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-500">
-                    <ShieldCheck className="w-4 h-4 text-[#0F766E]" />
-                    <span>Protected under mutual confidentiality agreement</span>
-                  </div>
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Why Contact Us Section: 4 Feature Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-20"
+        >
+          <div className="text-center mb-8">
+            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500">
+              WHY PARTNER WITH US
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyContactUs.map((item, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-[20px] bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-[#0F766E] dark:hover:border-[#2DD4BF] transition-all hover:-translate-y-1.5"
+              >
+                <div className="flex items-center gap-2.5 text-[#0F766E] dark:text-[#2DD4BF] font-bold font-heading mb-2">
+                  <CheckCircle2 className="w-5 h-5 shrink-0" />
+                  <h4>{item.title}</h4>
+                </div>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Final CTA Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-sm text-center max-w-4xl mx-auto relative overflow-hidden"
+        >
+          <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#0F766E]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-4">
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0F766E]/10 dark:bg-[#0F766E]/20 text-[#0F766E] dark:text-[#2DD4BF] border border-[#0F766E]/30">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" /> Start Building Today
+            </span>
+            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900 dark:text-white leading-tight">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              Let&apos;s discuss your vision and build a powerful digital solution that helps your business grow.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto px-8 py-4 bg-[#0F766E] hover:bg-[#0D9488] text-white font-medium rounded-full text-sm shadow-md hover:shadow-lg hover:shadow-[#0F766E]/25 transition-all flex items-center justify-center gap-2.5 group"
+              >
+                <span>Schedule Free Consultation</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <a
+                href="#portfolio"
+                className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium rounded-full text-sm border border-slate-200 dark:border-slate-800 transition-all shadow-sm flex items-center justify-center text-center"
+              >
+                View Our Portfolio
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
