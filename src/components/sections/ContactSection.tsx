@@ -129,7 +129,7 @@ export const ContactSection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-sm text-[#116466] hover:underline mt-1 block font-mono font-bold"
                   >
-                    +92 303 2567909 (03032567909)
+                    +92 3032567909
                   </a>
                   <p className="text-xs text-slate-500 mt-0.5">24/7 Global Priority Desk</p>
                 </div>
