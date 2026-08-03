@@ -45,7 +45,7 @@ export default function HomePage() {
         onSelectService={(service) => setSelectedService(service)}
         onOpenQuote={handleOpenQuote}
       />
-      <WhyChooseUsSection />
+      <WhyChooseUsSection onOpenQuote={() => handleOpenQuote('Website Development')} />
       <TechnologiesSection />
       <PortfolioSection onOpenQuote={() => handleOpenQuote('Website Development')} />
       <ProcessSection />
