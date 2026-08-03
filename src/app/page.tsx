@@ -47,7 +47,7 @@ export default function HomePage() {
       />
       <WhyChooseUsSection />
       <TechnologiesSection />
-      <PortfolioSection />
+      <PortfolioSection onOpenQuote={() => handleOpenQuote('Website Development')} />
       <ProcessSection />
       <TestimonialsSection />
       <FaqSection />
