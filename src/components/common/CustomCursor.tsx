@@ -44,17 +44,17 @@ export const CustomCursor: React.FC = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#0071E3]/40 pointer-events-none z-50 hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#C6A15B]/40 pointer-events-none z-50 hidden md:block"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
           scale: isHovered ? 1.5 : 1,
-          borderColor: isHovered ? '#0071E3' : 'rgba(0, 113, 227, 0.3)',
+          borderColor: isHovered ? '#C6A15B' : 'rgba(198, 161, 91, 0.3)',
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 350, mass: 0.5 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#0071E3] pointer-events-none z-50 hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#C6A15B] pointer-events-none z-50 hidden md:block"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,

@@ -60,27 +60,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
           scrolled ? 'top-4' : 'top-6'
         }`}
       >
-        <div className="rounded-full bg-white/80 dark:bg-[#111111]/80 backdrop-blur-2xl border border-black/5 dark:border-white/10 shadow-xl px-6 py-3 flex items-center justify-between gap-4">
+        <div className="rounded-full bg-[#1F2229]/85 backdrop-blur-2xl border border-white/10 shadow-2xl px-6 py-3.5 flex items-center justify-between gap-4">
           {/* Brand Logo */}
           <a href="#hero" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-full bg-[#1D1D1F] dark:bg-white text-white dark:text-[#111111] flex items-center justify-center shadow-sm">
-              <Cpu className="w-4 h-4 text-[#0071E3] group-hover:scale-110 transition-transform" />
+            <div className="w-8 h-8 rounded-full bg-[#2A2E36] text-[#F4F4F5] flex items-center justify-center shadow-sm border border-white/10">
+              <Cpu className="w-4 h-4 text-[#C6A15B] group-hover:scale-110 transition-transform" />
             </div>
-            <span className="font-heading font-bold text-sm tracking-tight text-[#1D1D1F] dark:text-white">
-              Logic Sphere <span className="text-[#0071E3]">Technology</span>
+            <span className="font-heading font-bold text-sm tracking-tight text-[#F4F4F5]">
+              LOGICSPHERE <span className="text-[#C6A15B]">TECH</span>
             </span>
           </a>
 
-          {/* Nav Links */}
-          <nav className="hidden md:flex items-center gap-6 font-body text-xs font-medium">
+          {/* Minimal Nav Links */}
+          <nav className="hidden md:flex items-center gap-6 font-body text-xs font-semibold uppercase tracking-wider">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[#86868B] dark:text-[#A1A1AA] hover:text-[#1D1D1F] dark:hover:text-white transition-colors relative py-1 group"
+                className="text-[#A1A1AA] hover:text-[#C6A15B] transition-colors relative py-1 group"
               >
                 <span>{link.name}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0071E3] group-hover:w-full transition-all duration-300 rounded-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#C6A15B] group-hover:w-full transition-all duration-300 rounded-full" />
               </a>
             ))}
           </nav>
@@ -91,16 +91,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
               href="https://wa.me/923032567909"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-black/5 dark:bg-white/5 text-[#1D1D1F] dark:text-white hover:text-[#0071E3] transition-all text-xs font-mono flex items-center gap-1.5"
+              className="p-2.5 rounded-full bg-[#2A2E36] border border-white/10 text-[#F4F4F5] hover:text-[#C6A15B] transition-all text-xs font-mono flex items-center gap-1.5"
               title="Direct WhatsApp Desk"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#0071E3]" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#C6A15B]" />
               <span className="hidden xl:inline">+92 3032567909</span>
             </a>
 
             <button
               onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-black/5 dark:bg-white/5 text-[#1D1D1F] dark:text-white hover:text-[#0071E3] transition-colors"
+              className="p-2.5 rounded-full bg-[#2A2E36] border border-white/10 text-[#F4F4F5] hover:text-[#C6A15B] transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -108,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
 
             <button
               onClick={onOpenQuote}
-              className="apple-btn-primary px-5 py-2 text-xs font-semibold flex items-center gap-1 shadow-md"
+              className="executive-btn-primary px-5 py-2.5 text-xs font-semibold flex items-center gap-1.5 shadow-md"
             >
               <span>Consultation</span>
               <ChevronRight className="w-3.5 h-3.5 opacity-80" />
@@ -119,10 +119,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-full bg-black/5 dark:bg-white/5 text-[#1D1D1F] dark:text-white"
+              className="p-2 rounded-full bg-[#2A2E36] border border-white/10 text-[#F4F4F5]"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5 text-[#0071E3]" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? <X className="h-5 w-5 text-[#C6A15B]" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -136,20 +136,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-white/95 dark:bg-[#111111]/95 backdrop-blur-3xl p-8 flex flex-col justify-between md:hidden font-heading"
+            className="fixed inset-0 z-50 bg-[#0E0E10]/95 backdrop-blur-3xl p-8 flex flex-col justify-between md:hidden font-heading text-[#F4F4F5]"
           >
-            <div className="flex items-center justify-between pb-6 border-b border-black/5 dark:border-white/10">
+            <div className="flex items-center justify-between pb-6 border-b border-white/10">
               <a href="#hero" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-[#1D1D1F] text-white flex items-center justify-center">
-                  <Cpu className="w-4 h-4 text-[#0071E3]" />
+                <div className="w-8 h-8 rounded-full bg-[#2A2E36] text-white flex items-center justify-center">
+                  <Cpu className="w-4 h-4 text-[#C6A15B]" />
                 </div>
-                <span className="font-bold text-sm text-[#1D1D1F] dark:text-white">Logic Sphere</span>
+                <span className="font-bold text-sm">LogicSphere Tech</span>
               </a>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-black/5 dark:bg-white/5 text-[#1D1D1F] dark:text-white"
+                className="p-2 rounded-full bg-[#2A2E36] text-[#F4F4F5]"
               >
-                <X className="w-6 h-6 text-[#0071E3]" />
+                <X className="w-6 h-6 text-[#C6A15B]" />
               </button>
             </div>
 
@@ -162,21 +162,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-[#1D1D1F] dark:text-white hover:text-[#0071E3] transition-colors"
+                  className="hover:text-[#C6A15B] transition-colors"
                 >
                   {link.name}
                 </motion.a>
               ))}
             </div>
 
-            <div className="space-y-4 pt-6 border-t border-black/5 dark:border-white/10 font-body">
+            <div className="space-y-4 pt-6 border-t border-white/10 font-body">
               <a
                 href="https://wa.me/923032567909"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-full bg-black/5 dark:bg-white/5 text-[#1D1D1F] dark:text-white text-center text-xs font-mono flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-full bg-[#2A2E36] border border-white/10 text-white text-center text-xs font-mono flex items-center justify-center gap-2"
               >
-                <PhoneCall className="w-4 h-4 text-[#0071E3]" />
+                <PhoneCall className="w-4 h-4 text-[#C6A15B]" />
                 <span>WhatsApp: +92 3032567909</span>
               </a>
 
@@ -185,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="apple-btn-primary w-full py-4 text-xs font-bold text-center"
+                className="executive-btn-primary w-full py-4 text-xs font-bold text-center"
               >
                 Get Free Consultation
               </button>

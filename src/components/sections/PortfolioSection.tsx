@@ -66,7 +66,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
   ];
 
   return (
-    <section id="portfolio" className="py-32 bg-[#F5F5F7] dark:bg-[#111111] relative overflow-hidden transition-colors duration-300 border-b border-black/5 dark:border-white/10">
+    <section id="portfolio" className="py-32 bg-[#0E0E10] relative overflow-hidden transition-colors duration-300 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-heading">
         {/* Header */}
         <motion.div
@@ -76,13 +76,13 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-tight bg-black/5 dark:bg-white/10 text-[#1D1D1F] dark:text-white mb-4 font-body">
-            <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Case Studies & Milestones
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#1F2229] border border-white/10 text-[#C6A15B] mb-4 font-body">
+            <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Case Studies & Milestones
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1D1D1F] dark:text-white tracking-tight leading-tight">
-            Projects That Deliver <span className="text-[#0071E3]">Real Impact.</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] tracking-tight leading-tight">
+            Projects That Deliver <span className="text-[#C6A15B]">Real Impact.</span>
           </h2>
-          <p className="mt-4 text-[#86868B] dark:text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
+          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
             Every solution below is engineered for ultra-fast performance, rock-solid security, enterprise scalability, and measurable business growth.
           </p>
         </motion.div>
@@ -101,8 +101,8 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
               onClick={() => setSelectedCategory(catName)}
               className={`shrink-0 px-5 py-2.5 rounded-full text-xs font-medium transition-all duration-300 ${
                 selectedCategory === catName
-                  ? 'bg-[#0071E3] text-white shadow-md'
-                  : 'bg-white dark:bg-[#1C1C1E] text-[#1D1D1F] dark:text-white hover:bg-black/5 dark:hover:bg-white/10 border border-black/5 dark:border-white/10'
+                  ? 'bg-[#C6A15B] text-[#0E0E10] shadow-md font-bold'
+                  : 'bg-[#1F2229] text-[#A1A1AA] hover:text-[#F4F4F5] border border-white/10 hover:border-[#C6A15B]/40'
               }`}
             >
               {catName}
@@ -117,52 +117,52 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-14 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 shadow-xl overflow-hidden font-body"
+            className="mb-14 rounded-3xl bg-[#1F2229] border border-white/10 shadow-xl overflow-hidden font-body"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-              <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] bg-[#ECECEC] dark:bg-[#111111] overflow-hidden group">
+              <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] bg-[#0E0E10] overflow-hidden group">
                 <Image
                   src={featuredProject.image}
                   alt={featuredProject.title}
                   fill
                   sizes="(max-w-1024px) 100vw, 60vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   priority
                 />
-                <span className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#1D1D1F] text-white shadow-md">
+                <span className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-[#C6A15B]/40 shadow-md">
                   FEATURED CASE STUDY
                 </span>
               </div>
 
               <div className="lg:col-span-5 p-8 sm:p-10 space-y-6">
                 <div>
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0071E3] block mb-1">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#C6A15B] block mb-1">
                     {featuredProject.category} • ENTERPRISE SAAS
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#1D1D1F] dark:text-white">
+                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#F4F4F5]">
                     {featuredProject.title}
                   </h3>
                 </div>
 
-                <p className="text-sm text-[#86868B] dark:text-[#A1A1AA] leading-relaxed">
+                <p className="text-sm text-[#A1A1AA] leading-relaxed">
                   {featuredProject.description}
                 </p>
 
-                <div className="p-4 rounded-2xl bg-[#F5F5F7] dark:bg-[#111111] border border-black/5 dark:border-white/10 flex items-center justify-between text-xs">
+                <div className="p-4 rounded-2xl bg-[#0E0E10] border border-white/10 flex items-center justify-between text-xs">
                   <div>
-                    <span className="text-[10px] text-[#86868B] font-mono block uppercase">VERIFIED OUTCOME</span>
-                    <span className="text-sm font-bold font-heading text-[#0071E3]">
+                    <span className="text-[10px] text-[#A1A1AA] font-mono block uppercase">VERIFIED OUTCOME</span>
+                    <span className="text-sm font-bold font-heading text-[#C6A15B]">
                       {featuredProject.metrics}
                     </span>
                   </div>
-                  <TrendingUp className="w-5 h-5 text-[#0071E3]" />
+                  <TrendingUp className="w-5 h-5 text-[#C6A15B]" />
                 </div>
 
                 <div className="flex flex-wrap gap-2 font-mono text-xs">
                   {featuredProject.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 rounded-full bg-[#F5F5F7] dark:bg-[#111111] text-[#1D1D1F] dark:text-white border border-black/5 dark:border-white/10"
+                      className="px-3 py-1 rounded-full bg-[#0E0E10] text-[#A1A1AA] border border-white/10"
                     >
                       {tech}
                     </span>
@@ -174,7 +174,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                     href={featuredProject.liveDemoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="apple-btn-primary px-6 py-3 text-xs font-bold shadow-md inline-flex items-center gap-1.5 transition-all group/btn"
+                    className="executive-btn-primary px-6 py-3 text-xs font-bold shadow-md inline-flex items-center gap-1.5 transition-all group/btn"
                   >
                     <span>View Case Study</span>
                     <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -199,32 +199,32 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
               <motion.div
                 key={project.id}
                 whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 shadow-sm hover:shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 font-body"
+                className="group rounded-3xl bg-[#1F2229] border border-white/10 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 font-body hover:border-[#C6A15B]/50"
               >
-                <div className="relative h-52 overflow-hidden bg-[#F5F5F7] dark:bg-[#111111] shrink-0">
+                <div className="relative h-52 overflow-hidden bg-[#0E0E10] shrink-0">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     sizes="(max-w-768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
                     loading="lazy"
                   />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase bg-white/90 dark:bg-[#111111]/90 text-[#1D1D1F] dark:text-white border border-black/5 dark:border-white/10 shadow-sm">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase bg-[#0E0E10]/90 text-[#F4F4F5] border border-white/10 shadow-sm">
                     {project.category}
                   </span>
 
-                  <span className="absolute bottom-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-[#1D1D1F] text-white shadow-sm">
+                  <span className="absolute bottom-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-[#2A2E36] text-[#C6A15B] border border-[#C6A15B]/30 shadow-sm">
                     {project.metrics}
                   </span>
                 </div>
 
                 <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
                   <div>
-                    <h3 className="text-xl font-bold font-heading text-[#1D1D1F] dark:text-white group-hover:text-[#0071E3] transition-colors mb-2.5">
+                    <h3 className="text-xl font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-2.5">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-[#86868B] dark:text-[#A1A1AA] leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-sm text-[#A1A1AA] leading-relaxed mb-6 line-clamp-3">
                       {project.description}
                     </p>
                   </div>
@@ -234,19 +234,19 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-1 rounded-md text-[10px] bg-[#F5F5F7] dark:bg-[#111111] text-[#1D1D1F] dark:text-white border border-black/5 dark:border-white/10 font-medium"
+                          className="px-2.5 py-1 rounded-md text-[10px] bg-[#0E0E10] text-[#A1A1AA] border border-white/10 font-medium"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="pt-5 border-t border-black/5 dark:border-white/10 flex items-center justify-between font-body">
+                    <div className="pt-5 border-t border-white/10 flex items-center justify-between font-body">
                       <a
                         href={project.liveDemoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#0071E3] hover:underline flex items-center gap-1 transition-colors uppercase tracking-wider group/link"
+                        className="text-xs font-semibold text-[#C6A15B] hover:underline flex items-center gap-1 transition-colors uppercase tracking-wider group/link"
                       >
                         <span>View Project</span>
                         <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
@@ -265,21 +265,21 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-20 rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 p-8 sm:p-10 shadow-sm font-body"
+          className="mt-20 rounded-3xl bg-[#1F2229] border border-white/10 p-8 sm:p-10 shadow-xl font-body"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div key={idx} className="flex items-center gap-4 group p-2">
-                  <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-2xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 border border-white/10">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-2xl sm:text-3xl font-bold font-heading text-[#1D1D1F] dark:text-white tracking-tight block">
+                    <span className="text-2xl sm:text-3xl font-bold font-heading text-[#F4F4F5] tracking-tight block">
                       {stat.value}
                     </span>
-                    <span className="text-xs text-[#86868B] font-medium uppercase tracking-wider">
+                    <span className="text-xs text-[#A1A1AA] font-medium uppercase tracking-wider">
                       {stat.label}
                     </span>
                   </div>
@@ -295,13 +295,13 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 rounded-3xl bg-[#1D1D1F] text-white p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
+          className="mt-16 rounded-3xl bg-[#1F2229] border border-white/10 p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
         >
           <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 text-white">
-              <Award className="w-3.5 h-3.5 text-[#0071E3]" /> Start Building Today
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-white/10">
+              <Award className="w-3.5 h-3.5 text-[#C6A15B]" /> Start Building Today
             </span>
-            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-white leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-[#F4F4F5] leading-tight">
               Let&apos;s Build Something Amazing Together
             </h3>
             <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-2xl mx-auto">
@@ -317,7 +317,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="apple-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
+                className="executive-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
               >
                 <span>Start Your Project</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -331,7 +331,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="apple-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center text-white bg-white/10 hover:bg-white/15"
+                className="executive-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center"
               >
                 Book a Free Consultation
               </button>

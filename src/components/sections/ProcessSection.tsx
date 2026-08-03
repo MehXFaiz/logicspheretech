@@ -101,7 +101,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
   ];
 
   return (
-    <section id="process" className="py-32 bg-[#F5F5F7] dark:bg-[#111111] relative overflow-hidden transition-colors duration-300 border-b border-black/5 dark:border-white/10 font-heading">
+    <section id="process" className="py-32 bg-[#0E0E10] relative overflow-hidden transition-colors duration-300 border-b border-white/10 font-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -111,20 +111,20 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-tight bg-black/5 dark:bg-white/10 text-[#1D1D1F] dark:text-white mb-4 font-body">
-            <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Our Process
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#1F2229] border border-white/10 text-[#C6A15B] mb-4 font-body">
+            <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Our Process
           </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1D1D1F] dark:text-white tracking-tight leading-tight">
-            From Idea to <span className="text-[#0071E3]">Successful Product.</span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] tracking-tight leading-tight">
+            From Idea to <span className="text-[#C6A15B]">Successful Product.</span>
           </h2>
-          <p className="mt-4 text-[#86868B] dark:text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
+          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
             We follow a structured development process that ensures every project is delivered with quality, transparency, and long-term scalability.
           </p>
         </motion.div>
 
         {/* Timeline Grid */}
         <div className="relative mb-20">
-          <div className="hidden lg:block absolute top-[52px] left-[40px] right-[40px] h-0.5 bg-black/5 dark:bg-white/10 z-0" />
+          <div className="hidden lg:block absolute top-[52px] left-[40px] right-[40px] h-0.5 bg-white/10 z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-6 relative z-10 font-body">
             {workflowSteps.map((stepItem, idx) => {
@@ -143,34 +143,34 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                   className="group cursor-pointer"
                 >
                   <div
-                    className={`h-full rounded-3xl bg-white dark:bg-[#1C1C1E] border p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl ${
+                    className={`h-full rounded-3xl bg-[#1F2229] border p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl ${
                       isCurrent
-                        ? 'border-[#0071E3] ring-2 ring-[#0071E3]/20'
-                        : 'border-black/5 dark:border-white/10 hover:border-[#0071E3]/40'
+                        ? 'border-[#C6A15B] ring-2 ring-[#C6A15B]/20'
+                        : 'border-white/10 hover:border-[#C6A15B]/40'
                     }`}
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="w-9 h-9 rounded-xl bg-[#F5F5F7] dark:bg-[#111111] text-[#0071E3] font-mono text-xs font-bold flex items-center justify-center border border-black/5 dark:border-white/10">
+                        <span className="w-9 h-9 rounded-xl bg-[#0E0E10] text-[#C6A15B] font-mono text-xs font-bold flex items-center justify-center border border-white/10">
                           {stepItem.num}
                         </span>
-                        <div className="w-10 h-10 rounded-xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-10 h-10 rounded-xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-110 transition-transform duration-300">
                           <Icon className="w-5 h-5 stroke-[2.2]" />
                         </div>
                       </div>
 
-                      <h3 className="text-base font-bold font-heading text-[#1D1D1F] dark:text-white group-hover:text-[#0071E3] transition-colors mb-2">
+                      <h3 className="text-base font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-2">
                         {stepItem.title}
                       </h3>
 
-                      <p className="text-xs text-[#86868B] dark:text-[#A1A1AA] leading-relaxed font-body">
+                      <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
                         {stepItem.description}
                       </p>
                     </div>
 
-                    <div className="pt-4 mt-4 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] font-mono text-[#86868B]">
+                    <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-[#A1A1AA]">
                       <span>PHASE {stepItem.num}</span>
-                      <span className="w-2 h-2 rounded-full bg-[#0071E3]" />
+                      <span className="w-2 h-2 rounded-full bg-[#C6A15B]" />
                     </div>
                   </div>
                 </motion.div>
@@ -193,15 +193,15 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
               <motion.div
                 key={idx}
                 whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-white dark:bg-[#1C1C1E] border border-black/5 dark:border-white/10 p-6 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group rounded-3xl bg-[#1F2229] border border-white/10 p-6 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 mb-4 border border-white/10 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-6 h-6 stroke-[2.2]" />
                 </div>
-                <h4 className="text-lg font-bold font-heading text-[#1D1D1F] dark:text-white group-hover:text-[#0071E3] transition-colors mb-1.5">
+                <h4 className="text-lg font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-1.5">
                   {item.title}
                 </h4>
-                <p className="text-xs text-[#86868B] dark:text-[#A1A1AA] leading-relaxed font-body">
+                <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
                   {item.description}
                 </p>
               </motion.div>
@@ -215,13 +215,13 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-3xl bg-[#1D1D1F] text-white p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
+          className="rounded-3xl bg-[#1F2229] text-[#F4F4F5] p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body border border-white/10"
         >
           <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/10 text-white">
-              <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" /> Structured Engineering
+            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-white/10">
+              <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Structured Engineering
             </span>
-            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-white leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-[#F4F4F5] leading-tight">
               Ready to Turn Your Vision into Reality?
             </h3>
             <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-2xl mx-auto">
@@ -237,7 +237,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="apple-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
+                className="executive-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
               >
                 <span>Start Your Project</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -251,7 +251,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="apple-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center text-white bg-white/10 hover:bg-white/15"
+                className="executive-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center"
               >
                 Talk to Our Experts
               </button>
