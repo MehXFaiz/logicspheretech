@@ -23,6 +23,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
+  cursor: auto !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -222,4 +223,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-border-pulse {
   animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-text-shine {
+  background-size: 200% auto;
+  animation: textShine 5s linear infinite;
+}
+
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(184, 138, 68, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(184, 138, 68, 0.5); }
+}
+
+.animate-badge-glow {
+  animation: badgeGlow 3s ease-in-out infinite;
 }

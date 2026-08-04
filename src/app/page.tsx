@@ -18,7 +18,6 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { ServiceModal } from '@/components/common/ServiceModal';
 import { QuoteModal } from '@/components/common/QuoteModal';
 import { SplashScreen } from '@/components/common/SplashScreen';
-import { CustomCursor } from '@/components/common/CustomCursor';
 import { AnimatePresence } from 'framer-motion';
 
 export default function HomePage() {
@@ -36,8 +35,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col overflow-x-hidden bg-[#0B0D12] text-[#F5F1EA] selection:bg-[#B88A44] selection:text-[#0B0D12] relative transition-colors duration-300">
-      <CustomCursor />
-
       <AnimatePresence mode="wait">
         {loading && <SplashScreen onComplete={() => setLoading(false)} />}
       </AnimatePresence>
