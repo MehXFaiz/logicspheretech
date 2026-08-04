@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { FAQ_DATA } from '@/data';
 import { ChevronDown, HelpCircle, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const FaqSection: React.FC = () => {
   const [openId, setOpenId] = useState<string | null>(FAQ_DATA[0].id);
@@ -12,22 +13,46 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-28 bg-[#16181D] relative transition-colors duration-300 border-b border-white/10 font-body">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-body">
+    <section id="faq" className="py-32 bg-[#0B0D12] relative overflow-hidden font-body">
+      {/* Background Glow */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#B88A44]/[0.03] rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#1F2229] border border-white/10 text-[#C6A15B] mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> EXECUTIVE KNOWLEDGE BASE
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F4F4F5] tracking-tight leading-tight">
-            Frequently Asked{' '}
-            <span className="text-[#C6A15B]">
-              Questions
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1B2330] border border-[#B88A44]/20 mb-4"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#B88A44]" />
+            <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-[#B88A44] font-semibold">
+              KNOWLEDGE BASE
             </span>
-          </h2>
-          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed">
-            Everything you need to know about our sprints, clean IP ownership, Next.js architecture, and custom AI delivery.
-          </p>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-heading font-extrabold text-[#F5F1EA] tracking-tight leading-tight"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base text-[#B9B4AA] font-light leading-relaxed max-w-xl mx-auto"
+          >
+            Everything you need to know about our sprints, clean IP ownership, architecture, and ongoing SLA support.
+          </motion.p>
         </div>
 
         {/* Collapsible Accordion List */}
@@ -36,12 +61,16 @@ export const FaqSection: React.FC = () => {
             const isOpen = openId === faq.id;
 
             return (
-              <div
+              <motion.div
                 key={faq.id}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className={`luxury-card rounded-2xl border transition-all duration-300 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#1F2229] border-[#C6A15B] shadow-xl'
-                    : 'bg-[#1F2229] border-white/10 hover:border-white/20'
+                    ? 'bg-[#1B2330] border-[#B88A44] shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+                    : 'bg-[#1B2330]/80 border-[#B88A44]/15 hover:border-[#B88A44]/35'
                 }`}
               >
                 <button
@@ -53,40 +82,49 @@ export const FaqSection: React.FC = () => {
                     <div
                       className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                         isOpen
-                          ? 'bg-[#C6A15B] text-[#0E0E10]'
-                          : 'bg-[#2A2E36] text-[#C6A15B] border border-white/10'
+                          ? 'bg-[#B88A44] text-[#0B0D12]'
+                          : 'bg-[#252D3D] text-[#B88A44] border border-[#B88A44]/20'
                       }`}
                     >
                       <HelpCircle className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono font-semibold uppercase text-[#C6A15B] block mb-0.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#B88A44] block mb-0.5">
                         {faq.category}
                       </span>
-                      <h3 className="text-base sm:text-lg font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors">
+                      <h3 className="text-base sm:text-lg font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors">
                         {faq.question}
                       </h3>
                     </div>
                   </div>
 
                   <div
-                    className={`w-9 h-9 rounded-full bg-[#2A2E36] flex items-center justify-center text-[#F4F4F5] transition-transform duration-200 shrink-0 border border-white/10 ${
-                      isOpen ? 'rotate-180 bg-[#C6A15B] text-[#0E0E10]' : ''
+                    className={`w-8 h-8 rounded-full bg-[#252D3D] flex items-center justify-center text-[#F5F1EA] transition-transform duration-300 shrink-0 border border-[#B88A44]/20 ${
+                      isOpen ? 'rotate-180 bg-[#B88A44] text-[#0B0D12]' : ''
                     }`}
                   >
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-2 border-t border-white/10 text-sm sm:text-base text-[#A1A1AA] leading-relaxed font-body">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="px-6 pb-6 pt-2 border-t border-[#B88A44]/12 text-sm text-[#B9B4AA] font-light leading-relaxed"
+                    >
+                      {faq.answer}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

@@ -3,17 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { PORTFOLIO_PROJECTS } from '@/data';
-import {
-  Trophy,
-  ChevronRight,
-  ExternalLink,
-  Sparkles,
-  Users,
-  Award,
-  Clock,
-  ShieldCheck,
-  TrendingUp,
-} from 'lucide-react';
+import { Sparkles, ArrowUpRight, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface PortfolioSectionProps {
@@ -23,235 +13,157 @@ interface PortfolioSectionProps {
 export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = [
-    'All',
-    'Web Development',
-    'ERP Systems',
-    'CRM Solutions',
-    'Mobile Apps',
-    'AI Solutions',
-  ];
+  const categories = ['All', 'Web App', 'AI & SaaS', 'Mobile App', 'Website', 'E-Commerce'];
 
   const filteredProjects = PORTFOLIO_PROJECTS.filter((project) => {
     if (selectedCategory === 'All') return true;
-    const cat = project.category as string;
-    const title = project.title.toLowerCase();
-    const desc = project.description.toLowerCase();
-
-    if (selectedCategory === 'Web Development') {
-      return cat === 'Website' || cat === 'Web App';
-    }
-    if (selectedCategory === 'ERP Systems') {
-      return cat.includes('ERP') || title.includes('erp') || desc.includes('erp') || title.includes('flow') || title.includes('jumani');
-    }
-    if (selectedCategory === 'CRM Solutions') {
-      return cat.includes('CRM') || title.includes('crm') || desc.includes('crm') || title.includes('mentor');
-    }
-    if (selectedCategory === 'Mobile Apps') {
-      return cat === 'Mobile App' || title.includes('mobile') || title.includes('app');
-    }
-    if (selectedCategory === 'AI Solutions') {
-      return cat === 'AI & SaaS' || title.includes('ai') || desc.includes('ai') || title.includes('flow');
-    }
-    return true;
+    return project.category === selectedCategory;
   });
 
-  const featuredProject = PORTFOLIO_PROJECTS[0];
-
-  const stats = [
-    { label: 'Projects Delivered', value: '150+', icon: Trophy },
-    { label: 'Happy Clients', value: '98%', icon: Users },
-    { label: 'Years of Experience', value: '8+', icon: Clock },
-    { label: 'Client Satisfaction', value: '100%', icon: ShieldCheck },
-  ];
-
   return (
-    <section id="portfolio" className="py-32 bg-[#0E0E10] relative overflow-hidden transition-colors duration-300 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-heading">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#1F2229] border border-white/10 text-[#C6A15B] mb-4 font-body">
-            <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Case Studies & Milestones
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] tracking-tight leading-tight">
-            Projects That Deliver <span className="text-[#C6A15B]">Real Impact.</span>
-          </h2>
-          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
-            Every solution below is engineered for ultra-fast performance, rock-solid security, enterprise scalability, and measurable business growth.
-          </p>
-        </motion.div>
+    <section id="portfolio" className="py-32 bg-[#0B0D12] relative overflow-hidden">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-1/3 left-0 w-[600px] h-[600px] bg-[#B88A44]/[0.04] rounded-full blur-[160px] pointer-events-none" />
 
-        {/* Filter Pills */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-nowrap sm:flex-wrap items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-3 sm:pb-0 mb-14 font-body no-scrollbar"
-        >
-          {categories.map((catName) => (
-            <button
-              key={catName}
-              onClick={() => setSelectedCategory(catName)}
-              className={`shrink-0 px-5 py-2.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                selectedCategory === catName
-                  ? 'bg-[#C6A15B] text-[#0E0E10] shadow-md font-bold'
-                  : 'bg-[#1F2229] text-[#A1A1AA] hover:text-[#F4F4F5] border border-white/10 hover:border-[#C6A15B]/40'
-              }`}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1B2330] border border-[#B88A44]/20 mb-4"
             >
-              {catName}
-            </button>
-          ))}
-        </motion.div>
+              <Sparkles className="w-3.5 h-3.5 text-[#B88A44]" />
+              <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-[#B88A44] font-semibold">
+                FEATURED WORK
+              </span>
+            </motion.div>
 
-        {/* Featured Case Study */}
-        {selectedCategory === 'All' && (
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-14 rounded-3xl bg-[#1F2229] border border-white/10 shadow-xl overflow-hidden font-body"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
-              <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-full min-h-[320px] bg-[#0E0E10] overflow-hidden group">
-                <Image
-                  src={featuredProject.image}
-                  alt={featuredProject.title}
-                  fill
-                  sizes="(max-w-1024px) 100vw, 60vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
-                  priority
-                />
-                <span className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-[#C6A15B]/40 shadow-md">
-                  FEATURED CASE STUDY
-                </span>
-              </div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-3xl sm:text-5xl font-heading font-extrabold text-[#F5F1EA] tracking-tight leading-tight"
+            >
+              Solutions We&apos;re Proud Of
+            </motion.h2>
+          </div>
 
-              <div className="lg:col-span-5 p-8 sm:p-10 space-y-6">
-                <div>
-                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#C6A15B] block mb-1">
-                    {featuredProject.category} • ENTERPRISE SAAS
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#F4F4F5]">
-                    {featuredProject.title}
-                  </h3>
-                </div>
+          <div className="lg:col-span-5 flex flex-col justify-end">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-base text-[#B9B4AA] font-body leading-relaxed mb-6 font-light"
+            >
+              Explore our recent enterprise projects where innovation meets measurable impact.
+            </motion.p>
 
-                <p className="text-sm text-[#A1A1AA] leading-relaxed">
-                  {featuredProject.description}
-                </p>
+            {/* Filter Pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar"
+            >
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 ${
+                    selectedCategory === cat
+                      ? 'bg-[#B88A44] text-[#0B0D12] font-bold shadow-[0_4px_15px_rgba(184,138,68,0.3)]'
+                      : 'bg-[#1B2330] text-[#B9B4AA] hover:text-[#F5F1EA] border border-[#B88A44]/15'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </motion.div>
+          </div>
+        </div>
 
-                <div className="p-4 rounded-2xl bg-[#0E0E10] border border-white/10 flex items-center justify-between text-xs">
-                  <div>
-                    <span className="text-[10px] text-[#A1A1AA] font-mono block uppercase">VERIFIED OUTCOME</span>
-                    <span className="text-sm font-bold font-heading text-[#C6A15B]">
-                      {featuredProject.metrics}
-                    </span>
-                  </div>
-                  <TrendingUp className="w-5 h-5 text-[#C6A15B]" />
-                </div>
-
-                <div className="flex flex-wrap gap-2 font-mono text-xs">
-                  {featuredProject.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full bg-[#0E0E10] text-[#A1A1AA] border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="pt-2">
-                  <a
-                    href={featuredProject.liveDemoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="executive-btn-primary px-6 py-3 text-xs font-bold shadow-md inline-flex items-center gap-1.5 transition-all group/btn"
-                  >
-                    <span>View Case Study</span>
-                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Project Grid */}
+        {/* Project Cards Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, idx) => (
               <motion.div
                 key={project.id}
-                whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-[#1F2229] border border-white/10 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 font-body hover:border-[#C6A15B]/50"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.06 }}
+                className="group luxury-card rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-400 border border-[#B88A44]/15 hover:border-[#B88A44]/50"
               >
-                <div className="relative h-52 overflow-hidden bg-[#0E0E10] shrink-0">
+                {/* Project Image Preview */}
+                <div className="relative aspect-[4/3] w-full bg-[#12161F] overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-w-768px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+                    sizes="(max-w-768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
                     loading="lazy"
                   />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold uppercase bg-[#0E0E10]/90 text-[#F4F4F5] border border-white/10 shadow-sm">
+
+                  {/* Dark Glass Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2330] via-transparent to-transparent opacity-90" />
+
+                  {/* Category Tag */}
+                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider uppercase bg-[#0B0D12]/80 text-[#B88A44] border border-[#B88A44]/25 backdrop-blur-md">
                     {project.category}
                   </span>
 
-                  <span className="absolute bottom-4 right-4 px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-[#2A2E36] text-[#C6A15B] border border-[#C6A15B]/30 shadow-sm">
+                  {/* Metric Badge */}
+                  <span className="absolute bottom-3 left-3 text-[10px] font-mono text-[#F5F1EA] font-semibold">
                     {project.metrics}
                   </span>
                 </div>
 
-                <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
+                {/* Project Info */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-xl font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-2.5">
-                      {project.title}
+                    <h3 className="text-lg font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors duration-300 line-clamp-1 mb-1">
+                      {project.title.split('—')[0]}
                     </h3>
-                    <p className="text-sm text-[#A1A1AA] leading-relaxed mb-6 line-clamp-3">
+                    <p className="text-xs font-body text-[#B9B4AA] font-light line-clamp-2 leading-relaxed mb-4">
                       {project.description}
                     </p>
                   </div>
 
-                  <div>
-                    <div className="flex flex-wrap gap-1.5 mb-6 font-mono">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-1 rounded-md text-[10px] bg-[#0E0E10] text-[#A1A1AA] border border-white/10 font-medium"
-                        >
+                  {/* Technologies Tags & Live Link Arrow */}
+                  <div className="pt-4 border-t border-[#B88A44]/12 flex items-center justify-between">
+                    <div className="flex flex-wrap gap-1 font-mono text-[9px] text-[#B9B4AA]">
+                      {project.technologies.slice(0, 2).map((tech) => (
+                        <span key={tech} className="px-2 py-0.5 rounded bg-[#12161F] border border-[#B88A44]/15">
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="pt-5 border-t border-white/10 flex items-center justify-between font-body">
-                      <a
-                        href={project.liveDemoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold text-[#C6A15B] hover:underline flex items-center gap-1 transition-colors uppercase tracking-wider group/link"
-                      >
-                        <span>View Project</span>
-                        <ExternalLink className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
-                      </a>
-                    </div>
+                    <a
+                      href={project.liveDemoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-[#252D3D] border border-[#B88A44]/20 flex items-center justify-center text-[#B88A44] group-hover:bg-[#B88A44] group-hover:text-[#0B0D12] transition-all duration-300"
+                      aria-label="View Live Project"
+                    >
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -259,85 +171,6 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
           </motion.div>
         </AnimatePresence>
 
-        {/* Animated Statistics */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 rounded-3xl bg-[#1F2229] border border-white/10 p-8 sm:p-10 shadow-xl font-body"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <div key={idx} className="flex items-center gap-4 group p-2">
-                  <div className="w-12 h-12 rounded-2xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 border border-white/10">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-bold font-heading text-[#F4F4F5] tracking-tight block">
-                      {stat.value}
-                    </span>
-                    <span className="text-xs text-[#A1A1AA] font-medium uppercase tracking-wider">
-                      {stat.label}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 rounded-3xl bg-[#1F2229] border border-white/10 p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body"
-        >
-          <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-white/10">
-              <Award className="w-3.5 h-3.5 text-[#C6A15B]" /> Start Building Today
-            </span>
-            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-[#F4F4F5] leading-tight">
-              Let&apos;s Build Something Amazing Together
-            </h3>
-            <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-2xl mx-auto">
-              Whether you need a website, ERP, CRM, mobile application, or AI-powered solution, our team is ready to help you transform your ideas into reality.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <button
-                onClick={() => {
-                  if (onOpenQuote) onOpenQuote();
-                  else {
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="executive-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
-              >
-                <span>Start Your Project</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button
-                onClick={() => {
-                  if (onOpenQuote) onOpenQuote();
-                  else {
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="executive-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center"
-              >
-                Book a Free Consultation
-              </button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

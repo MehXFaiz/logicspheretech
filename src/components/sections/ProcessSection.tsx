@@ -1,21 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-  Sparkles,
-  Lightbulb,
-  FileText,
-  PenTool,
-  Code,
-  ShieldCheck,
-  Rocket,
-  Headphones,
-  ChevronRight,
-  Zap,
-  MessageSquare,
-  Lock,
-  HeartHandshake,
-} from 'lucide-react';
+import { PROCESS_STEPS } from '@/data';
+import { Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProcessSectionProps {
@@ -25,239 +12,142 @@ interface ProcessSectionProps {
 export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) => {
   const [activeStep, setActiveStep] = useState<number>(1);
 
-  const workflowSteps = [
-    {
-      step: 1,
-      num: '01',
-      title: 'Discovery',
-      description: 'We understand your business goals, challenges, and project requirements.',
-      icon: Lightbulb,
-    },
-    {
-      step: 2,
-      num: '02',
-      title: 'Planning',
-      description: 'We create project architecture, timelines, milestones, and technical strategy.',
-      icon: FileText,
-    },
-    {
-      step: 3,
-      num: '03',
-      title: 'UI/UX Design',
-      description: 'Our designers create modern, user-friendly, and responsive interfaces.',
-      icon: PenTool,
-    },
-    {
-      step: 4,
-      num: '04',
-      title: 'Development',
-      description: 'Our engineers build secure, scalable, and high-performance applications.',
-      icon: Code,
-    },
-    {
-      step: 5,
-      num: '05',
-      title: 'Quality Assurance',
-      description: 'Every feature is thoroughly tested for functionality, security, and performance.',
-      icon: ShieldCheck,
-    },
-    {
-      step: 6,
-      num: '06',
-      title: 'Deployment',
-      description: 'We launch your product using modern cloud infrastructure and best deployment practices.',
-      icon: Rocket,
-    },
-    {
-      step: 7,
-      num: '07',
-      title: 'Support & Growth',
-      description: 'We continue improving your product through updates, maintenance, and technical support.',
-      icon: Headphones,
-    },
-  ];
-
-  const benefits = [
-    {
-      title: 'Fast Delivery',
-      description: 'Rapid agile sprints with guaranteed weekly code deployments.',
-      icon: Zap,
-    },
-    {
-      title: 'Transparent Communication',
-      description: 'Real-time Slack/Teams access and progress tracking.',
-      icon: MessageSquare,
-    },
-    {
-      title: 'Enterprise Security',
-      description: 'SOC2 & ISO compliant zero-trust software architecture.',
-      icon: Lock,
-    },
-    {
-      title: 'Long-Term Partnership',
-      description: 'Dedicated maintenance, SLA guarantees, and scaling support.',
-      icon: HeartHandshake,
-    },
-  ];
-
   return (
-    <section id="process" className="py-32 bg-[#0E0E10] relative overflow-hidden transition-colors duration-300 border-b border-white/10 font-heading">
+    <section id="process" className="py-32 bg-[#0B0D12] relative overflow-hidden">
+      {/* Background Orbs */}
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#B88A44]/[0.04] rounded-full blur-[160px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-[#1F2229] border border-white/10 text-[#C6A15B] mb-4 font-body">
-            <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Our Process
-          </span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] tracking-tight leading-tight">
-            From Idea to <span className="text-[#C6A15B]">Successful Product.</span>
-          </h2>
-          <p className="mt-4 text-[#A1A1AA] text-base sm:text-lg leading-relaxed font-body font-normal">
-            We follow a structured development process that ensures every project is delivered with quality, transparency, and long-term scalability.
-          </p>
-        </motion.div>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1B2330] border border-[#B88A44]/20 mb-4"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#B88A44]" />
+            <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-[#B88A44] font-semibold">
+              OUR PROCESS
+            </span>
+          </motion.div>
 
-        {/* Timeline Grid */}
-        <div className="relative mb-20">
-          <div className="hidden lg:block absolute top-[52px] left-[40px] right-[40px] h-0.5 bg-white/10 z-0" />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-heading font-extrabold text-[#F5F1EA] tracking-tight leading-tight"
+          >
+            Structured Engineering Roadmap
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-6 relative z-10 font-body">
-            {workflowSteps.map((stepItem, idx) => {
-              const Icon = stepItem.icon;
-              const isCurrent = activeStep === stepItem.step;
-
-              return (
-                <motion.div
-                  key={stepItem.step}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  whileHover={{ y: -6 }}
-                  onClick={() => setActiveStep(stepItem.step)}
-                  className="group cursor-pointer"
-                >
-                  <div
-                    className={`h-full rounded-3xl bg-[#1F2229] border p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl ${
-                      isCurrent
-                        ? 'border-[#C6A15B] ring-2 ring-[#C6A15B]/20'
-                        : 'border-white/10 hover:border-[#C6A15B]/40'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="w-9 h-9 rounded-xl bg-[#0E0E10] text-[#C6A15B] font-mono text-xs font-bold flex items-center justify-center border border-white/10">
-                          {stepItem.num}
-                        </span>
-                        <div className="w-10 h-10 rounded-xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                          <Icon className="w-5 h-5 stroke-[2.2]" />
-                        </div>
-                      </div>
-
-                      <h3 className="text-base font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-2">
-                        {stepItem.title}
-                      </h3>
-
-                      <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
-                        {stepItem.description}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-[#A1A1AA]">
-                      <span>PHASE {stepItem.num}</span>
-                      <span className="w-2 h-2 rounded-full bg-[#C6A15B]" />
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base text-[#B9B4AA] font-body font-light leading-relaxed max-w-2xl mx-auto"
+          >
+            We follow a disciplined agile framework that guarantees predictability, high velocity, zero technical debt, and transparent execution.
+          </motion.p>
         </div>
 
-        {/* Benefits Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-body"
-        >
-          {benefits.map((item, idx) => {
-            const Icon = item.icon;
+        {/* Interactive Steps Horizontal Navigation */}
+        <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-12 no-scrollbar justify-start lg:justify-center">
+          {PROCESS_STEPS.map((step) => {
+            const isActive = activeStep === step.step;
             return (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -6 }}
-                className="group rounded-3xl bg-[#1F2229] border border-white/10 p-6 shadow-sm hover:shadow-xl transition-all duration-300"
+              <button
+                key={step.step}
+                onClick={() => setActiveStep(step.step)}
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-full text-xs font-mono tracking-wider transition-all duration-300 shrink-0 ${
+                  isActive
+                    ? 'bg-[#B88A44] text-[#0B0D12] font-bold shadow-[0_4px_20px_rgba(184,138,68,0.3)]'
+                    : 'bg-[#1B2330] text-[#B9B4AA] hover:text-[#F5F1EA] border border-[#B88A44]/15'
+                }`}
               >
-                <div className="w-12 h-12 rounded-2xl bg-[#2A2E36] text-[#C6A15B] flex items-center justify-center shrink-0 mb-4 border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 stroke-[2.2]" />
-                </div>
-                <h4 className="text-lg font-bold font-heading text-[#F4F4F5] group-hover:text-[#C6A15B] transition-colors mb-1.5">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-[#A1A1AA] leading-relaxed font-body">
-                  {item.description}
-                </p>
-              </motion.div>
+                <span className={`w-5 h-5 rounded-full text-[10px] flex items-center justify-center font-bold ${
+                  isActive ? 'bg-[#0B0D12] text-[#B88A44]' : 'bg-[#252D3D] text-[#B9B4AA]'
+                }`}>
+                  0{step.step}
+                </span>
+                <span>{step.title}</span>
+              </button>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-3xl bg-[#1F2229] text-[#F4F4F5] p-8 sm:p-12 shadow-2xl text-center max-w-4xl mx-auto relative overflow-hidden font-body border border-white/10"
-        >
-          <div className="relative z-10 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#2A2E36] text-[#C6A15B] border border-white/10">
-              <Sparkles className="w-3.5 h-3.5 text-[#C6A15B]" /> Structured Engineering
-            </span>
-            <h3 className="text-3xl sm:text-4xl font-bold font-heading text-[#F4F4F5] leading-tight">
-              Ready to Turn Your Vision into Reality?
-            </h3>
-            <p className="text-base sm:text-lg text-[#A1A1AA] leading-relaxed max-w-2xl mx-auto">
-              Whether you&apos;re launching a startup, upgrading your ERP, building a CRM, or developing an AI-powered solution, our team is ready to deliver.
-            </p>
+        {/* Selected Step Detailed View Card */}
+        {PROCESS_STEPS.filter(s => s.step === activeStep).map((currentStep) => (
+          <motion.div
+            key={currentStep.step}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="luxury-card rounded-3xl p-8 sm:p-12 border border-[#B88A44]/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#252D3D] text-[#B88A44] border border-[#B88A44]/25">
+                  Phase 0{currentStep.step} • {currentStep.duration}
+                </span>
+                <span className="text-xs font-mono text-[#B9B4AA]">{currentStep.subtitle}</span>
+              </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <button
-                onClick={() => {
-                  if (onOpenQuote) onOpenQuote();
-                  else {
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="executive-btn-primary px-8 py-4 text-sm font-semibold flex items-center justify-center gap-2 group shadow-xl"
-              >
-                <span>Start Your Project</span>
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <h3 className="text-2xl sm:text-4xl font-heading font-bold text-[#F5F1EA]">
+                {currentStep.title}
+              </h3>
 
-              <button
-                onClick={() => {
-                  if (onOpenQuote) onOpenQuote();
-                  else {
-                    const el = document.getElementById('contact');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="executive-btn-secondary px-8 py-4 text-sm font-medium flex items-center justify-center text-center"
-              >
-                Talk to Our Experts
-              </button>
+              <p className="text-sm sm:text-base font-body text-[#B9B4AA] font-light leading-relaxed">
+                {currentStep.description}
+              </p>
+
+              {/* Deliverables List */}
+              <div className="pt-4 border-t border-[#B88A44]/12 space-y-3">
+                <span className="text-xs font-mono text-[#B88A44] uppercase tracking-wider block font-semibold">
+                  Guaranteed Deliverables:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {currentStep.deliverables.map((deliv, idx) => (
+                    <div key={idx} className="flex items-center gap-2.5 text-xs text-[#F5F1EA]">
+                      <CheckCircle2 className="w-4 h-4 text-[#B88A44] shrink-0" />
+                      <span>{deliv}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+
+            {/* Step Action Visual */}
+            <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-end">
+              <div className="w-full max-w-sm p-8 rounded-2xl bg-[#12161F] border border-[#B88A44]/20 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-[#B88A44]/15 border border-[#B88A44] text-[#B88A44] flex items-center justify-center mx-auto text-2xl font-mono font-bold">
+                  0{currentStep.step}
+                </div>
+
+                <h4 className="text-base font-heading font-bold text-[#F5F1EA]">
+                  Sprint Duration: {currentStep.duration}
+                </h4>
+
+                <p className="text-xs text-[#B9B4AA]">
+                  Full visibility with daily standups and weekly staging demonstrations.
+                </p>
+
+                <button
+                  onClick={onOpenQuote}
+                  className="btn-gold-primary w-full py-3 text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2"
+                >
+                  <span>Start Phase 01</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+
       </div>
     </section>
   );
