@@ -13,28 +13,73 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   return (
     <div className="flex items-center gap-3 group cursor-pointer">
-      <div className={`relative flex items-center justify-center ${className}`}>
-        {/* Outer glowing ring */}
-        <div className="absolute inset-0 rounded-full border border-[#B88A44]/40 group-hover:border-[#B88A44] transition-all duration-300 group-hover:scale-105" />
-        
-        {/* Inner concentric ring */}
+      <div className={`relative flex items-center justify-center shrink-0 ${className}`}>
+        {/* Glowing background halo */}
+        <div className="absolute inset-0 bg-[#B88A44]/15 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* 3D Hexagonal Gold Cube Logo SVG */}
         <svg
           viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full p-1"
+          className="w-full h-full relative z-10 transition-transform duration-300 group-hover:scale-105"
         >
-          <circle cx="50" cy="50" r="42" stroke="url(#goldGradient)" strokeWidth="3" opacity="0.8" />
-          <circle cx="50" cy="50" r="28" stroke="#B88A44" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
-          <circle cx="50" cy="50" r="14" fill="url(#goldGradient)" />
-          
           <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="goldGradientHex" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#F5F1EA" />
-              <stop offset="50%" stopColor="#B88A44" />
-              <stop offset="100%" stopColor="#D6A55A" />
+              <stop offset="40%" stopColor="#D6A55A" />
+              <stop offset="100%" stopColor="#B88A44" />
+            </linearGradient>
+            <linearGradient id="goldGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#B88A44" />
+              <stop offset="100%" stopColor="#8A6328" />
             </linearGradient>
           </defs>
+
+          {/* Outer Hexagon Frame */}
+          <polygon
+            points="50,6 88,28 88,72 50,94 12,72 12,28"
+            stroke="url(#goldGradientHex)"
+            strokeWidth="4"
+            strokeLinejoin="round"
+          />
+
+          {/* Inner Isometric 3D Hex Cube Facets (Interlocking L & S) */}
+          <path
+            d="M50 16 L78 32 L50 48 L22 32 Z"
+            fill="url(#goldGradientHex)"
+            opacity="0.9"
+          />
+          <path
+            d="M22 38 L46 52 L46 84 L22 70 Z"
+            fill="url(#goldGradientDark)"
+            opacity="0.85"
+          />
+          <path
+            d="M54 52 L78 38 L78 70 L54 84 Z"
+            fill="url(#goldGradientHex)"
+            opacity="0.95"
+          />
+
+          {/* Center Dividing Lines */}
+          <path
+            d="M50 48 L50 94"
+            stroke="#0B0D12"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M50 48 L88 28"
+            stroke="#0B0D12"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <path
+            d="M50 48 L12 28"
+            stroke="#0B0D12"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
         </svg>
       </div>
       
