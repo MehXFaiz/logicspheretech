@@ -50,7 +50,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Palette',
     features: ['Figma Component Library & Tokens', 'Interactive High-Fidelity Prototypes', 'User Journey Mapping & Persona Testing', 'WCAG 2.1 AA Accessibility Standards'],
     deliverables: ['Figma Design System', 'Clickable Prototype', 'Developer Handover Specification', 'User Research Report'],
-    image: 'https://images.unsplash.com/photo-1561070791-26c113006238?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'ai-solutions',
@@ -61,7 +61,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     features: ['Custom RAG & Vector Database Systems', 'Fine-Tuned LLM Assistants', 'Computer Vision & Document OCR', 'Automated Enterprise Copilots'],
     deliverables: ['Trained AI Model / Pipeline', 'Secure API Gateway', 'Prompt Engineering Suite', 'Compliance & Bias Testing'],
     popular: true,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'saas-development',

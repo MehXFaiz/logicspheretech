@@ -21,11 +21,11 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden border border-[#B88A44]/20 bg-[#12161F] shadow-2xl aspect-[16/10] group">
               <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
-                alt="LogicSphere Engineering Atelier"
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+                alt="LogicSphere Executive Software Atelier"
                 fill
                 sizes="(max-w-768px) 100vw, 50vw"
-                className="object-cover opacity-75 group-hover:scale-[1.02] transition-all duration-500"
+                className="object-cover opacity-85 group-hover:scale-[1.02] transition-all duration-500"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D12] via-transparent to-transparent" />

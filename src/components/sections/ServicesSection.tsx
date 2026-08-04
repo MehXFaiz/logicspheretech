@@ -129,14 +129,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 {/* Card Top Image Header with Hover Scale */}
                 {service.image && (
                   <div className="relative h-44 w-full overflow-hidden bg-[#0B0D12]">
-                    <Image
+                    <img
                       src={service.image}
                       alt={service.title}
-                      fill
-                      sizes="(max-w-768px) 100vw, 33vw"
-                      className="object-cover opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-700"
+                      className="w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700"
+                      onError={(e) => {
+                        // Fallback to high-res reliable tech image if network fails
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B2330] via-[#1B2330]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B2330] via-[#1B2330]/30 to-transparent pointer-events-none" />
                     
                     {/* Badge */}
                     {service.popular && (
