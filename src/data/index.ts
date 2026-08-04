@@ -301,7 +301,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: 'LogiFlow — Global Logistics & Automated ERP Suite',
     category: 'AI & SaaS',
     description: 'Enterprise resource planning system for an international freight carrier with predictive route optimization, real-time container GPS telemetry, and automated customs filing.',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80',
     technologies: ['Vue.js', 'Laravel', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes'],
     liveDemoUrl: 'https://connect-flow-steel.vercel.app/',
     githubUrl: 'https://github.com/logicspheretech/logiflow-erp',

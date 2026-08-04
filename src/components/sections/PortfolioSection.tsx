@@ -111,13 +111,14 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
               >
                 {/* Project Image Preview */}
                 <div className="relative aspect-[4/3] w-full bg-[#12161F] overflow-hidden">
-                  <Image
+                  <img
                     src={project.image}
                     alt={project.title}
-                    fill
-                    sizes="(max-w-768px) 100vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
                     loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80';
+                    }}
                   />
 
                   {/* Dark Glass Overlay */}
