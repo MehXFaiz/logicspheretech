@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { SERVICES_DATA } from '@/data';
 import { ServiceItem } from '@/types';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
@@ -46,7 +47,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Top Header & Layout Header Row */}
+        {/* Top Header Row */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
           <div className="lg:col-span-7">
             <motion.div
@@ -89,13 +90,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex items-center gap-4"
+              className="flex items-center gap-4 overflow-x-auto pb-2 no-scrollbar"
             >
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveTab(cat)}
-                  className={`text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full transition-all duration-300 ${
+                  className={`text-xs font-mono tracking-wider uppercase px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 ${
                     activeTab === cat
                       ? 'bg-[#B88A44] text-[#0B0D12] font-bold shadow-[0_4px_15px_rgba(184,138,68,0.3)]'
                       : 'bg-[#1B2330] text-[#B9B4AA] hover:text-[#F5F1EA] border border-[#B88A44]/15'
@@ -108,10 +109,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </div>
         </div>
 
-        {/* Bento Grid Layout */}
+        {/* Bento Grid Cards with Images & Hover Zoom */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredServices.map((service, idx) => {
-            // Asymmetric bento grid sizing logic
             const isFeatured = idx === 0 || idx === 3;
             
             return (
@@ -122,44 +122,56 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: idx * 0.06 }}
                 onClick={() => onSelectService(service)}
-                className={`group luxury-card rounded-2xl p-8 cursor-pointer flex flex-col justify-between relative overflow-hidden transition-all duration-400 ${
-                  isFeatured ? 'lg:col-span-1 border-[#B88A44]/30' : ''
+                className={`group luxury-card rounded-2xl overflow-hidden cursor-pointer flex flex-col justify-between relative transition-all duration-500 border border-[#B88A44]/15 hover:border-[#B88A44]/50 ${
+                  isFeatured ? 'lg:col-span-1' : ''
                 }`}
               >
-                {/* Background Subtle Gradient Glow on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#B88A44]/[0.05] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                {/* Card Top Image Header with Hover Scale */}
+                {service.image && (
+                  <div className="relative h-44 w-full overflow-hidden bg-[#0B0D12]">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-w-768px) 100vw, 33vw"
+                      className="object-cover opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B2330] via-[#1B2330]/40 to-transparent" />
+                    
+                    {/* Badge */}
+                    {service.popular && (
+                      <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-[9px] uppercase font-mono font-bold tracking-wider bg-[#B88A44] text-[#0B0D12] shadow-md">
+                        FEATURED
+                      </span>
+                    )}
 
-                {/* Card Top: Icon & Category Tag */}
-                <div className="flex items-start justify-between mb-8 relative z-10">
-                  <div className="w-14 h-14 rounded-xl bg-[#252D3D] border border-[#B88A44]/20 flex items-center justify-center text-[#B88A44] group-hover:scale-110 group-hover:border-[#B88A44]/60 group-hover:shadow-[0_0_20px_rgba(184,138,68,0.2)] transition-all duration-300">
-                    <DynamicIcon name={service.iconName} className="w-6 h-6 stroke-[1.8]" />
+                    {/* Floating Glass Icon */}
+                    <div className="absolute bottom-3 left-6 w-12 h-12 rounded-xl bg-[#252D3D]/90 backdrop-blur-md border border-[#B88A44]/30 flex items-center justify-center text-[#B88A44] group-hover:scale-110 group-hover:bg-[#B88A44] group-hover:text-[#0B0D12] transition-all duration-300 shadow-xl">
+                      <DynamicIcon name={service.iconName} className="w-5 h-5 stroke-[2]" />
+                    </div>
                   </div>
-
-                  {service.popular && (
-                    <span className="px-3 py-1 rounded-full text-[10px] uppercase font-mono font-bold tracking-wider bg-[#B88A44]/15 text-[#B88A44] border border-[#B88A44]/30">
-                      Popular
-                    </span>
-                  )}
-                </div>
+                )}
 
                 {/* Card Center: Title & Description */}
-                <div className="relative z-10 mb-8">
-                  <h3 className="text-xl font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors duration-300 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm font-body text-[#B9B4AA] font-light leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+                <div className="p-6 relative z-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors duration-300 mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs font-body text-[#B9B4AA] font-light leading-relaxed line-clamp-3 mb-4">
+                      {service.description}
+                    </p>
+                  </div>
 
-                {/* Card Bottom: Features List & Interactive Arrow Trigger */}
-                <div className="pt-6 border-t border-[#B88A44]/12 flex items-center justify-between relative z-10">
-                  <span className="text-xs font-mono text-[#B9B4AA] group-hover:text-[#F5F1EA] transition-colors">
-                    {service.features.length} Features Included
-                  </span>
+                  {/* Card Bottom: Features Count & Interactive Arrow */}
+                  <div className="pt-4 border-t border-[#B88A44]/12 flex items-center justify-between">
+                    <span className="text-[11px] font-mono text-[#B9B4AA] group-hover:text-[#F5F1EA] transition-colors">
+                      {service.features.length} Deliverables Included
+                    </span>
 
-                  <div className="w-9 h-9 rounded-full bg-[#252D3D] border border-[#B88A44]/20 flex items-center justify-center text-[#B88A44] group-hover:bg-[#B88A44] group-hover:text-[#0B0D12] group-hover:border-[#B88A44] transition-all duration-300 shadow-sm">
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <div className="w-8 h-8 rounded-full bg-[#252D3D] border border-[#B88A44]/20 flex items-center justify-center text-[#B88A44] group-hover:bg-[#B88A44] group-hover:text-[#0B0D12] transition-all duration-300 shadow-sm">
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -167,7 +179,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           })}
         </div>
 
-        {/* Bottom Scope Request Banner */}
+        {/* Bottom Custom Scope Request Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

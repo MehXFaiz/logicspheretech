@@ -87,6 +87,34 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
 }
 
+/* Luxury Shimmer Sweep Effect */
+.luxury-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: shimmerSweep 6s infinite;
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  20%, 100% { transform: translateX(100%) rotate(30deg); }
+}
+
 /* Luxury Buttons */
 .btn-gold-primary {
   background: linear-gradient(135deg, #B88A44 0%, #D6A55A 100%);
@@ -95,6 +123,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 9999px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 6px 20px rgba(184, 138, 68, 0.25);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-gold-primary:hover {
@@ -167,11 +197,29 @@ h1, h2, h3, h4, h5, h6 {
   animation: floatSlow 6s ease-in-out infinite;
 }
 
+@keyframes floatSlow2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-1deg); }
+}
+
+.animate-float-slow2 {
+  animation: floatSlow2 7s ease-in-out infinite;
+}
+
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
+  50% { opacity: 0.65; transform: scale(1.06); }
 }
 
 .animate-pulse-glow {
   animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(184, 138, 68, 0.15); }
+  50% { border-color: rgba(184, 138, 68, 0.45); }
+}
+
+.animate-border-pulse {
+  animation: borderPulse 3s ease-in-out infinite;
 }

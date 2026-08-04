@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { PROCESS_STEPS } from '@/data';
 import { Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -65,7 +66,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
                 onClick={() => setActiveStep(step.step)}
                 className={`flex items-center gap-2.5 px-5 py-3 rounded-full text-xs font-mono tracking-wider transition-all duration-300 shrink-0 ${
                   isActive
-                    ? 'bg-[#B88A44] text-[#0B0D12] font-bold shadow-[0_4px_20px_rgba(184,138,68,0.3)]'
+                    ? 'bg-[#B88A44] text-[#0B0D12] font-bold shadow-[0_4px_20px_rgba(184,138,68,0.3)] scale-105'
                     : 'bg-[#1B2330] text-[#B9B4AA] hover:text-[#F5F1EA] border border-[#B88A44]/15'
                 }`}
               >
@@ -80,15 +81,16 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
           })}
         </div>
 
-        {/* Selected Step Detailed View Card */}
+        {/* Selected Step Detailed View Card with Phase Image */}
         {PROCESS_STEPS.filter(s => s.step === activeStep).map((currentStep) => (
           <motion.div
             key={currentStep.step}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="luxury-card rounded-3xl p-8 sm:p-12 border border-[#B88A44]/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            className="luxury-card rounded-3xl p-8 sm:p-12 border border-[#B88A44]/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center overflow-hidden"
           >
+            {/* Left Narrative */}
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center gap-3">
                 <span className="px-3.5 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#252D3D] text-[#B88A44] border border-[#B88A44]/25">
@@ -121,28 +123,38 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenQuote }) =
               </div>
             </div>
 
-            {/* Step Action Visual */}
-            <div className="lg:col-span-5 flex flex-col justify-center items-center lg:items-end">
-              <div className="w-full max-w-sm p-8 rounded-2xl bg-[#12161F] border border-[#B88A44]/20 text-center space-y-4">
-                <div className="w-16 h-16 rounded-full bg-[#B88A44]/15 border border-[#B88A44] text-[#B88A44] flex items-center justify-center mx-auto text-2xl font-mono font-bold">
-                  0{currentStep.step}
+            {/* Right Phase Image Visual */}
+            <div className="lg:col-span-5 flex flex-col justify-center items-center">
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-[#B88A44]/25 shadow-2xl group">
+                {currentStep.image && (
+                  <Image
+                    src={currentStep.image}
+                    alt={currentStep.title}
+                    fill
+                    sizes="400px"
+                    className="object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D12] via-[#0B0D12]/40 to-transparent" />
+
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#1B2330]/90 border border-[#B88A44]/30 backdrop-blur-md flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono text-[#B88A44] uppercase font-bold block">
+                      Sprint Timeline
+                    </span>
+                    <span className="text-xs font-bold text-[#F5F1EA] font-heading">
+                      {currentStep.duration}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={onOpenQuote}
+                    className="btn-gold-primary px-4 py-2 text-[11px] uppercase tracking-wider font-bold flex items-center gap-1.5"
+                  >
+                    <span>Kickoff</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-
-                <h4 className="text-base font-heading font-bold text-[#F5F1EA]">
-                  Sprint Duration: {currentStep.duration}
-                </h4>
-
-                <p className="text-xs text-[#B9B4AA]">
-                  Full visibility with daily standups and weekly staging demonstrations.
-                </p>
-
-                <button
-                  onClick={onOpenQuote}
-                  className="btn-gold-primary w-full py-3 text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2"
-                >
-                  <span>Start Phase 01</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
               </div>
             </div>
           </motion.div>

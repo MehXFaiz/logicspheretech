@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import {
   MessageSquare,
   Clock,
@@ -9,6 +10,8 @@ import {
   Sparkles,
   Globe2,
   CheckCircle2,
+  Lock,
+  Cpu,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -22,21 +25,25 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
       title: 'Transparent Communication',
       description: 'Real-time sprint updates, direct Slack channels, and clear milestone reporting.',
       icon: MessageSquare,
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
     },
     {
       title: 'Agile & On-Time Delivery',
       description: 'Bi-weekly sprint demos and guaranteed launch schedules with zero delay.',
       icon: Clock,
+      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80',
     },
     {
       title: 'Secure & Scalable Architecture',
       description: 'OWASP Top 10 compliance, cloud multi-region deployments, and SOC2 readiness.',
       icon: ShieldCheck,
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
     },
     {
       title: '24/7 Dedicated Support',
       description: 'Round-the-clock SLA infrastructure monitoring and rapid response team.',
       icon: Headphones,
+      image: 'https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=600&q=80',
     },
   ];
 
@@ -48,9 +55,9 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
   ];
 
   return (
-    <section id="why-us" className="py-32 bg-[#12161F] relative overflow-hidden">
+    <section id="why-us" className="py-32 bg-[#12161F] relative overflow-hidden font-body">
       {/* Background Orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B88A44]/[0.03] rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#B88A44]/[0.03] rounded-full blur-[160px] pointer-events-none animate-pulse-glow" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -83,7 +90,7 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
           </motion.h2>
         </div>
 
-        {/* 4 Core Pillars Grid matching mockup row */}
+        {/* 4 Core Pillars Grid with High-Res Background Imagery */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
@@ -94,20 +101,34 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="luxury-card rounded-2xl p-7 border border-[#B88A44]/15 flex flex-col justify-between group hover:border-[#B88A44]/40"
+                className="luxury-card rounded-2xl overflow-hidden border border-[#B88A44]/15 flex flex-col justify-between group hover:border-[#B88A44]/50 relative"
               >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-[#252D3D] border border-[#B88A44]/20 flex items-center justify-center text-[#B88A44] mb-6 group-hover:scale-110 transition-transform duration-300">
+                {/* Background Image Preview Header */}
+                <div className="relative h-32 w-full overflow-hidden bg-[#0B0D12]">
+                  <Image
+                    src={pillar.image}
+                    alt={pillar.title}
+                    fill
+                    sizes="300px"
+                    className="object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B2330] to-transparent" />
+                  
+                  <div className="absolute top-3 left-3 w-10 h-10 rounded-xl bg-[#252D3D]/90 backdrop-blur-md border border-[#B88A44]/30 flex items-center justify-center text-[#B88A44] group-hover:scale-110 group-hover:bg-[#B88A44] group-hover:text-[#0B0D12] transition-all duration-300 shadow-md">
                     <Icon className="w-5 h-5 stroke-[1.8]" />
                   </div>
+                </div>
 
-                  <h3 className="text-lg font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors mb-2">
-                    {pillar.title}
-                  </h3>
+                <div className="p-6 relative z-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-base font-heading font-bold text-[#F5F1EA] group-hover:text-[#B88A44] transition-colors mb-2">
+                      {pillar.title}
+                    </h3>
 
-                  <p className="text-xs font-body text-[#B9B4AA] font-light leading-relaxed">
-                    {pillar.description}
-                  </p>
+                    <p className="text-xs font-body text-[#B9B4AA] font-light leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             );
@@ -135,11 +156,10 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
                 </h3>
               </div>
 
-              {/* Dark World Map Dot Visual Representation */}
+              {/* Dark World Map Visual Representation */}
               <div className="relative w-full h-48 sm:h-56 my-6 rounded-2xl bg-[#0B0D12] border border-[#B88A44]/15 p-4 flex items-center justify-center overflow-hidden">
-                {/* World Map SVG Dots Graphic */}
                 <div className="absolute inset-0 opacity-25 flex items-center justify-center">
-                  <Globe2 className="w-64 h-64 text-[#B88A44] stroke-[0.8]" />
+                  <Globe2 className="w-64 h-64 text-[#B88A44] stroke-[0.8] animate-spin-slow" />
                 </div>
 
                 {/* Glowing Nodes for Key Regions */}
@@ -173,9 +193,9 @@ export const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ onOpenQu
             </div>
 
             {/* Right Stats Metrics */}
-            <div className="lg:col-span-6 grid grid-cols-2 gap-8">
+            <div className="lg:col-span-6 grid grid-cols-2 gap-6">
               {globalStats.map((stat, idx) => (
-                <div key={idx} className="flex flex-col p-4 rounded-xl bg-[#252D3D]/50 border border-[#B88A44]/12">
+                <div key={idx} className="flex flex-col p-5 rounded-2xl bg-[#252D3D]/60 border border-[#B88A44]/15 hover:border-[#B88A44]/40 transition-colors">
                   <span className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-gold-gradient mb-2">
                     {stat.value}
                   </span>
