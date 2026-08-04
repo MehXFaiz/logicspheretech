@@ -122,7 +122,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'ShieldCheck',
     features: ['24/7 Automated Health & Performance Monitoring', 'Monthly Security Vulnerability Patches', 'Database Query & Index Optimization', 'Dedicated On-Call Engineer SLA'],
     deliverables: ['Monthly Health Audit Report', 'Zero-Day Patch Guarantee', 'Continuous Dependency Updates', 'Quarterly Scalability Review'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'digital-marketing',
@@ -132,7 +132,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'TrendingUp',
     features: ['Omnichannel Growth & PPC Management', 'Conversion Rate Optimization (CRO)', 'Analytics Attribution Modeling', 'Funnel A/B & Multivariate Testing'],
     deliverables: ['Growth Strategy Roadmap', 'Bi-Weekly ROI Dashboard', 'Ad Copy & Creative Suite', 'Funnel Optimization Report'],
-    image: 'https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'seo-services',
@@ -142,7 +142,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Search',
     features: ['Technical Core Web Vitals Acceleration', 'JSON-LD Rich Snippet Engineering', 'Deep Keyword Opportunity Mapping', 'High-Authority Backlink Acquisition'],
     deliverables: ['Technical SEO Audit & Fixes', 'Keyword Ranking Tracker', 'Schema Configuration Report', 'Monthly Organic Growth Review'],
-    image: 'https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=800&q=80',
   },
   {
     id: 'graphic-design',
@@ -152,7 +152,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     iconName: 'Layers',
     features: ['Complete Corporate Identity System', 'Custom 3D & Isometric Brand Illustrations', 'Motion Graphics & UI Micro-Animations', 'Brand Guidelines & Typography Book'],
     deliverables: ['Logo & Vector Asset Kit', 'Interactive Brand Guide', 'Social Media Asset Pack', 'Print & Digital Collateral Suite'],
-    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
